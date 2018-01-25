@@ -60,7 +60,7 @@
     on_ground = place_meeting(x,y+2,obj_wall)
     hit = place_meeting(x,y,obj_fist) || place_meeting(x,y,obj_hitboxSword1)
     player = place_meeting(x,y,obj_player)
-
+    
 //dmg's
     //dmg'ed by player
         if (hit)

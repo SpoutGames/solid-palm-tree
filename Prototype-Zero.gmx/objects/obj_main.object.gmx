@@ -532,495 +532,55 @@ view_yview[0] = -view_hview[0]/2 + y
                             }
                         }
                     }
-                //inventory
-                    if (global.pause = 2)
-                    {
-                        //section setup
-                        if (!equipment &amp;&amp; !keyItem &amp;&amp; !note &amp;&amp; !option &amp;&amp; !quit)
-                        {
-                            line_max = 4
-                            line = clamp(line,0,line_max)
-                            if (key_left)
-                            {
-                                if (line - 1 &gt;= 0)
-                                {
-                                    line -= 1
-                                    //play sound
-                                }
-                            }
-                            if (key_right)
-                            {
-                                if (line + 1 &lt;= line_max)
-                                {
-                                    line += 1
-                                    //play sound
-                                }
-                            }    
-                            //section selection
-                            if (line = 0)
-                            {
-                                menuSelectx = -view_wview/2+22
-                                menuSelection = "Equipment"
-                                if (key_confirm)
-                                {
-                                    equipment = 1
-                                    lock = 2
-                                    keyboard_clear(key_confirm)
-                                }
-                            }
-                            if (line = 1)
-                            {
-                                menuSelectx = -view_wview/2+88
-                                menuSelection = "Key Items"
-                                if (key_confirm)
-                                {
-                                    keyItem = 1
-                                    lock = 2
-                                }
-                            }
-                            if (line = 2)
-                            {
-                                menuSelectx = 0
-                                menuSelection = "Notes"
-                                if (key_confirm)
-                                {
-                                    note = 1
-                                }
-                            }
-                            if (line = 3)
-                            {
-                                menuSelectx = view_wview/2-88
-                                menuSelection = "Options"
-                                if (key_confirm)
-                                {
-                                    option = 1
-                                }
-                            }
-                            if (line = 4)
-                            {
-                                menuSelectx = view_wview/2-24
-                                menuSelection = "Quit Game"
-                                if (key_confirm)
-                                {
-                                    quit = 1
-                                }
-                            }
-                        }
-                        if (lock &gt; 0)
-                        {
-                            lock -= 1
-                        }
-                    //equipment
-                        if (equipment = 1)
-                        {
-                            if (!weapon_select &amp;&amp; !head_select &amp;&amp; !chest_select &amp;&amp; !arm_select &amp;&amp; !leg_select)
-                            {
-                                line = clamp(line,0,5)
-                                if (key_left)
-                                {
-                                    if (line-1 &gt;= 0)
-                                    {
-                                        line -= 1
-                                        //play sound
-                                    }
-                                }
-                                if (key_right)
-                                {
-                                    if (line+1 &lt;= 5)
-                                    {
-                                        line += 1
-                                        //play sound
-                                    }
-                                }
-                            }
-                        //weapon
-                            if (line = 0)
-                            {
-                                menuSelectx = -view_wview/2+30
-                                if (!weapon_select)
-                                {
-                                    if (lock = 0)
-                                    {
-                                        if (key_confirm)
-                                        {
-                                            weapon_select = 1
-                                            wLock = 2
-                                        }
-                                    }
-                                }
-                            }
-                            if (wLock &gt; 0)
-                            {
-                                wLock -= 1
-                            }
-                            if (weapon_select = 1)
-                            {
-                                if (weapon+1 &lt;= weapon_max)
-                                {
-                                    if (key_right)
-                                    {
-                                        weapon += 1
-                                    }
-                                }
-                                if (weapon-1 &gt;= 0)
-                                {
-                                    if (key_left)
-                                    {
-                                        weapon -= 1
-                                    }
-                                }
-                                if (wLock = 0)
-                                {
-                                    if (key_confirm || key_up)
-                                    {
-                                        weapon_select = 0
-                                        lock = 2
-                                    }
-                                }
-                            }
-                        //head
-                            if (line = 1)
-                            {
-                                menuSelectx = -view_wview/2+80
-                                if (!head_select)
-                                {
-                                    if (lock = 0)
-                                    {
-                                        if (key_confirm)
-                                        {
-                                            head_select = 1
-                                            hLock = 2
-                                            keyboard_clear(key_confirm)
-                                        }
-                                    }
-                                }
-                            }
-                            if (hLock &gt; 0)
-                            {
-                                hLock -= 1
-                            }
-                            if (head_select = 1)
-                            {
-                                if (hLock = 0)
-                                {
-                                    if (key_confirm || key_up)
-                                    {
-                                        head_select = 0
-                                        lock = 2
-                                    }
-                                }
-                            }
-                        //chest
-                            if (line = 2)
-                            {
-                                menuSelectx = -view_wview/2+130
-                                if (!chest_select)
-                                {
-                                    if (lock = 0)
-                                    {
-                                        if (key_confirm)
-                                        {
-                                            chest_select = 1
-                                            cLock = 2
-                                            keyboard_clear(key_confirm)
-                                        }
-                                    }
-                                }
-                            }
-                            if (cLock &gt; 0)
-                            {
-                                cLock -= 1
-                            }
-                            if (chest_select = 1)
-                            {
-                                if (cLock = 0)
-                                {
-                                    if (key_confirm)
-                                    {
-                                        chest_select = 0
-                                    }
-                                }
-                            }
-                        //arm
-                            if (line = 3)
-                            {
-                                menuSelectx = view_wview/2-130
-                                if (!arm_select)
-                                {
-                                    if (lock = 0)
-                                    {
-                                        if (key_confirm)
-                                        {
-                                            arm_select = 1
-                                            aLock = 2
-                                            keyboard_clear(key_confirm)
-                                        }
-                                    }
-                                }
-                            }
-                            if (aLock &gt; 0)
-                            {
-                                aLock -= 1
-                            }
-                            if (arm_select = 1)
-                            {
-                                if (aLock = 0)
-                                {
-                                    if (key_confirm)
-                                    {
-                                        arm_select = 0
-                                        lock = 2
-                                    }
-                                }
-                            }
-                        //leg
-                            if (line = 4)
-                            {
-                                menuSelectx = view_wview/2-80
-                                //lock
-                                    if (!leg_select)
-                                    {
-                                        if (lock = 0)
-                                        {
-                                            if (key_confirm)
-                                            {
-                                                leg_select = 1
-                                                lLock = 2
-                                                keyboard_clear(key_confirm)
-                                            }
-                                        }
-                                    }
-                                }
-                                if (lLock &gt; 0)
-                                {
-                                    lLock -= 1
-                                }
-                                if (leg_select = 1)
-                                {
-                                    if (lLock = 0)
-                                    {
-                                        if (key_confirm)
-                                        {
-                                            leg_select = 0
-                                            lock = 2
-                                        }
-                                    }
-                            //part selection
-                                if (key_right)
-                                {
-                                    if (leg+1 &lt;= leg_max)
-                                    {
-                                        leg += 1
-                                    }
-                                }
-                                if (key_left)
-                                {
-                                    if (leg-1 &gt;= 0)
-                                    {
-                                        leg -= 1
-                                    }
-                                }
-                                //leg parts
-                                    //default
-                                        if (leg = 0)
-                                        {
-                                            //player has ability to double jump
-                                        }
-                                    //wall climb
-                                        if (leg = part_LegWallclimb)
-                                        {
-                                            global.wall_jump = 1
-                                        }   
-                                    //dash
-                                        if (leg = part_LegDash)
-                                        {
-                                            global.dash = 1
-                                        }
-                                        else
-                                        {
-                                            global.dash = 0
-                                        }
-                        //back
-                            if (line = 5)
-                            {
-                                menuSelectx = view_wview/2-30
-                                if (key_confirm)
-                                {
-                                    equipment = 0
-                                    line = 0
-                                }
-                            }
-                        }
-                        
-                        
-                        
-                        
-                    //keyItems
-                        if (keyItem = 1)
-                        {
-                            line = clamp(line,0,keyItem_max)
-                            if (key_left)
-                            {
-                                if (line-1 &gt;= 0)
-                                {
-                                    line -= 1
-                                }
-                            }
-                            if (key_right)
-                            {
-                                if (line+1 &lt;= keyItem_max)
-                                {
-                                    line += 1
-                                }
-                            }
-                            
-                            /*
-                            Item1 = dog bone
-                            Item2 = key1
-                            Item3 = key2
-                            Item4 = key3 
-                            */
-                            if (line = 0)
-                            {
-                                if (key1 = 1)
-                                {
-                                    
-                                }
-                                else
-                                {
-                                    keyItem_message = "Not found"
-                                }
-                            }
-                            if (line = 2)
-                            {
-                                if (key2 = 1)
-                                {
-                                
-                                }
-                                else
-                                {
-                                    keyItem_message = "Not found"
-                                }
-                            }
-                            if (line = 3)
-                            {
-                                if (key3 = 1)
-                                {
-                                
-                                }
-                                else
-                                {
-                                    keyItem_message = "Not found"
-                                }
-                            }
-                        }
-                    //notes
-                        if (note = 1)
-                        {
-                            if (key_left)
-                            {
-                                if (line-1 &gt;= 0)
-                                {
-                                    line -= 1
-                                    //play sound
-                                }
-                            }
-                            if (key_right)
-                            {
-                                if (line+1 &lt;= 0)
-                                {
-                                    line += 1
-                                    //play sound
-                                }
-                            }
-                            if (key_up)
-                            {
-                                if (row-1 &gt;= 0)
-                                {
-                                    row -= 1
-                                    //play sound
-                                }
-                            }
-                            if (key_down)
-                            {
-                                if (row+1 &lt;= row_max)
-                                {
-                                    row += 1
-                                    //play sound
-                                }
-                            }
-                            if (row = 0)
-                            {
-                                if (line = 0)
-                                {
-                                    
-                                }
-                                if (line = 1)
-                                {
-                                
-                                }
-                                if (line = 2)
-                                {
-                                
-                                }
-                                if (line = 3)
-                                {
-                                
-                                }
-                            }
-                            if (row = 1)
-                            {
-                                if (line = 0)
-                                {
-                                
-                                }
-                                if (line = 1)
-                                {
-                                
-                                }
-                                if (line =2)
-                                {
-                                
-                                }
-                                if (line = 3)
-                                {
-                                
-                                }
-                            }
-                            if (row = 2)
-                            {
-                                if (line = 0)
-                                {
-                                
-                                }
-                                if (line = 1)
-                                {
-                                
-                                }
-                                if (line = 2)
-                                {
-                                
-                                }
-                                if (line = 3)
-                                {
-                                
-                                }
-                            }
-                        }
-                    //options
-                        if (option = 1)
-                        {
-                        
-                        }
-                    //exit
-                        if (quit = 1)
-                        {
-                            game_end()
-                        }                    
-                    }
-                }
             }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///player menu
+    //notes
+    /*
+        menuSelection is what the game tells the player they're hovering
+        menuselectX is the horizontal visual tell of what the player is hovering
+        line's = row's
+        row's = collums
+        
+        
+    */
+    //player menu
+        if (global.pause = 2)
+        {
+            //section selection
+                if (!equipment &amp;&amp; !items &amp;&amp; !notes &amp;&amp; !options &amp;&amp; !save)
+                {
+                    line = clamp(line,0,4)
+                    if (key_up)
+                    {
+                        if ()
+                    }
+                    if (key_down)
+                    {
+                        
+                    }
+                }
+        }
 </string>
           </argument>
         </arguments>
@@ -1362,6 +922,7 @@ view_yview[0] = -view_hview[0]/2 + y
                             */
                 }
             }
+        }
 </string>
           </argument>
         </arguments>
