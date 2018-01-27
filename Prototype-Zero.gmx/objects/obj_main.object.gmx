@@ -57,20 +57,45 @@
         player_dmgTaken = 0
         player_setI = 0
         //inventory
-            equipment = 0
-            keyItem = 0
-            note = 0
-            option = 0
-            quit = 0
-            inventory_press = 0
-            equipment_select = 0
-            lock = 0
-            wLock = 0
-            hLock = 0
-            cLock = 0
-            aLock = 0
-            lLock = 0
-            next = 0
+            //new
+                pm_message1 = "Not set"
+                pm_message2 = "Not set"
+                pm_message3 = "Not set"
+                pm_message4 = "Not set"
+                pm_message5 = "Not set"
+                equipment = 0
+                item = 0
+                note = 0
+                option = 0
+                save = 0
+                pm_load1 = 45
+                pm_load2 = 45
+                pm_load3 = 45
+                pm_load4 = 45
+                pm_load5 = 45
+                pm_start1 = 0
+                pm_start2 = 12
+                pm_start3 = 24
+                pm_start4 = 36
+                pm_start5 = 48
+                pm_alpha1 = 0
+                pm_alpha2 = 0
+                pm_alpha3 = 0
+                pm_alpha4 = 0
+                pm_alpha5 = 0
+                
+            //old
+                keyItem = 0
+                quit = 0
+                inventory_press = 0
+                equipment_select = 0
+                lock = 0
+                wLock = 0
+                hLock = 0
+                cLock = 0
+                aLock = 0
+                lLock = 0
+                next = 0
     
     //NPC control
         ushtok_meet = 0
@@ -243,40 +268,6 @@ view_yview[0] = -view_hview[0]/2 + y
                 if (key_pause_release)
                 {
                     pause_press = 0
-                }
-            //for inventory
-                if (inventory_press = 0)
-                {
-                    if (global.pause = 0)
-                    {
-                        if (key_inventory)
-                        {
-                            global.pause = 2
-                            equipment = 0
-                            keyItem = 0
-                            note = 0
-                            option = 0
-                            quit = 0
-                            inventory_press = 1
-                            keyboard_clear(key_inventory)
-                        }
-                    }
-                }
-                if (inventory_press = 0)
-                {
-                    if (global.pause = 2)
-                    {
-                        if (key_inventory)
-                        {
-                            global.pause = 0
-                            line = 0
-                            keyboard_clear(key_inventory)
-                        }
-                    }
-                }
-                if (key_inventory_release)
-                {
-                    inventory_press = 0
                 }
         }
         //mainblock
@@ -559,22 +550,79 @@ view_yview[0] = -view_hview[0]/2 + y
     /*
         menuSelection is what the game tells the player they're hovering
         menuselectX is the horizontal visual tell of what the player is hovering
-        menuSelectY
+        menuSelectY is the vertical visual tell of what the player is hovering
         line's = row's
         row's = collums
         
         
     */
+    //setup
+        if (instance_exists(obj_player))
+        {
+            //opening of inventory
+                if (inventory_press = 0)
+                {
+                    if (global.pause = 0)
+                    {
+                        if (key_inventory)
+                        {
+                            global.pause = 2
+                            //variable reset's
+                                equipment = 0
+                                item = 0
+                                note = 0
+                                option = 0
+                                save = 0
+                            //open variables
+                                //timer's
+                                    pm_load1 = 30
+                                    pm_load2 = 30
+                                    pm_load3 = 30
+                                    pm_load4 = 30
+                                    pm_load5 = 30
+                                    pm_start1 = 0
+                                    pm_start2 = 12
+                                    pm_start3 = 24
+                                    pm_start4 = 36
+                                    pm_start5 = 48
+                                    pm_alpha1 = 0
+                                    pm_alpha2 = 0
+                                    pm_alpha3 = 0
+                                    pm_alpha4 = 0
+                                    pm_alpha5 = 0
+                            //for button reset
+                                inventory_press = 1
+                                keyboard_clear(key_inventory)
+                        }
+                    }
+                }
+            //closing of inventory
+                if (inventory_press = 0)
+                {
+                    if (global.pause = 2)
+                    {
+                        if (key_inventory)
+                        {
+                            global.pause = 0
+                            line = 0
+                            keyboard_clear(key_inventory)
+                        }
+                    }
+                }
+            //button reset
+                if (key_inventory_release)
+                {
+                    inventory_press = 0
+                }
+        }
+        
+        
+        
     //player menu
         if (global.pause = 2)
         {
             //timer
-            if (load &gt; 0)
-            {
-                load -= 1
-            }
-            else
-            {
+            
             //equipment
                 if (equipment)
                 {
@@ -608,7 +656,6 @@ view_yview[0] = -view_hview[0]/2 + y
                             if (key_confirm)
                             {
                                 equipment = 0
-                                load = 45
                             }
                         }
                     //line setup
@@ -633,6 +680,37 @@ view_yview[0] = -view_hview[0]/2 + y
             //section selection
                 if (!equipment &amp;&amp; !item &amp;&amp; !note &amp;&amp; !option &amp;&amp; !save)
                 {
+                    //opening
+                    if (pm_start1 = 0)
+                    {
+                        if (pm_alpha1 &lt;= 1)
+                        {
+                            pm_alpha1 += .02
+                        }
+                        if (pm_load1 != 0)
+                        {
+                            pm_load1 -= 1
+                        }
+                    }
+                    if (pm_start2 = 0)
+                    {
+                        if (pm_alpha2 &lt;= 1)
+                        {
+                            pm_alpha2 += .02
+                        }
+                        if (pm_load2 != 0)
+                        {
+                            pm_load2 -= 1
+                        }
+                    }
+                    else
+                    {
+                        pm_start2 -= 1
+                    }
+                    if (pm_start3 = 0)
+                    {
+                        
+                    }
                     //sections
                         if (line = 0)
                         {
@@ -670,6 +748,11 @@ view_yview[0] = -view_hview[0]/2 + y
                             }
                         }
                     //line setup
+                        pm_message1 = "Equipment"
+                        pm_message2 = "Items"
+                        pm_message3 = "Notes"
+                        pm_message4 = "Options"
+                        pm_message5 = "Save"    
                         line = clamp(line,0,4)
                         if (key_up)
                         {
@@ -689,7 +772,6 @@ view_yview[0] = -view_hview[0]/2 + y
                         }
                 }
                 
-            }
         }
 </string>
           </argument>
@@ -1462,13 +1544,32 @@ if (titlescreen = 1)
           <argument>
             <kind>1</kind>
             <string>///player menu
-    if (object_exists(obj_player))
+draw_set_font(fnt_default)
+draw_set_color(c_white)
+draw_set_alpha(1)
+    if (instance_exists(obj_player))
     {
         if (global.pause = 2)
         {  
             if (!equipment &amp;&amp; !item &amp;&amp; !note &amp;&amp; !option &amp;&amp; !save)
             {
-                //display's menu on top right side
+                draw_set_color(c_black)
+                draw_set_alpha(.25)
+                draw_roundrect_ext(obj_player.x+(view_wview/2)-65,obj_player.y-11-view_hview/2,obj_player.x+view_wview,obj_player.y+view_hview,0,0,0)
+                draw_set_alpha(1)
+                draw_set_color(c_white)
+                draw_set_alpha(pm_alpha1)
+                draw_text_ext_transformed(obj_player.x+(view_wview/2)-60+pm_load1,obj_player.y-5-view_hview/2,pm_message1,10,100,.5,.5,0)
+                draw_set_alpha(pm_alpha2)
+                draw_text_ext_transformed(obj_player.x+(view_wview/2)-60+pm_load2,obj_player.y+20-view_hview/2,pm_message2,10,100,.5,.5,0)
+                draw_set_alpha(pm_alpha3)
+                draw_text_ext_transformed(obj_player.x+(view_wview/2)-60,obj_player.y+45-view_hview/2,pm_message3,10,100,.5,.5,0)
+                draw_set_alpha(pm_alpha4)
+                draw_text_ext_transformed(obj_player.x+(view_wview/2)-60,obj_player.y+70-view_hview/2,pm_message4,10,100,.5,.5,0)
+                draw_set_alpha(pm_alpha5)
+                draw_text_ext_transformed(obj_player.x+(view_wview/2)-60,obj_player.y+95-view_hview/2,pm_message5,10,100,.5,.5,0)
+                draw_set_alpha(1)
+                draw_roundrect_ext(obj_player.x+(view_wview/2)-65,obj_player.y-11-view_hview/2,obj_player.x+view_wview,obj_player.y+view_hview,0,0,1)
             }
             if (equipment)
             {
@@ -1492,6 +1593,8 @@ if (titlescreen = 1)
             }
         }
     }
+draw_set_font(fnt_default)
+draw_set_color(c_white)
 </string>
           </argument>
         </arguments>
@@ -1514,7 +1617,7 @@ if (titlescreen = 1)
             <kind>1</kind>
             <string>///Player Hp
     //player hp
-    if (object_exists(obj_player))
+    if (instance_exists(obj_player))
     {
         draw_set_alpha(playerHpAlpha)
         draw_set_color(c_black)
