@@ -63,28 +63,37 @@
                 pm_message3 = "Not set"
                 pm_message4 = "Not set"
                 pm_message5 = "Not set"
+                pm_message6 = "Not set"
+                pm_message7 = "Not set"
                 equipment = 0
                 item = 0
                 note = 0
                 option = 0
                 save = 0
+                pm_start1 = 0
+                pm_start2 = 6
+                pm_start3 = 12
+                pm_start4 = 18
+                pm_start5 = 24
+                pm_start6 = 30
+                pm_start7 = 36
                 pm_load1 = 45
                 pm_load2 = 45
                 pm_load3 = 45
                 pm_load4 = 45
                 pm_load5 = 45
-                pm_start1 = 0
-                pm_start2 = 12
-                pm_start3 = 24
-                pm_start4 = 36
-                pm_start5 = 48
+                pm_load6 = 45
+                pm_load7 = 45
                 pm_alpha1 = 0
                 pm_alpha2 = 0
                 pm_alpha3 = 0
                 pm_alpha4 = 0
                 pm_alpha5 = 0
+                pm_alpha6 = 0
+                pm_alpha7 = 0
                 pm_menuselecty = 0
                 pm_menuselectx = 0
+                confirm_lock = 0
                 
             //old
                 keyItem = 0
@@ -550,13 +559,11 @@ view_yview[0] = -view_hview[0]/2 + y
             <string>///player menu
     //notes
     /*
-        menuSelection is what the game tells the player they're hovering
-        menuselectX is the horizontal visual tell of what the player is hovering
-        menuSelectY is the vertical visual tell of what the player is hovering
-        line's = row's
-        row's = collums
-        
-        
+        pm_menuselectx - cursor's x pos add
+        pm_menuselecty - cursor's y pos add
+        pm_start's - time before animation starts
+        pm_load's - amount images will move by
+        pm_alpha's - alpha
     */
     //setup
         if (instance_exists(obj_player))
@@ -577,16 +584,16 @@ view_yview[0] = -view_hview[0]/2 + y
                                 save = 0
                             //open variables
                                 //timer's
-                                    pm_load1 = 60
-                                    pm_load2 = 60
-                                    pm_load3 = 60
-                                    pm_load4 = 60
-                                    pm_load5 = 60
                                     pm_start1 = 0
                                     pm_start2 = 6
                                     pm_start3 = 12
                                     pm_start4 = 18
                                     pm_start5 = 24
+                                    pm_load1 = 60
+                                    pm_load2 = 60
+                                    pm_load3 = 60
+                                    pm_load4 = 60
+                                    pm_load5 = 60
                                     pm_alpha1 = 0
                                     pm_alpha2 = 0
                                     pm_alpha3 = 0
@@ -623,10 +630,8 @@ view_yview[0] = -view_hview[0]/2 + y
     //player menu
         if (global.pause = 2)
         {
-            //timer
-            
             //equipment
-                if (equipment)
+                if (equipment = 1)
                 {
                     //notes
                     /*
@@ -636,32 +641,170 @@ view_yview[0] = -view_hview[0]/2 + y
                         leg
                         back
                     */  
-                    //selection
-                        if (line = 0)
+                    //opening
+                        if (pm_start1 = 0)
                         {
-                        
-                        }
-                        if (line = 1)
-                        {
-                        
-                        }
-                        if (line = 2)
-                        {
-                        
-                        }
-                        if (line = 3)
-                        {
-                        
-                        }
-                        if (line = 4)
-                        {
-                            if (key_confirm)
+                            if (pm_alpha1 &lt;= 1)
                             {
-                                equipment = 0
+                                pm_alpha1 += .02
+                            }
+                            if (pm_load1 != 0)
+                            {
+                                pm_load1 -= 4
+                            }
+                        }
+                        if (pm_start2 = 0)
+                        {
+                            if (pm_alpha2 &lt;= 1)
+                            {
+                                pm_alpha2 += .02
+                            }
+                            if (pm_load2 != 0)
+                            {
+                                pm_load2 -= 4
+                            }
+                        }
+                        else
+                        {
+                            pm_start2 -= 1
+                        }
+                        if (pm_start3 = 0)
+                        {
+                            if (pm_alpha3 != 1)
+                            {
+                                pm_alpha3 += .02
+                            }
+                            if (pm_load3 &gt; 0)
+                            {
+                                pm_load3 -= 4
+                            }
+                        }
+                        else
+                        {
+                            pm_start3 -= 1
+                        }
+                        if (pm_start4 = 0)
+                        {
+                            if (pm_alpha4 != 1)
+                            {
+                                pm_alpha4 += .02
+                            }
+                            if (pm_load4 &gt; 0)
+                            {
+                                pm_load4 -= 4
+                            }
+                        }
+                        else
+                        {
+                            pm_start4 -= 1
+                        }
+                        if (pm_start5 = 0)
+                        {
+                            if (pm_alpha5 &lt; 1)
+                            {
+                                pm_alpha5 += .02
+                            }
+                            if (pm_load5 &gt; 0)
+                            {
+                                pm_load5 -= 4
+                            }
+                        }
+                        else
+                        {
+                            pm_start5 -= 1
+                        }
+                        if (pm_start6 = 0)
+                        {
+                            if (pm_alpha6 &lt; 1)
+                            {
+                                pm_alpha6 += .02
+                            }
+                            if (pm_load6 &gt; 0)
+                            {
+                                pm_load6 -= 4
+                            }
+                        }
+                        else
+                        {
+                            pm_start6 -= 1
+                        }
+                        if (pm_start7 = 0)
+                        {
+                            if (pm_alpha7 &lt; 1)
+                            {
+                                pm_alpha7 += .02
+                            }
+                            if (pm_load7 &gt; 0)
+                            {
+                                pm_load7 -= 4
+                            }
+                        }
+                        else
+                        {
+                            pm_start7 -= 1
+                        }
+                    //selection
+                        if (confirm_lock = 0)
+                        {
+                            if (line = 0)
+                            {
+                                pm_menuselecty = -5
+                            }
+                            if (line = 1)
+                            {
+                                pm_menuselecty = 20
+                            }
+                            if (line = 2)
+                            {
+                                pm_menuselecty = 45
+                            }
+                            if (line = 3)
+                            {
+                                pm_menuselecty = 70
+                            }
+                            if (line = 4)
+                            {
+                                pm_menuselecty = 95
+                            }
+                            if (line = 5)
+                            {
+                                pm_menuselecty = 120
+                            }
+                            if (line = 6)
+                            {
+                                pm_menuselecty = 145
+                                if (key_confirm)
+                                {
+                                    equipment = 0
+                                    line = 0
+                                    pm_start1 = 0
+                                    pm_start2 = 6
+                                    pm_start3 = 12
+                                    pm_start4 = 18
+                                    pm_start5 = 24
+                                    pm_load1 = 60
+                                    pm_load2 = 60
+                                    pm_load3 = 60
+                                    pm_load4 = 60
+                                    pm_load5 = 60
+                                    pm_alpha1 = 0
+                                    pm_alpha2 = 0
+                                    pm_alpha3 = 0
+                                    pm_alpha4 = 0
+                                    pm_alpha5 = 0
+                                    confirm_lock = 1
+                                }
                             }
                         }
                     //line setup
-                        line = clamp(line,0,4)
+                        pm_message1 = "Head"
+                        pm_message2 = "Torso"
+                        pm_message3 = "Arm"
+                        pm_message4 = "Leg"
+                        pm_message5 = "Main weapon"
+                        pm_message6 = "Alt weapon"
+                        pm_message7 = "Back"   
+                        line = clamp(line,0,6)
                         if (key_up)
                         {
                             if (line - 1 &gt;= 0)
@@ -672,7 +815,7 @@ view_yview[0] = -view_hview[0]/2 + y
                         }
                         if (key_down)
                         {
-                            if (line + 1 &lt;= 4)
+                            if (line + 1 &lt;= 6)
                             {
                                 line += 1
                                 //play sound
@@ -683,116 +826,141 @@ view_yview[0] = -view_hview[0]/2 + y
                 if (!equipment &amp;&amp; !item &amp;&amp; !note &amp;&amp; !option &amp;&amp; !save)
                 {
                     //opening
-                    if (pm_start1 = 0)
-                    {
-                        if (pm_alpha1 &lt;= 1)
+                        if (pm_start1 = 0)
                         {
-                            pm_alpha1 += .02
+                            if (pm_alpha1 &lt;= 1)
+                            {
+                                pm_alpha1 += .02
+                            }
+                            if (pm_load1 != 0)
+                            {
+                                pm_load1 -= 4
+                            }
                         }
-                        if (pm_load1 != 0)
+                        if (pm_start2 = 0)
                         {
-                            pm_load1 -= 4
+                            if (pm_alpha2 &lt;= 1)
+                            {
+                                pm_alpha2 += .02
+                            }
+                            if (pm_load2 != 0)
+                            {
+                                pm_load2 -= 4
+                            }
                         }
-                    }
-                    if (pm_start2 = 0)
-                    {
-                        if (pm_alpha2 &lt;= 1)
+                        else
                         {
-                            pm_alpha2 += .02
+                            pm_start2 -= 1
                         }
-                        if (pm_load2 != 0)
+                        if (pm_start3 = 0)
                         {
-                            pm_load2 -= 4
+                            if (pm_alpha3 != 1)
+                            {
+                                pm_alpha3 += .02
+                            }
+                            if (pm_load3 &gt; 0)
+                            {
+                                pm_load3 -= 4
+                            }
                         }
-                    }
-                    else
-                    {
-                        pm_start2 -= 1
-                    }
-                    if (pm_start3 = 0)
-                    {
-                        if (pm_alpha3 != 1)
+                        else
                         {
-                            pm_alpha3 += .02
+                            pm_start3 -= 1
                         }
-                        if (pm_load3 &gt; 0)
+                        if (pm_start4 = 0)
                         {
-                            pm_load3 -= 4
+                            if (pm_alpha4 != 1)
+                            {
+                                pm_alpha4 += .02
+                            }
+                            if (pm_load4 &gt; 0)
+                            {
+                                pm_load4 -= 4
+                            }
                         }
-                    }
-                    else
-                    {
-                        pm_start3 -= 1
-                    }
-                    if (pm_start4 = 0)
-                    {
-                        if (pm_alpha4 != 1)
+                        else
                         {
-                            pm_alpha4 += .02
+                            pm_start4 -= 1
                         }
-                        if (pm_load4 &gt; 0)
+                        if (pm_start5 = 0)
                         {
-                            pm_load4 -= 4
+                            if (pm_alpha5 &lt; 1)
+                            {
+                                pm_alpha5 += .02
+                            }
+                            if (pm_load5 &gt; 0)
+                            {
+                                pm_load5 -= 4
+                            }
                         }
-                    }
-                    else
-                    {
-                        pm_start4 -= 1
-                    }
-                    if (pm_start5 = 0)
-                    {
-                        if (pm_alpha5 &lt; 1)
+                        else
                         {
-                            pm_alpha5 += .02
+                            pm_start5 -= 1
                         }
-                        if (pm_load5 &gt; 0)
-                        {
-                            pm_load5 -= 4
-                        }
-                    }
-                    else
-                    {
-                        pm_start5 -= 1
-                    }
                     //sections
-                        if (line = 0)
+                        if (confirm_lock = 0)
                         {
-                            pm_menuselecty = -5
-                            if (key_confirm)
+                            if (line = 0)
                             {
-                                equipment = 1
+                                pm_menuselecty = -5
+                                if (key_confirm)
+                                {
+                                    equipment = 1
+                                    confirm_lock = 1
+                                    pm_start1 = 0
+                                    pm_start2 = 6
+                                    pm_start3 = 12
+                                    pm_start4 = 18
+                                    pm_start5 = 24
+                                    pm_start6 = 30
+                                    pm_start7 = 36
+                                    pm_load1 = 60
+                                    pm_load2 = 60
+                                    pm_load3 = 60
+                                    pm_load4 = 60
+                                    pm_load5 = 60
+                                    pm_load6 = 60
+                                    pm_load7 = 60
+                                    pm_alpha1 = 0
+                                    pm_alpha2 = 0
+                                    pm_alpha3 = 0
+                                    pm_alpha4 = 0
+                                    pm_alpha5 = 0
+                                    pm_alpha6 = 0
+                                    pm_alpha7 = 0
+                                }
                             }
-                        }
-                        if (line = 1)
-                        {
-                            pm_menuselecty = 20
-                            if (key_confirm)
+                            if (line = 1)
                             {
-                                item = 1
+                                pm_menuselecty = 20
+                                if (key_confirm)
+                                {
+                                    item = 1
+                                }
                             }
-                        }
-                        if (line = 2)
-                        {
-                            pm_menuselecty = 45
-                            if (key_confirm)
+                            if (line = 2)
                             {
-                                note = 1
+                                pm_menuselecty = 45
+                                if (key_confirm)
+                                {
+                                    note = 1
+                                }
                             }
-                        }
-                        if (line = 3)
-                        {
-                            pm_menuselecty = 70
-                            if (key_confirm)
+                            if (line = 3)
                             {
-                                option = 1
+                                pm_menuselecty = 70
+                                if (key_confirm)
+                                {
+                                    option = 1
+                                }
                             }
-                        }
-                        if (line = 4)
-                        {
-                            pm_menuselecty = 95
-                            if (key_confirm)
+                            if (line = 4)
                             {
-                                save = 1
+                                pm_menuselecty = 95
+                                if (key_confirm)
+                                {
+                                    save = 1
+                                }
                             }
                         }
                     //line setup
@@ -821,6 +989,11 @@ view_yview[0] = -view_hview[0]/2 + y
                 }
                 
         }
+        //confirm reset
+            if (confirm_lock = 1)
+            {
+                confirm_lock = 0
+            }
 </string>
           </argument>
         </arguments>
@@ -1603,10 +1776,9 @@ draw_set_alpha(1)
             {
                 //section display
                     draw_set_color(c_black)
-                    draw_set_alpha(.25)
+                    draw_set_alpha(.5)
                     draw_roundrect_ext(obj_player.x+(view_wview/2)-65,obj_player.y-11-view_hview/2,obj_player.x+view_wview,obj_player.y+view_hview,0,0,0)
                     draw_set_color(c_white)
-                    draw_set_alpha(1)
                     draw_set_alpha(pm_alpha1)
                     draw_text_ext_transformed(obj_player.x+(view_wview/2)-60+pm_load1,obj_player.y-5-view_hview/2,pm_message1,10,100,.5,.5,0)
                     draw_set_alpha(pm_alpha2)
@@ -1617,14 +1789,40 @@ draw_set_alpha(1)
                     draw_text_ext_transformed(obj_player.x+(view_wview/2)-60+pm_load4,obj_player.y+70-view_hview/2,pm_message4,10,100,.5,.5,0)
                     draw_set_alpha(pm_alpha5)
                     draw_text_ext_transformed(obj_player.x+(view_wview/2)-60+pm_load5,obj_player.y+95-view_hview/2,pm_message5,10,100,.5,.5,0)
+                    draw_set_alpha(1)
                     draw_roundrect_ext(obj_player.x+(view_wview/2)-65,obj_player.y-11-view_hview/2,obj_player.x+view_wview,obj_player.y+view_hview,0,0,1)
                 //cursor
                     draw_sprite_ext(spr_cursor,0,obj_player.x+(view_wview/2-70),obj_player.y+5+pm_menuselecty-view_hview/2,.25,.25,0,c_white,1)
             }
-            if (equipment)
-            {
-                //display equipment
-            }
+            //equipment
+                if (equipment)
+                {
+                    //section setup
+                        draw_set_color(c_black)
+                        draw_set_alpha(.25)
+                        draw_roundrect_ext(obj_player.x+(view_wview/2)-65,obj_player.y-11-view_hview/2,obj_player.x+view_wview,obj_player.y+view_hview,0,0,0)
+                        draw_set_color(c_white)
+                        draw_set_alpha(1)
+                        draw_set_alpha(pm_alpha1)
+                        draw_text_ext_transformed(obj_player.x+(view_wview/2)-60+pm_load1,obj_player.y-5-view_hview/2,pm_message1,10,100,.5,.5,0)
+                        draw_set_alpha(pm_alpha2)
+                        draw_text_ext_transformed(obj_player.x+(view_wview/2)-60+pm_load2,obj_player.y+20-view_hview/2,pm_message2,10,100,.5,.5,0)
+                        draw_set_alpha(pm_alpha3)
+                        draw_text_ext_transformed(obj_player.x+(view_wview/2)-60+pm_load3,obj_player.y+45-view_hview/2,pm_message3,10,100,.5,.5,0)
+                        draw_set_alpha(pm_alpha4)
+                        draw_text_ext_transformed(obj_player.x+(view_wview/2)-60+pm_load4,obj_player.y+70-view_hview/2,pm_message4,10,100,.5,.5,0)
+                        draw_set_alpha(pm_alpha5)
+                        draw_text_ext_transformed(obj_player.x+(view_wview/2)-60+pm_load5,obj_player.y+95-view_hview/2,pm_message5,15,100,.5,.5,0)
+                        draw_set_alpha(pm_alpha6)
+                        draw_text_ext_transformed(obj_player.x+(view_wview/2)-60+pm_load6,obj_player.y+120-view_hview/2,pm_message6,15,100,.5,.5,0)
+                        draw_set_alpha(pm_alpha7)
+                        draw_text_ext_transformed(obj_player.x+(view_wview/2)-60+pm_load7,obj_player.y+145-view_hview/2,pm_message7,10,100,.5,.5,0)
+                        draw_set_alpha(1)
+                        draw_roundrect_ext(obj_player.x+(view_wview/2)-65,obj_player.y-11-view_hview/2,obj_player.x+view_wview,obj_player.y+view_hview,0,0,1)
+                    //cursor
+                        draw_sprite_ext(spr_cursor,0,obj_player.x+(view_wview/2-70),obj_player.y+5+pm_menuselecty-view_hview/2,.25,.25,0,c_white,1)
+                }
+            //item's
             if (item)
             {
                 //display item
