@@ -575,16 +575,16 @@ view_yview[0] = -view_hview[0]/2 + y
                                 save = 0
                             //open variables
                                 //timer's
-                                    pm_load1 = 30
-                                    pm_load2 = 30
-                                    pm_load3 = 30
-                                    pm_load4 = 30
-                                    pm_load5 = 30
+                                    pm_load1 = 60
+                                    pm_load2 = 60
+                                    pm_load3 = 60
+                                    pm_load4 = 60
+                                    pm_load5 = 60
                                     pm_start1 = 0
-                                    pm_start2 = 12
-                                    pm_start3 = 24
-                                    pm_start4 = 36
-                                    pm_start5 = 48
+                                    pm_start2 = 6
+                                    pm_start3 = 12
+                                    pm_start4 = 18
+                                    pm_start5 = 24
                                     pm_alpha1 = 0
                                     pm_alpha2 = 0
                                     pm_alpha3 = 0
@@ -689,7 +689,7 @@ view_yview[0] = -view_hview[0]/2 + y
                         }
                         if (pm_load1 != 0)
                         {
-                            pm_load1 -= 1
+                            pm_load1 -= 2
                         }
                     }
                     if (pm_start2 = 0)
@@ -700,7 +700,7 @@ view_yview[0] = -view_hview[0]/2 + y
                         }
                         if (pm_load2 != 0)
                         {
-                            pm_load2 -= 1
+                            pm_load2 -= 2
                         }
                     }
                     else
@@ -709,7 +709,48 @@ view_yview[0] = -view_hview[0]/2 + y
                     }
                     if (pm_start3 = 0)
                     {
-                        
+                        if (pm_alpha3 != 1)
+                        {
+                            pm_alpha3 += .02
+                        }
+                        if (pm_load3 &gt; 0)
+                        {
+                            pm_load3 -= 2
+                        }
+                    }
+                    else
+                    {
+                        pm_start3 -= 1
+                    }
+                    if (pm_start4 = 0)
+                    {
+                        if (pm_alpha4 != 1)
+                        {
+                            pm_alpha4 += .02
+                        }
+                        if (pm_load4 &gt; 0)
+                        {
+                            pm_load4 -= 2
+                        }
+                    }
+                    else
+                    {
+                        pm_start4 -= 1
+                    }
+                    if (pm_start5 = 0)
+                    {
+                        if (pm_alpha5 &lt; 1)
+                        {
+                            pm_alpha5 += .02
+                        }
+                        if (pm_load5 &gt; 0)
+                        {
+                            pm_load5 -= 2
+                        }
+                    }
+                    else
+                    {
+                        pm_start5 -= 1
                     }
                     //sections
                         if (line = 0)
@@ -1563,11 +1604,11 @@ draw_set_alpha(1)
                 draw_set_alpha(pm_alpha2)
                 draw_text_ext_transformed(obj_player.x+(view_wview/2)-60+pm_load2,obj_player.y+20-view_hview/2,pm_message2,10,100,.5,.5,0)
                 draw_set_alpha(pm_alpha3)
-                draw_text_ext_transformed(obj_player.x+(view_wview/2)-60,obj_player.y+45-view_hview/2,pm_message3,10,100,.5,.5,0)
+                draw_text_ext_transformed(obj_player.x+(view_wview/2)-60+pm_load3,obj_player.y+45-view_hview/2,pm_message3,10,100,.5,.5,0)
                 draw_set_alpha(pm_alpha4)
-                draw_text_ext_transformed(obj_player.x+(view_wview/2)-60,obj_player.y+70-view_hview/2,pm_message4,10,100,.5,.5,0)
+                draw_text_ext_transformed(obj_player.x+(view_wview/2)-60+pm_load4,obj_player.y+70-view_hview/2,pm_message4,10,100,.5,.5,0)
                 draw_set_alpha(pm_alpha5)
-                draw_text_ext_transformed(obj_player.x+(view_wview/2)-60,obj_player.y+95-view_hview/2,pm_message5,10,100,.5,.5,0)
+                draw_text_ext_transformed(obj_player.x+(view_wview/2)-60+pm_load5,obj_player.y+95-view_hview/2,pm_message5,10,100,.5,.5,0)
                 draw_set_alpha(1)
                 draw_roundrect_ext(obj_player.x+(view_wview/2)-65,obj_player.y-11-view_hview/2,obj_player.x+view_wview,obj_player.y+view_hview,0,0,1)
             }
