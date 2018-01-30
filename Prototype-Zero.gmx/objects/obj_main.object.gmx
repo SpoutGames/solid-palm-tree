@@ -29,7 +29,7 @@
     //unsorted
         in_level = 0
         set = 0
-        line = 0
+        
         audio = 100
         particles = 3
         lock = 0
@@ -43,101 +43,118 @@
         cursorx_right = 0
         aria_opinion = 0
         development = 1
-    
-    //player
-        playerHpMax = 10
-        playerHp = 10
-        playerHpDisplay = 0
-        playerHpVisible = 0 
-        playerHpAlpha = 0
-        playerHpFade = 0
-        player_IFrameDir = 0
-        player_IFrame = 0 
-        player_slimeDmgTaken = 0
-        player_dmgTaken = 0
-        player_setI = 0
-        //inventory
-            //new
-                pm_message1 = "Not set"
-                pm_message2 = "Not set"
-                pm_message3 = "Not set"
-                pm_message4 = "Not set"
-                pm_message5 = "Not set"
-                pm_message6 = "Not set"
-                pm_message7 = "Not set"
-                equipment = 0
-                item = 0
-                note = 0
-                option = 0
-                save = 0
-                pm_start1 = 0
-                pm_start2 = 6
-                pm_start3 = 12
-                pm_start4 = 18
-                pm_start5 = 24
-                pm_start6 = 30
-                pm_start7 = 36
-                pm_load1 = 45
-                pm_load2 = 45
-                pm_load3 = 45
-                pm_load4 = 45
-                pm_load5 = 45
-                pm_load6 = 45
-                pm_load7 = 45
-                pm_alpha1 = 0
-                pm_alpha2 = 0
-                pm_alpha3 = 0
-                pm_alpha4 = 0
-                pm_alpha5 = 0
-                pm_alpha6 = 0
-                pm_alpha7 = 0
-                pm_menuselecty = 0
-                pm_menuselectx = 0
-                confirm_lock = 0
-                
-            //old
-                keyItem = 0
-                quit = 0
-                inventory_press = 0
-                equipment_select = 0
-                lock = 0
-                wLock = 0
-                hLock = 0
-                cLock = 0
-                aLock = 0
-                lLock = 0
-                next = 0
-    
-    //NPC control
-        ushtok_meet = 0
-        aria_meet = 0
-        chief_meet = 0
-        hudgin_meet = 0
-        ilya_meet = 0 
+    //universal
         main_story = 0
-        enigma_story = 0
+        line = 0
+        clock = false
+        time = 0
+    //main menu
+        m_menu_scene = 0
+        m_confirm_lock = 0
+        m_newgame = 0
+        m_continue = 0
+        m_option = 0
+        m_credit = 0
+        
+        
+        
+        
+    //spawn determine
+        //world
+            tutorial = 1
+            hub = 0
+            level_1 = 0
+            level_2 = 0
+            level_3 = 0
+            //in level
+                instance = 0
+    //path completion
+        overworld = 0
+        position = 0
+        path_1 = 0
+        path_2 = 0
+        path_3 = 0
+    //player
+        //Hp
+            playerHpMax = 10
+            playerHp = 10
+            playerHpDisplay = 0
+            playerHpVisible = 0 
+            playerHpAlpha = 0
+            playerHpFade = 0
+            player_IFrameDir = 0
+            player_IFrame = 0 
+            player_slimeDmgTaken = 0
+            player_dmgTaken = 0
+            player_setI = 0
+        //inventory
+            pm_message1 = "Not set"
+            pm_message2 = "Not set"
+            pm_message3 = "Not set"
+            pm_message4 = "Not set"
+            pm_message5 = "Not set"
+            pm_message6 = "Not set"
+            pm_message7 = "Not set"
+            equipment = 0
+            item = 0
+            note = 0
+            option = 0
+            save = 0
+            pm_start1 = 0
+            pm_start2 = 6
+            pm_start3 = 12
+            pm_start4 = 18
+            pm_start5 = 24
+            pm_start6 = 30
+            pm_start7 = 36
+            pm_load1 = 45
+            pm_load2 = 45
+            pm_load3 = 45
+            pm_load4 = 45
+            pm_load5 = 45
+            pm_load6 = 45
+            pm_load7 = 45
+            pm_alpha1 = 0
+            pm_alpha2 = 0
+            pm_alpha3 = 0
+            pm_alpha4 = 0
+            pm_alpha5 = 0
+            pm_alpha6 = 0
+            pm_alpha7 = 0
+            pm_menuselecty = 0
+            pm_menuselectx = 0
+            i_confirm_lock = 0
+            select_head = 0
+            select_torso = 0
+            select_arm = 0
+            select_leg = 0
+            select_mainweapon = 0
+            select_altweapon = 0
+            inventory_press = 0
     
-    //weapons
-        fist = 0        
-        hudgin_sword = 100
-        enigma_bow = 100
-        weapon_max = 0
-        weapon = 0
-        weapon_select = 0
-        head_select = 0
-        chest_select = 0
-        arm_select = 0
-        leg_select = 0
-    //not being used
-        laser_pistol = 100
-    
-    //Parts
-        //leg
-            leg = 0
-            leg_max = 0
-            part_LegDash = 100
-            part_LegMultijump = 100
-            part_LegWallclimb = 100
+    //needs to be revamped
+        //weapons
+            fist = 0        
+            hudgin_sword = 100
+            enigma_bow = 100
+            weapon_max = 0
+            weapon = 0
+            weapon_select = 0
+            head_select = 0
+            chest_select = 0
+            arm_select = 0
+            leg_select = 0
+            //not being used
+                laser_pistol = 100
+        //Parts
+            //leg
+                leg = 0
+                leg_max = 0
+                part_LegDash = 100
+                part_LegMultijump = 100
+                part_LegWallclimb = 100
+                
+                
     //boss'
         battle_start = 0
         battle_bar_l = 0
@@ -152,22 +169,7 @@
         time3 = 0
         open = 0
     
-    //spawn determine
-        //world
-            tutorial = 1
-            hub = 0
-            level_1 = 0
-            level_2 = 0
-            level_3 = 0
-            //in level
-                instance = 0
     
-    //path completion
-        overworld = 0
-        position = 0
-        path_1 = 0
-        path_2 = 0
-        path_3 = 0
 </string>
           </argument>
         </arguments>
@@ -190,41 +192,19 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///initialize
-//variables
-key_left = (keyboard_check_pressed(global.key_left) || gamepad_button_check_pressed(0,global.ckey_left))
-key_right = (keyboard_check_pressed(global.key_right) || gamepad_button_check_pressed(0,global.ckey_right))
-key_up = (keyboard_check_pressed(global.key_up) || gamepad_button_check_pressed(0,global.ckey_up))
-key_down = (keyboard_check_pressed(global.key_down) || gamepad_button_check_pressed(0,global.ckey_down))
-key_down_held = (keyboard_check(global.key_down) || gamepad_button_check(0,global.ckey_down))
-key_confirm = (keyboard_check_pressed(global.key_confirm) || gamepad_button_check_pressed(0,global.ckey_confirm))
-key_attack = (keyboard_check_pressed(global.key_attack) || gamepad_button_check_pressed(0,global.ckey_attack))
-key_pause = (keyboard_check_pressed(global.pause_button) || gamepad_button_check_pressed(0,global.ckey_pause))
-key_pause_release = (keyboard_check_released(global.pause_button) || gamepad_button_check_released(0,global.ckey_pause))
-key_inventory = (keyboard_check_pressed(global.key_inventory) || gamepad_button_check_pressed(0,global.ckey_inventory))
-key_inventory_release = (keyboard_check_released(global.key_inventory) || gamepad_button_check_released(0,global.ckey_inventory))
-on_ground = place_meeting(x,y+1,obj_wall)
-
-//setups
-if (room = rm_titlescreen)
-{
-    titlescreen = 1
-    main_story = 0
-    global.pause = 0
-}
-if (room != rm_titlescreen)
-{
-    titlescreen = 0
-}
-
-if (clock = true)
-{
-    time += 1
-}
-
-//x and y are set in obj_camera
-view_xview[0] = -view_wview[0]/2 + x
-view_yview[0] = -view_hview[0]/2 + y
+            <string>///Control's
+    key_left = (keyboard_check_pressed(global.key_left) || gamepad_button_check_pressed(0,global.ckey_left))
+    key_right = (keyboard_check_pressed(global.key_right) || gamepad_button_check_pressed(0,global.ckey_right))
+    key_up = (keyboard_check_pressed(global.key_up) || gamepad_button_check_pressed(0,global.ckey_up))
+    key_down = (keyboard_check_pressed(global.key_down) || gamepad_button_check_pressed(0,global.ckey_down))
+    key_down_held = (keyboard_check(global.key_down) || gamepad_button_check(0,global.ckey_down))
+    key_confirm = (keyboard_check_pressed(global.key_confirm) || gamepad_button_check_pressed(0,global.ckey_confirm))
+    key_attack = (keyboard_check_pressed(global.key_attack) || gamepad_button_check_pressed(0,global.ckey_attack))
+    key_pause = (keyboard_check_pressed(global.pause_button) || gamepad_button_check_pressed(0,global.ckey_pause))
+    key_pause_release = (keyboard_check_released(global.pause_button) || gamepad_button_check_released(0,global.ckey_pause))
+    key_inventory = (keyboard_check_pressed(global.key_inventory) || gamepad_button_check_pressed(0,global.ckey_inventory))
+    key_inventory_release = (keyboard_check_released(global.key_inventory) || gamepad_button_check_released(0,global.ckey_inventory))
+    on_ground = place_meeting(x,y+1,obj_wall)
 </string>
           </argument>
         </arguments>
@@ -245,297 +225,100 @@ view_yview[0] = -view_hview[0]/2 + y
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///menu's
-    //pause management
-        if (instance_exists(obj_player))
-        {
-            //for menu
-                if (pause_press = 0)
-                {
-                    if (global.pause = 0)
-                    {
-                        if (key_pause)
-                        {
-                            global.pause = 1
-                            set = -1
-                            lock = 0
-                            line = 0
-                            pause_press = 1
-                            keyboard_clear(key_pause)
-                        }
-                    }
-                }
-                if (pause_press = 0)
-                {
-                    if (global.pause = 1)
-                    {
-                        if (key_pause)
-                        {
-                            global.pause = 0
-                            keyboard_clear(key_pause)
-                        }
-                    }
-                }
-                if (key_pause_release)
-                {
-                    pause_press = 0
-                }
-        }
-        //mainblock
-            if (titlescreen = 1)
+            <string>///Main menu
+    //scene management
+        /*
+            notes:
+            m_menu_scene will determine where the over will be displayed
+            rm_titlescreen will be decorated with different area's and a timer will
+            be set to cycle through these area's
+        */
+            if (room = rm_titlescreen)
             {
-                //titlescreen - mainscreen
-                    if (set = 0)
+                if (m_menu_scene = 0)
+                {
+                    
+                }
+            }
+    //section selection's
+        //no selection
+            if (room = rm_titlescreen)
+            {
+                if (!m_newgame &amp;&amp; !m_continue &amp;&amp; !m_option &amp;&amp; !m_credit)
+                {
+                    if (m_confirm_lock = 0)
                     {
-                        if (lock = 0)
-                        {
-                            line = clamp(line,0,4)
-                            if (line-1 &gt;= 0)
-                            {
-                                if (key_up)
-                                {
-                                    line -= 1
-                                }
-                            }
-                            if (line+1 &lt;= 4)
-                            {
-                                if (key_down)
-                                {
-                                    line += 1
-                                }
-                            }
-                            //selection
-                            if (line = 0)
-                            {
-                                cursorx = 64
-                                cursory = 64*2
-                                if (key_confirm)
-                                {
-                                    lock = 1
-                                    global.fade = 1
-                                    instance_create(1,1,obj_fade)
-                                    main_story = 0
-                                    enigma_story = 0
-                                    keyboard_clear(key_confirm)
-                                }
-                            }
-                            if (line = 1)
-                            {
-                                cursorx = 64
-                                cursory = 64*4
-                                if (key_confirm)
-                                {
-                                
-                                }
-                            }
-                            if (line = 2)
-                            {
-                                cursorx = 64
-                                cursory = 64*6
-                                if (key_confirm)
-                                {
-                                    keyboard_clear(key_confirm)
-                                    set = 1
-                                    line = 0
-                                }
-                            }
-                            if (line = 3)
-                            {
-                                cursorx = 64
-                                cursory = 64*8
-                                if (key_confirm)
-                                {
-                                    set = -1
-                                }
-                            }
+                        //quit
                             if (line = 4)
                             {
-                                cursorx = 64
-                                cursory = 64*10
                                 if (key_confirm)
                                 {
                                     game_end()
                                 }
                             }
-                        }   
+                        //credits
+                            if (line = 3)
+                            {
+                            
+                            }
+                        //options 
+                            if (line = 2)
+                            {
+                            
+                            }
+                        //continue
+                            /*
+                                note: if save file exists, player will be able to access this, otherwise they will not
+                            */
+                            if (line = 1)
+                            {
+                            
+                            }
+                        //new game
+                            if (line = 0)
+                            {
+                                if (key_confirm)
+                                {
+                                    global.fade = 1
+                                    if (!instance_exists(obj_fade))
+                                    {
+                                        instance_create(1,1,obj_fade)
+                                    }
+                                    m_confirm_lock = 1
+                                }
+                            }
                     }
-                //titlescreen options
-                    if (set = 1)
+                }
+        //line setup's
+            if (!m_newgame &amp;&amp; !m_continue &amp;&amp; !m_option &amp;&amp; !m_credit)
+            {
+                if (m_confirm_lock = 0)
+                {
+                    if (key_up)
                     {
-                        line = clamp(line,0,4)
-                        if (lock = 0)
+                        if (line - 1 &gt;= 0)
                         {
-                            if (line-1 &gt;= 0)
-                            {
-                                if (key_up)
-                                {
-                                    line -= 1
-                                }
-                            }
-                            if (line+1 &lt;= 4)
-                            {
-                                if (key_down)
-                                {
-                                    line += 1
-                                }
-                            }
+                            line -= 1
+                            //play sound
                         }
-                        if (line = 0)
+                    }
+                    if (key_down)
+                    {
+                        if (line + 1 &lt;= 4)
                         {
-                            cursorx = 64
-                            cursory = 64*2
-                            if (key_right)
-                            {
-                                lock = 1 
-                                keyboard_clear(key_right)
-                            }
-                        }
-                        if (lock = 1)
-                        {
-                            audio = clamp(audio,0,100)
-                            if (audio-20 &gt;= 0)
-                            {
-                                if (key_down)
-                                {
-                                    audio -= 20
-                                }
-                            }
-                            if (audio+20 &lt;= 100)
-                            {
-                                if (key_up)
-                                {
-                                    audio += 20
-                                }
-                            }
-                            if (key_left)
-                            {
-                                lock = 0
-                                keyboard_clear(key_left)
-                            }
-                        }
-                        if (line = 1)
-                        {
-                            cursorx = 64
-                            cursory = 64*4
-                            if (key_confirm)
-                            {
-                                if window_get_fullscreen()
-                                {
-                                    window_set_fullscreen(false)
-                                    fullscreen = 0
-                                }
-                                else
-                                {
-                                    window_set_fullscreen(true)
-                                    fullscreen = 1
-                                }
-                            }
-                        }
-                        if (line = 2)
-                        {
-                            cursorx = 64
-                            cursory = 64*6
-                            if (key_right)
-                            {
-                                lock = 2
-                                keyboard_clear(key_right)
-                            }
-                        }
-                        if (lock = 2)
-                        {
-                            if (particles+1 &lt;= 3)
-                            {
-                                if (key_up)
-                                {
-                                    particles += 1
-                                }
-                            }
-                            if (particles-1 &gt;= 0)
-                            {
-                                if (key_down)
-                                {
-                                    particles -= 1
-                                }
-                            }
-                            if (key_left)
-                            {
-                                lock = 0
-                                keyboard_clear(key_left)
-                            }
-                        }
-                        if (line = 3)
-                        {
-                            cursorx = 64
-                            cursory = 64*8
-                            //controls
-                        }
-                        if (line = 4)
-                        {
-                            cursorx = 64
-                            cursory = 64*10
-                            if (key_confirm)
-                            {
-                                set = 0
-                                line = 2
-                                keyboard_clear(key_confirm)
-                            }
+                            line += 1 
+                            //play sound
                         }
                     }
                 }
-            //pause menu
-                if (instance_exists(obj_player))
-                {
-                    if (global.pause = 1)
-                    {
-                        if (set = -1)
-                        {
-                            line = clamp(line,0,2)
-                            if (line-1 &gt;= 0)
-                            {
-                                if (key_up)
-                                {
-                                    line -= 1
-                                }
-                            }
-                            if (line+1 &lt;= 2)
-                            {
-                                if (key_down)
-                                {
-                                    line += 1
-                                }
-                            }
-                            if (line = 0)
-                            {
-                                cursory = obj_player.y-40
-                                if (key_confirm)
-                                {
-                                    global.pause = 0
-                                }
-                            }
-                            if (line = 1)
-                            {
-                                cursory = obj_player.y
-                                if (key_confirm)
-                                {
-                                    global.fade = -1
-                                    instance_create(x,y,obj_fade)
-                                }
-                            }
-                            if (line = 2)
-                            {
-                                cursory = obj_player.y+40
-                                if (key_confirm)
-                                {
-                                    global.fade = -2
-                                    instance_create(x,y,obj_fade)
-                                    set = 0
-                                    line = 0
-                                }
-                            }
-                        }
-                    }
             }
-
+            
+        //confirm reset
+            if (m_confirm_lock = 1)
+            {
+                m_confirm_lock = 0
+            }
+        }
 </string>
           </argument>
         </arguments>
@@ -556,7 +339,7 @@ view_yview[0] = -view_hview[0]/2 + y
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///player menu
+            <string>///Player menu
     //notes
     /*
         pm_menuselectx - cursor's x pos add
@@ -639,6 +422,8 @@ view_yview[0] = -view_hview[0]/2 + y
                         torso
                         arm
                         leg
+                        main weapon
+                        alt weapon
                         back
                     */  
                     //opening
@@ -744,7 +529,7 @@ view_yview[0] = -view_hview[0]/2 + y
                             pm_start7 -= 1
                         }
                     //selection
-                        if (confirm_lock = 0)
+                        if (i_confirm_lock = 0)
                         {
                             if (line = 0)
                             {
@@ -792,11 +577,11 @@ view_yview[0] = -view_hview[0]/2 + y
                                     pm_alpha3 = 0
                                     pm_alpha4 = 0
                                     pm_alpha5 = 0
-                                    confirm_lock = 1
+                                    i_confirm_lock = 1
                                 }
                             }
                         }
-                    //line setup
+                    //selection setup
                         pm_message1 = "Head"
                         pm_message2 = "Torso"
                         pm_message3 = "Arm"
@@ -804,25 +589,107 @@ view_yview[0] = -view_hview[0]/2 + y
                         pm_message5 = "Main weapon"
                         pm_message6 = "Alt weapon"
                         pm_message7 = "Back"   
-                        line = clamp(line,0,6)
-                        if (key_up)
-                        {
-                            if (line - 1 &gt;= 0)
+                        //no selection
+                            if (!select_head &amp;&amp; !select_torso &amp;&amp; !select_arm &amp;&amp; !select_leg &amp;&amp; !select_mainweapon &amp;&amp; !select_altweapon)
                             {
-                                line -= 1
-                                //play sound
+                                line = clamp(line,0,6)
+                                if (key_up)
+                                {
+                                    if (line - 1 &gt;= 0)
+                                    {
+                                        line -= 1
+                                        //play sound
+                                    }
+                                }
+                                if (key_down)
+                                {
+                                    if (line + 1 &lt;= 6)
+                                    {
+                                        line += 1
+                                        //play sound
+                                    }
+                                }
                             }
-                        }
-                        if (key_down)
-                        {
-                            if (line + 1 &lt;= 6)
+                        //head selection
+                            if (select_head)
                             {
-                                line += 1
-                                //play sound
+                                
                             }
-                        }
+                        //torso selection
+                            if (select_torso)
+                            {
+                            
+                            }
+                        //arm selection
+                            if (select_arm)
+                            {
+                            
+                            }
+                        //leg selection
+                            if (select_leg)
+                            {
+                            
+                            }
+                        //main weapon selection
+                            if (select_mainweapon)
+                            {
+                                if (key_left)
+                                {
+                                    if (weapon - 1 &gt;= 0)
+                                    {
+                                        weapon -= 1
+                                    }
+                                    else
+                                    {
+                                        weapon = weapon_max
+                                    }
+                                }
+                                if (key_right)
+                                {
+                                    if (weapon + 1 &lt;= weapon_max)
+                                    {
+                                        weapon += 1
+                                    }
+                                    else
+                                    {
+                                        weapon = 0
+                                    }
+                                }
+                            }
+                        //alt weapon selection
+                            //needs to be some kind of p_mainweapon &amp; p_altweapon variable
+                            /*
+                            if (select_altweapon)
+                            {
+                                if (key_left)
+                                {
+                                    if (weapon - 1 &gt;= 0)
+                                    {
+                                        weapon -= 1
+                                    }
+                                    else
+                                    {
+                                        weapon = weapon_max
+                                    }
+                                }
+                                if (key_right)
+                                {
+                                    if (weapon + 1 &lt;= weapon_max)
+                                    {
+                                        weapon += 1
+                                    }
+                                    else
+                                    {
+                                        weapon = 0
+                                    }
+                                }
+                            }
+                            */
                 }
-            //section selection
+                
+                
+                
+            //main section selection
                 if (!equipment &amp;&amp; !item &amp;&amp; !note &amp;&amp; !option &amp;&amp; !save)
                 {
                     //opening
@@ -898,7 +765,7 @@ view_yview[0] = -view_hview[0]/2 + y
                             pm_start5 -= 1
                         }
                     //sections
-                        if (confirm_lock = 0)
+                        if (i_confirm_lock = 0)
                         {
                             if (line = 0)
                             {
@@ -906,7 +773,7 @@ view_yview[0] = -view_hview[0]/2 + y
                                 if (key_confirm)
                                 {
                                     equipment = 1
-                                    confirm_lock = 1
+                                    i_confirm_lock = 1
                                     pm_start1 = 0
                                     pm_start2 = 6
                                     pm_start3 = 12
@@ -990,9 +857,9 @@ view_yview[0] = -view_hview[0]/2 + y
                 
         }
         //confirm reset
-            if (confirm_lock = 1)
+            if (i_confirm_lock = 1)
             {
-                confirm_lock = 0
+                i_confirm_lock = 0
             }
 </string>
           </argument>
@@ -1554,25 +1421,58 @@ if (ilya_display = 1)
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///camera
+view_xview[0] = -view_wview[0]/2 + x
+view_yview[0] = -view_hview[0]/2 + y
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///cutscenes
-//cutscenes
-if (room = rm_intro)
-{
-    if (!instance_exists(obj_shuttle))
-    {
-        instance_create(-32,512-(32*3),obj_shuttle)
-        obj_shuttle.image_xscale = 6
-        obj_shuttle.image_yscale = 6
-    }
-    if (time = 180)
-    {
-        clock = false
-        global.fade = 2
-        instance_create(x,y,obj_fade)
-        time = 0
-    }   
-
-}
+    //setup
+        if (clock = true)
+        {
+            time += 1
+        }
+        if (clock = false)
+        {
+            time = 0
+            
+        }
+    //cutscenes
+        //intro
+            if (room = rm_intro)
+            {
+                if (!instance_exists(obj_shuttle))
+                {
+                    instance_create(-32,512-(32*3),obj_shuttle)
+                    obj_shuttle.image_xscale = 6
+                    obj_shuttle.image_yscale = 6
+                }
+                if (time = 180)
+                {
+                    clock = false
+                    global.fade = 2
+                    instance_create(x,y,obj_fade)
+                    time = 0
+                }   
+            }
 </string>
           </argument>
         </arguments>
@@ -1662,88 +1562,28 @@ if (keyboard_check_pressed(ord("H")))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///main menu
-draw_set_font(fnt_default)
-draw_set_alpha(1)
-
-if (titlescreen = 1)
-{
-    if (set = 0)
-    {
-        draw_sprite(spr_cursor,0,cursorx,cursory)
-        draw_sprite(spr_text_NewGame,0,64*2,64*2)
-        draw_sprite(spr_text_Continue,0,64*2,64*4)
-        draw_sprite(spr_text_Options,0,64*2,64*6)
-        draw_sprite(spr_text_Credits,0,64*2,64*8)
-        draw_sprite(spr_text_ExitGame,0,64*2,64*10)
-
-    }
-    if (set = 1)   
-    {
-        if (lock = 0)
+            <string>///Main menu
+    //no selection
+        if (room = rm_titlescreen)
         {
-            draw_sprite(spr_cursor,0,cursorx,cursory)
+            if (!m_newgame &amp;&amp; !m_continue &amp;&amp; !m_option &amp;&amp; !m_credit)
+            {
+                draw_set_halign(fa_center)
+                draw_set_font(fnt_default)
+                draw_set_color(c_white)
+                draw_text_ext_transformed(x,y,"New game",15,200,.5,.5,0)
+                draw_text_ext_transformed(x,y+10,"Continue",15,200,.5,.5,0)
+                draw_text_ext_transformed(x,y+20,"Options",15,200,.5,.5,0)
+                draw_text_ext_transformed(x,y+30,"Credits",15,200,.5,.5,0)
+                draw_text_ext_transformed(x,y+40,"Quit game",15,200,.5,.5,0)
+            }
         }
-        if (lock = 1)
-        {
-            draw_sprite_ext(spr_cursor,0,64*5.5,64*1.3,1,1,90,c_white,1)
-            draw_sprite_ext(spr_cursor,0,64*5.5,64*2.7,1,1,-90,c_white,1)
-        }
-        draw_sprite(spr_text_Audio,0,64*2,64*2)
-        if (audio = 100)
-        {
-            draw_sprite(spr_text_100,0,64*5,64*2)
-        }
-        if (audio = 80)
-        {
-            draw_sprite(spr_text_80,0,64*5,64*2)
-        }
-        if (audio = 60)
-        {
-            draw_sprite(spr_text_60,0,64*5,64*2)
-        }
-        if (audio = 40)
-        {
-            draw_sprite(spr_text_40,0,64*5,64*2)
-        }
-        if (audio = 20)
-        {
-            draw_sprite(spr_text_20,0,64*5,64*2)
-        }
-        if (audio = 0)
-        {
-            draw_sprite(spr_text_0,0,64*5,64*2)
-        }
-        draw_sprite(spr_text_Fullscreen,0,64*2,64*4)
-        draw_sprite(spr_text_Particles,0,64*2,64*6)
-        if (lock = 2)
-        {
-            draw_sprite_ext(spr_cursor,0,64*6.5,64*5.3,1,1,90,c_white,1)
-            draw_sprite_ext(spr_cursor,0,64*6.5,64*6.7,1,1,-90,c_white,1)
-        }
-        if (particles = 3)
-        {
-            draw_sprite(spr_text_High,0,64*6,64*6)
-        }
-        if (particles = 2)
-        {
-            draw_sprite(spr_text_Medium,0,64*6,64*6)
-        }
-        if (particles = 1)
-        {
-            draw_sprite(spr_text_Low,0,64*6,64*6)
-        }
-        if (particles = 0)
-        {
-            draw_sprite(spr_text_None,0,64*6,64*6)
-        }
-        draw_sprite(spr_text_Controls,0,64*2,64*8)
-        draw_sprite(spr_text_Back,0,64*2,64*10)
         
-    }
-}
-//menu
-
+        
+        
+        
+        
+draw_set_halign(fa_left)
 </string>
           </argument>
         </arguments>
@@ -1764,7 +1604,7 @@ if (titlescreen = 1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///player menu
+            <string>///Player menu
 draw_set_font(fnt_default)
 draw_set_color(c_white)
 draw_set_alpha(1)
@@ -1797,9 +1637,10 @@ draw_set_alpha(1)
             //equipment
                 if (equipment)
                 {
+                    if (!select_head &amp;&amp; !select_torso &amp;&amp; !select_arm &amp;&amp; !select_leg &amp;&amp; !select_mainweapon &amp;&amp; !select_altweapon)
                     //section setup
                         draw_set_color(c_black)
-                        draw_set_alpha(.25)
+                        draw_set_alpha(.5)
                         draw_roundrect_ext(obj_player.x+(view_wview/2)-65,obj_player.y-11-view_hview/2,obj_player.x+view_wview,obj_player.y+view_hview,0,0,0)
                         draw_set_color(c_white)
                         draw_set_alpha(1)
@@ -1817,10 +1658,48 @@ draw_set_alpha(1)
                         draw_text_ext_transformed(obj_player.x+(view_wview/2)-60+pm_load6,obj_player.y+120-view_hview/2,pm_message6,15,100,.5,.5,0)
                         draw_set_alpha(pm_alpha7)
                         draw_text_ext_transformed(obj_player.x+(view_wview/2)-60+pm_load7,obj_player.y+145-view_hview/2,pm_message7,10,100,.5,.5,0)
+                        //part display
+                            //head
+                            //torso
+                            //arm
+                            //leg
+                            //main weapon
+                            //alt weapon
                         draw_set_alpha(1)
                         draw_roundrect_ext(obj_player.x+(view_wview/2)-65,obj_player.y-11-view_hview/2,obj_player.x+view_wview,obj_player.y+view_hview,0,0,1)
                     //cursor
                         draw_sprite_ext(spr_cursor,0,obj_player.x+(view_wview/2-70),obj_player.y+5+pm_menuselecty-view_hview/2,.25,.25,0,c_white,1)
+                    //part selection 
+                        //Head
+                            if (select_head)
+                            {
+                                
+                            }
+                        //torso
+                            if (select_torso)
+                            {
+                                
+                            }
+                        //arm
+                            if (select_arm)
+                            {
+                                
+                            }
+                        //leg
+                            if (select_leg)
+                            {
+                                
+                            }
+                        //main weapon
+                            if (select_mainweapon)
+                            {
+                                
+                            }
+                        //alt weapon
+                            if (select_altweapon)
+                            {
+                                
+                            }
                 }
             //item's
             if (item)
@@ -1896,7 +1775,7 @@ draw_set_color(c_white)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///boss HP's
+            <string>///Boss HP's
 if (instance_exists(obj_player))
 {
     //battle start
@@ -1950,7 +1829,7 @@ if (instance_exists(obj_player))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///development
+            <string>///Development
 if (development = 1)
 {
     if (instance_exists(obj_player))

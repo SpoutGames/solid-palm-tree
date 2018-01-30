@@ -171,7 +171,6 @@
     <object>objects\obj_player_old</object>
     <objects name="Control">
       <object>objects\obj_main</object>
-      <object>objects\obj_camera</object>
       <object>objects\obj_fade</object>
       <objects name="game">
         <object>objects\obj_wall</object>
