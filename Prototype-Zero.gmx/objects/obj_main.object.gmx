@@ -49,7 +49,9 @@
         clock = false
         time = 0
     //main menu
-        m_menu_scene = 0
+        m_scene = 0
+        m_scene_alpha = 0
+        m_scene_fade = -1
         m_confirm_lock = 0
         m_newgame = 0
         m_continue = 0
@@ -193,19 +195,23 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Control's
-    key_left = (keyboard_check_pressed(global.key_left) || gamepad_button_check_pressed(0,global.ckey_left))
-    key_right = (keyboard_check_pressed(global.key_right) || gamepad_button_check_pressed(0,global.ckey_right))
-    key_up = (keyboard_check_pressed(global.key_up) || gamepad_button_check_pressed(0,global.ckey_up))
-    key_down = (keyboard_check_pressed(global.key_down) || gamepad_button_check_pressed(0,global.ckey_down))
-    key_down_held = (keyboard_check(global.key_down) || gamepad_button_check(0,global.ckey_down))
-    key_confirm = (keyboard_check_pressed(global.key_confirm) || gamepad_button_check_pressed(0,global.ckey_confirm))
-    key_attack = (keyboard_check_pressed(global.key_attack) || gamepad_button_check_pressed(0,global.ckey_attack))
-    key_pause = (keyboard_check_pressed(global.pause_button) || gamepad_button_check_pressed(0,global.ckey_pause))
-    key_pause_release = (keyboard_check_released(global.pause_button) || gamepad_button_check_released(0,global.ckey_pause))
-    key_inventory = (keyboard_check_pressed(global.key_inventory) || gamepad_button_check_pressed(0,global.ckey_inventory))
-    key_inventory_release = (keyboard_check_released(global.key_inventory) || gamepad_button_check_released(0,global.ckey_inventory))
-    on_ground = place_meeting(x,y+1,obj_wall)
+            <string>///variables
+    //controls
+        key_left = (keyboard_check_pressed(global.key_left) || gamepad_button_check_pressed(0,global.ckey_left))
+        key_right = (keyboard_check_pressed(global.key_right) || gamepad_button_check_pressed(0,global.ckey_right))
+        key_up = (keyboard_check_pressed(global.key_up) || gamepad_button_check_pressed(0,global.ckey_up))
+        key_down = (keyboard_check_pressed(global.key_down) || gamepad_button_check_pressed(0,global.ckey_down))
+        key_down_held = (keyboard_check(global.key_down) || gamepad_button_check(0,global.ckey_down))
+        key_confirm = (keyboard_check_pressed(global.key_confirm) || gamepad_button_check_pressed(0,global.ckey_confirm))
+        key_attack = (keyboard_check_pressed(global.key_attack) || gamepad_button_check_pressed(0,global.ckey_attack))
+        key_pause = (keyboard_check_pressed(global.pause_button) || gamepad_button_check_pressed(0,global.ckey_pause))
+        key_pause_release = (keyboard_check_released(global.pause_button) || gamepad_button_check_released(0,global.ckey_pause))
+        key_inventory = (keyboard_check_pressed(global.key_inventory) || gamepad_button_check_pressed(0,global.ckey_inventory))
+        key_inventory_release = (keyboard_check_released(global.key_inventory) || gamepad_button_check_released(0,global.ckey_inventory))
+        on_ground = place_meeting(x,y+1,obj_wall)
+    //variables
+        m_scene_alpha = clamp(m_scene_alpha + (m_scene_fade * .02),0,1)
+    
 </string>
           </argument>
         </arguments>
@@ -236,9 +242,21 @@
         */
             if (room = rm_titlescreen)
             {
-                if (m_menu_scene = 0)
+                clock = true
+                if (m_scene = 0)
                 {
-                    
+                    x += .01
+                    if (time &gt;= 240)
+                    {
+                        m_scene_fade = 1
+                    }
+                    if (m_scene_alpha &gt;= 1)
+                    {
+                        x = 0
+                        m_scene = 0
+                        time = 0
+                        m_scene_fade = -1
+                    }
                 }
             }
     //section selection's
@@ -1566,9 +1584,15 @@ if (keyboard_check_pressed(ord("H")))
           <argument>
             <kind>1</kind>
             <string>///Main menu
-    //no selection
         if (room = rm_titlescreen)
         {
+            //scene changes
+                draw_set_color(c_black)
+                draw_set_alpha(m_scene_alpha)
+                draw_roundrect_ext(obj_main.x-view_wview,obj_main.y-view_hview,obj_main.x+view_wview,obj_main.y+view_hview,0,0,0)
+                draw_set_alpha(1)
+            
+            //no selection
             if (!m_newgame &amp;&amp; !m_continue &amp;&amp; !m_option &amp;&amp; !m_credit)
             {
                 //display
