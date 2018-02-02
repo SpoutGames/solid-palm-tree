@@ -55,7 +55,8 @@
         m_continue = 0
         m_option = 0
         m_credit = 0
-        
+        m_menuselecty = 0
+        m_menuselectx = 0
         
         
         
@@ -251,6 +252,7 @@
                         //quit
                             if (line = 4)
                             {
+                                m_menuselecty = 45
                                 if (key_confirm)
                                 {
                                     game_end()
@@ -259,12 +261,12 @@
                         //credits
                             if (line = 3)
                             {
-                            
+                                m_menuselecty = 35
                             }
                         //options 
                             if (line = 2)
                             {
-                            
+                                m_menuselecty = 25
                             }
                         //continue
                             /*
@@ -272,11 +274,12 @@
                             */
                             if (line = 1)
                             {
-                            
+                                m_menuselecty = 15
                             }
                         //new game
                             if (line = 0)
                             {
+                                m_menuselecty = 5
                                 if (key_confirm)
                                 {
                                     global.fade = 1
@@ -1568,14 +1571,22 @@ if (keyboard_check_pressed(ord("H")))
         {
             if (!m_newgame &amp;&amp; !m_continue &amp;&amp; !m_option &amp;&amp; !m_credit)
             {
-                draw_set_halign(fa_center)
-                draw_set_font(fnt_default)
-                draw_set_color(c_white)
-                draw_text_ext_transformed(x,y,"New game",15,200,.5,.5,0)
-                draw_text_ext_transformed(x,y+10,"Continue",15,200,.5,.5,0)
-                draw_text_ext_transformed(x,y+20,"Options",15,200,.5,.5,0)
-                draw_text_ext_transformed(x,y+30,"Credits",15,200,.5,.5,0)
-                draw_text_ext_transformed(x,y+40,"Quit game",15,200,.5,.5,0)
+                //display
+                    draw_set_alpha(.5)
+                    draw_set_color(c_black)
+                    draw_roundrect_ext(x-28,y-5,x+25,y+50,0,0,0)
+                    draw_set_alpha(1)
+                    draw_set_halign(fa_center)
+                    draw_set_font(fnt_default)
+                    draw_set_color(c_white)
+                    draw_text_ext_transformed(x,y,"New game",15,200,.5,.5,0)
+                    draw_text_ext_transformed(x,y+10,"Continue",15,200,.5,.5,0)
+                    draw_text_ext_transformed(x,y+20,"Options",15,200,.5,.5,0)
+                    draw_text_ext_transformed(x,y+30,"Credits",15,200,.5,.5,0)
+                    draw_text_ext_transformed(x,y+40,"Quit game",15,200,.5,.5,0)
+                    draw_roundrect_ext(x-28,y-5,x+25,y+50,0,0,1)
+                //cursor
+                    draw_sprite_ext(spr_cursor,0,x-32,y+m_menuselecty,.25,.25,0,c_white,1)
             }
         }
         
