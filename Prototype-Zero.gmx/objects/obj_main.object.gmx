@@ -52,10 +52,15 @@
         m_scene = 0
         m_scene_alpha = 0
         m_scene_fade = -1
+        m_scene_clock = 0
+        m_scene_time = 0
         m_confirm_lock = 0
         m_newgame = 0
         m_continue = 0
         m_option = 0
+        m_option_video = 0
+        m_option_audio = 0 
+        m_option_control = 0
         m_credit = 0
         m_menuselecty = 0
         m_menuselectx = 0
@@ -236,17 +241,21 @@
     //scene management
         /*
             notes:
-            m_menu_scene will determine where the over will be displayed
+            m_menu_scene will determine where the overlay will be displayed
             rm_titlescreen will be decorated with different area's and a timer will
             be set to cycle through these area's
         */
+            if (m_scene_clock)
+            {
+                m_scene_time += 1
+            }
             if (room = rm_titlescreen)
             {
-                clock = true
+                m_scene_clock = 1
                 if (m_scene = 0)
                 {
                     x += .01
-                    if (time &gt;= 240)
+                    if (m_scene_time &gt;= 240)
                     {
                         m_scene_fade = 1
                     }
@@ -254,18 +263,55 @@
                     {
                         x = 0
                         m_scene = 0
-                        time = 0
+                        m_scene_time = 0
                         m_scene_fade = -1
                     }
                 }
             }
+            else
+            {
+                m_scene_clock = 0
+                m_scene_time = 0
+            }
     //section selection's
-        //no selection
             if (room = rm_titlescreen)
             {
-                if (!m_newgame &amp;&amp; !m_continue &amp;&amp; !m_option &amp;&amp; !m_credit)
-                {
-                    if (m_confirm_lock = 0)
+                //option selection
+                    if (m_option &amp;&amp; !m_option_audio &amp;&amp; !m_option_video &amp;&amp; !m_option_control)
+                    {
+                        //back
+                            if (line = 3)
+                            {
+                                m_menuselecty = 35
+                                if (key_confirm)
+                                {
+                                    if (m_confirm_lock = 0)
+                                    {
+                                        m_option = 0
+                                        line = 2
+                                        m_confirm_lock = 1
+                                        //play sound
+                                    }
+                                }
+                            }
+                        //controls
+                            if (line = 2)
+                            {
+                                m_menuselecty = 25
+                            }
+                        //video
+                            if (line = 1)
+                            {
+                                m_menuselecty = 15
+                            }
+                        //audio
+                            if (line = 0)
+                            {
+                                m_menuselecty = 5
+                            }
+                    }
+                //no selection
+                    if (!m_newgame &amp;&amp; !m_continue &amp;&amp; !m_option &amp;&amp; !m_credit)
                     {
                         //quit
                             if (line = 4)
@@ -273,18 +319,42 @@
                                 m_menuselecty = 45
                                 if (key_confirm)
                                 {
-                                    game_end()
+                                    if (m_confirm_lock = 0)
+                                    {
+                                        game_end()
+                                        //play sound
+                                    }
                                 }
                             }
                         //credits
                             if (line = 3)
                             {
                                 m_menuselecty = 35
+                                if (key_confirm)
+                                {
+                                    if (m_confirm_lock = 0)
+                                    {
+                                        m_credit = 1
+                                        m_confirm_lock = 1
+                                        //play sound
+                                    }
+                                }
                             }
                         //options 
                             if (line = 2)
                             {
                                 m_menuselecty = 25
+                                if (key_confirm)
+                                {
+                                    if (m_confirm_lock = 0)
+                                    {
+                                        m_option = 1
+                                        line = 0
+                                        m_confirm_lock = 1
+                                        //play sound
+                                    }
+                                }
+                                
                             }
                         //continue
                             /*
@@ -293,6 +363,36 @@
                             if (line = 1)
                             {
                                 m_menuselecty = 15
+                                /*
+                                    note:
+                                        will look something like
+                                        if (file_exists(spaced_save.dat ))
+                                        {
+                                            m_continue_color = c_white
+                                            if (key_confirm)
+                                            {
+                                                if (m_confirm_lock = 0)
+                                                {
+                                                    m_continue = 1
+                                                        note:
+                                                            set global.fade to set variable
+                                                            call for obj_fade to be made
+                                                            while alpha = 1, load save.dat
+                                                            fade into save.dat
+                                                            
+                                                    m_confirm_lock = 1
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+                                            m_continue_color  = c_gray
+                                            if (key_confirm)
+                                            {
+                                                //play error sound
+                                            }
+                                        }
+                                */
                             }
                         //new game
                             if (line = 0)
@@ -300,39 +400,67 @@
                                 m_menuselecty = 5
                                 if (key_confirm)
                                 {
-                                    global.fade = 1
-                                    if (!instance_exists(obj_fade))
+                                    if (m_confirm_lock = 0)
                                     {
-                                        instance_create(1,1,obj_fade)
+                                        global.fade = 1
+                                        if (!instance_exists(obj_fade))
+                                        {
+                                            instance_create(1,1,obj_fade)
+                                        }
+                                        m_newgame = 1
+                                        m_confirm_lock = 1
+                                        //play sound
                                     }
-                                    m_confirm_lock = 1
                                 }
                             }
-                    }
-                }
+                        }
         //line setup's
-            if (!m_newgame &amp;&amp; !m_continue &amp;&amp; !m_option &amp;&amp; !m_credit)
-            {
-                if (m_confirm_lock = 0)
+            //no selection
+                if (!m_newgame &amp;&amp; !m_continue &amp;&amp; !m_option &amp;&amp; !m_credit)
                 {
-                    if (key_up)
+                    if (m_confirm_lock = 0)
                     {
-                        if (line - 1 &gt;= 0)
+                        if (key_up)
                         {
-                            line -= 1
-                            //play sound
+                            if (line - 1 &gt;= 0)
+                            {
+                                line -= 1
+                                //play sound
+                            }
                         }
-                    }
-                    if (key_down)
-                    {
-                        if (line + 1 &lt;= 4)
+                        if (key_down)
                         {
-                            line += 1 
-                            //play sound
+                            if (line + 1 &lt;= 4)
+                            {
+                                line += 1 
+                                //play sound
+                            }
                         }
                     }
                 }
-            }
+            //option - no selection
+                if (m_option &amp;&amp; !m_option_video &amp;&amp; !m_option_audio &amp;&amp; !m_option_control)
+                {
+                    if (m_confirm_lock = 0)
+                    {
+                        if (key_up)
+                        {   
+                            if (line - 1 &gt;= 0)
+                            {
+                                line -= 1
+                                //play sound
+                            }
+                        }
+                        if (key_down)
+                        {
+                            if (line + 1 &lt;= 3)
+                            {
+                                line += 1
+                                //play sound
+                            }
+                        }
+                    }
+                }
             
         //confirm reset
             if (m_confirm_lock = 1)
@@ -1593,24 +1721,57 @@ if (keyboard_check_pressed(ord("H")))
                 draw_set_alpha(1)
             
             //no selection
-            if (!m_newgame &amp;&amp; !m_continue &amp;&amp; !m_option &amp;&amp; !m_credit)
+                if (!m_newgame &amp;&amp; !m_continue &amp;&amp; !m_option &amp;&amp; !m_credit)
+                {
+                    //display
+                        draw_set_alpha(.5)
+                        draw_set_color(c_black)
+                        draw_roundrect_ext(x-28,y-5,x+25,y+50,0,0,0)
+                        draw_set_alpha(1)
+                        draw_set_halign(fa_center)
+                        draw_set_font(fnt_default)
+                        draw_set_color(c_white)
+                        draw_text_ext_transformed(x,y,"New game",15,200,.5,.5,0)
+                        draw_text_ext_transformed(x,y+10,"Continue",15,200,.5,.5,0)
+                        draw_text_ext_transformed(x,y+20,"Options",15,200,.5,.5,0)
+                        draw_text_ext_transformed(x,y+30,"Credits",15,200,.5,.5,0)
+                        draw_text_ext_transformed(x,y+40,"Quit game",15,200,.5,.5,0)
+                        draw_roundrect_ext(x-28,y-5,x+25,y+50,0,0,1)
+                    //cursor
+                        draw_sprite_ext(spr_cursor,0,x-32,y+m_menuselecty,.25,.25,0,c_white,1)
+                }
+            //option - no selection
+                if (m_option &amp;&amp; !m_option_audio &amp;&amp; !m_option_video &amp;&amp; !m_option_control)
+                {
+                    //display
+                        draw_set_alpha(.5)
+                        draw_set_color(c_black)
+                        draw_roundrect_ext(x-28,y-5,x+25,y+42,0,0,0)
+                        draw_set_alpha(1)
+                        draw_set_halign(fa_center)
+                        draw_set_font(fnt_default)
+                        draw_set_color(c_white)
+                        draw_text_ext_transformed(x,y,"Audio",15,200,.5,.5,0)
+                        draw_text_ext_transformed(x,y+10,"Video",15,200,.5,.5,0)
+                        draw_text_ext_transformed(x,y+20,"Controls",15,200,.5,.5,0)
+                        draw_text_ext_transformed(x,y+30,"Back",15,200,.5,.5,0)
+                        draw_roundrect_ext(x-28,y-5,x+25,y+42,0,0,1)
+                    //cursor
+                        draw_sprite_ext(spr_cursor,0,x-32,y+m_menuselecty,.25,.25,0,c_white,1)
+                }
+            //option - audio selection
+            
+            //option - video selection
+            
+            //option - control selection
+            
+            //credit selection
+            if (m_credit)
             {
-                //display
-                    draw_set_alpha(.5)
-                    draw_set_color(c_black)
-                    draw_roundrect_ext(x-28,y-5,x+25,y+50,0,0,0)
-                    draw_set_alpha(1)
-                    draw_set_halign(fa_center)
-                    draw_set_font(fnt_default)
-                    draw_set_color(c_white)
-                    draw_text_ext_transformed(x,y,"New game",15,200,.5,.5,0)
-                    draw_text_ext_transformed(x,y+10,"Continue",15,200,.5,.5,0)
-                    draw_text_ext_transformed(x,y+20,"Options",15,200,.5,.5,0)
-                    draw_text_ext_transformed(x,y+30,"Credits",15,200,.5,.5,0)
-                    draw_text_ext_transformed(x,y+40,"Quit game",15,200,.5,.5,0)
-                    draw_roundrect_ext(x-28,y-5,x+25,y+50,0,0,1)
-                //cursor
-                    draw_sprite_ext(spr_cursor,0,x-32,y+m_menuselecty,.25,.25,0,c_white,1)
+                /*
+                    note:
+                    scrolling credit
+                */
             }
         }
         
