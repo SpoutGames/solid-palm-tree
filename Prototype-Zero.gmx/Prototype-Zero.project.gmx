@@ -194,10 +194,6 @@
           <object>objects\obj_rdm_chest</object>
         </objects>
       </objects>
-      <objects name="overworld">
-        <object>objects\obj_overworld_map</object>
-        <object>objects\obj_overworld_player</object>
-      </objects>
     </objects>
     <objects name="game">
       <objects name="cutscene">
@@ -222,6 +218,7 @@
       <objects name="enemies">
         <object>objects\obj_slime</object>
         <object>objects\obj_tEnemy</object>
+        <object>objects\obj_enemy_slime</object>
       </objects>
     </objects>
   </objects>
