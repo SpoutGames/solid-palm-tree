@@ -224,6 +224,16 @@
         <object>objects\obj_tEnemy</object>
       </objects>
     </objects>
+    <objects name="Weapons">
+      <objects name="MeleeWeapons">
+        <object>objects\Melee_Weapons</object>
+        <object>objects\Sword</object>
+      </objects>
+      <objects name="RangedWeapons">
+        <object>objects\Ranged_Weapons</object>
+        <object>objects\Bow</object>
+      </objects>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_startup</room>
