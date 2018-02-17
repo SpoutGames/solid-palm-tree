@@ -63,7 +63,7 @@ location = 0
                     //level exit
                         if (path = 1)
                         {
-                            obj_main.path_1 = 1
+                            obj_main.o_path_1 = 1
                             obj_main.hub = 1
                             obj_main.tutorial = 0
                             obj_main.instnace = 0

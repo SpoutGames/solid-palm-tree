@@ -53,6 +53,10 @@ b = 0.025
             <string>///fade code
 if (a = 1)
 {
+    if (global.fade = -3)
+    {
+        game_load("Temp_Spaced_Save.dat")
+    }
     if (global.fade = -2)
     {
         room_goto(rm_titlescreen)
