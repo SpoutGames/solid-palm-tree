@@ -219,7 +219,7 @@
   <rooms name="rooms">
     <room>rooms\rm_startup</room>
     <room>rooms\rm_titlescreen</room>
-    <room>rooms\rm_intro</room>
+    <room>rooms\rm_overworld</room>
     <rooms name="levels">
       <room>rooms\rm_observatory</room>
       <room>rooms\rm_lvl_1_1</room>
@@ -235,8 +235,12 @@
       <room>rooms\rm_lvl_3_1</room>
       <room>rooms\rm_lvl_4_1</room>
     </rooms>
-    <room>rooms\rm_overworld</room>
-    <room>rooms\rm_test</room>
+    <rooms name="scenes">
+      <room>rooms\rm_intro</room>
+    </rooms>
+    <rooms name="test">
+      <room>rooms\rm_test</room>
+    </rooms>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

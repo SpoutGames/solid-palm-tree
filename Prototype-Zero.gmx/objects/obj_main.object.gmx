@@ -40,20 +40,20 @@
         cursorx_down = 0
         cursorx_left = 0
         cursorx_right = 0
-        aria_opinion = 0
         development = 1
     //universal
         main_story = 0
         line = 0
         clock = false
         time = 0
+        
     //main menu
         m_scene = 0
         m_scene_alpha = 0
         m_scene_fade = -1
         m_scene_clock = 0
         m_scene_time = 0
-        m_confirm_lock = 0
+        m_confirm_lock = 1
         m_newgame = 0
         m_continue = 0
         m_option = 0
@@ -68,20 +68,36 @@
         o_position = 0
         o_move = 0
         o_confirm_lock = 0
-        o_path_1 = 0
-        o_path_2 = 0
-        o_path_3 = 0
-        o_path_4 = 0
+        //path openings
+            o_path_1 = 0
+            o_path_2 = 0
+            o_path_3 = 0
+            o_path_4 = 0
+        //spawn location in levels
+            tutorial = 1 
+            o_hub = 0
+            o_level_1 = 0
+            o_level_2 = 0
+            o_level_3 = 0
+            
+            //instances in levels
+                l_instance = 0
+        
+        
+        
+        
+        
+        
         
         
     //spawn determine
         //world
             //obj_exit
-            tutorial = 1
-            hub = 0
-            level_1 = 0
-            level_2 = 0
-            level_3 = 0
+            
+            
+            
+            
+            
             //in level
                 instance = 0
     //path completion
@@ -469,7 +485,10 @@
         //confirm reset
             if (m_confirm_lock = 1)
             {
-                m_confirm_lock = 0
+                if (!instance_exists(obj_fade))
+                {
+                    m_confirm_lock = 0
+                }
             }
         }
 </string>
@@ -1065,63 +1084,67 @@
                     o_path_3 = Hub &lt;-&gt; 3
                     o_path_4 = 3 &lt;-&gt; 4
             */
+            //resets
+                o_instance = 0
             //positions
                 //level 1
                     if (o_position = 0)
                     {
                         o_level_1 = 1
+                        o_level_3 = 0
                         x = 16
                         y = 16
                         if (o_confirm_lock = 0)
                         {
-                            if (o_path_1 = 1)
-                            {
-                                if (key_right)
+                            //to hub
+                                if (o_path_1 = 1)
                                 {
-                                    o_move = 0
-                                    o_position = -1
+                                    if (key_right)
+                                    {
+                                        o_move = 0
+                                        o_position = -1
+                                    }
                                 }
-                            }
-                            if (key_confirm)
-                            {  
-                                global.fade = 2
-                                if (!instance_exists(obj_fade))
-                                {
-                                    instance_create(0,0,obj_fade)
+                            //enter lvl 1
+                                if (key_confirm)
+                                {  
+                                    global.fade = 2
+                                    if (!instance_exists(obj_fade))
+                                    {
+                                        instance_create(0,0,obj_fade)
+                                    }
+                                    o_confirm_lock = 1
                                 }
-                                o_confirm_lock = 1
-                            }
                         }
-                    }
-                    else
-                    {
-                        o_level_1 = 0
                     }
                 //Hub
                     if (o_position = 1)
                     {
                         o_hub = 1
+                        o_level_2 = 0
                         x = 80
                         y = 16
                         if (o_confirm_lock = 0)
                         {
-                            if (o_path_1 = 1)
-                            {
-                                if (key_left)
+                            //to lvl 1
+                                if (o_path_1 = 1)
                                 {
-                                    o_move = 1
-                                    o_position = -1
+                                    if (key_left)
+                                    {
+                                        o_move = 1
+                                        o_position = -1
+                                    }
                                 }
-                            }
-                            if (key_confirm)
-                            {
-                                global.fade = 3
-                                if (!instance_exists(obj_fade))
+                            //enter hub
+                                if (key_confirm)
                                 {
-                                    instance_create(0,0,obj_fade)
+                                    global.fade = 3
+                                    if (!instance_exists(obj_fade))
+                                    {
+                                        instance_create(0,0,obj_fade)
+                                    }
+                                    o_confirm_lock = 1
                                 }
-                                o_confirm_lock = 1
-                            }
                         }
                     }
                     else
@@ -1804,7 +1827,7 @@ if (keyboard_check_pressed(ord("H")))
           <argument>
             <kind>1</kind>
             <string>///Main menu
-    draw_self()
+
         if (room = rm_titlescreen)
         {
             //scene changes

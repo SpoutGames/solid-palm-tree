@@ -64,9 +64,8 @@ location = 0
                         if (path = 1)
                         {
                             obj_main.o_path_1 = 1
-
                             obj_main.tutorial = 0
-                            obj_main.instnace = 0
+                            obj_main.instanace = 0
                             global.fade = -1
                             if (!instance_exists(obj_fade))
                             {
@@ -75,46 +74,106 @@ location = 0
                         }
                         if (path = 2)
                         {
-                            obj_main.path_2 = 1
-                            obj_main.level_2 = 1
-                            obj_main.instnace = 0
+                            obj_main.o_path_2 = 1
                             global.fade = -1
                             if (!instance_exists(obj_fade))
                             {
-                                instance_create(1,1,obj_fade)
+                                instance_create(0,0,obj_fade)
                             }
                         }
-                        if (path = 3)
-                        {
-                            obj_main.path_3 = 1
-                            obj_main.level_3 = 1
-                            obj_main.instnace = 0
-                            global.fade = -1
-                            if (!instance_exists(obj_fade))
-                            {
-                                instance_create(1,1,obj_fade)
-                            }
-                        }
+                        
                     //instance change
                         //engima hub
                             //aria's house 
-                            if (location = 1)
-                            {
-                                global.fade = 3.1
-                                if (!instance_exists(obj_fade))
+                                if (location = 1)
                                 {
-                                    instance_create(1,1,obj_fade)
+                                    global.fade = 3.1
+                                    if (!instance_exists(obj_fade))
+                                    {
+                                        instance_create(1,1,obj_fade)
+                                    }
                                 }
-                            }
-                            if (location = 2)
-                            {
-                                global.fade = 3
-                                obj_main.instance = 1
-                                if (!instance_exists(obj_fade))
+                                if (location = 1.1)
                                 {
-                                    instance_create(1,1,obj_fade)
+                                    obj_main.l_instance = 1
+                                    global.fade = 3
+                                    if (!instance_exists(obj_fade))
+                                    {
+                                        instance_create(1,1,obj_fade)
+                                    }
                                 }
-                            }
+                            //hudgen house
+                                if (location = 2)
+                                {
+                                    global.fade = 3.2
+                                    if (!instance_exists(obj_fade))
+                                    {
+                                        instance_create(1,1,obj_fade)
+                                    }
+                                }
+                                if (location = 2.1)
+                                {
+                                    obj_main.l_instance = 2
+                                    global.fade = 3
+                                    if (!instance_exists(obj_fade))
+                                    {
+                                        instance_create(1,1,obj_fade)
+                                    }
+                                }
+                            //science
+                                if (location = 3)
+                                {
+                                    global.fade = 3.3
+                                    if (!instance_exists(obj_fade))
+                                    {
+                                        instance_create(1,1,obj_fade)
+                                    }
+                                }
+                                if (location = 3.1)
+                                {
+                                    obj_main.l_instance = 3
+                                    global.fade = 3
+                                    if (!instance_exists(obj_fade))
+                                    {
+                                        instance_create(1,1,obj_fade)
+                                    }
+                                }
+                            //shop
+                                if (location = 4)
+                                {
+                                    global.fade = 3.4
+                                    if (!instance_exists(obj_fade))
+                                    {
+                                        instance_create(1,1,obj_fade)
+                                    }
+                                }
+                                if (location = 4.1)
+                                {
+                                    obj_main.l_instance = 4
+                                    global.fade = 3
+                                    if (!instance_exists(obj_fade))
+                                    {
+                                        instance_create(1,1,obj_fade)
+                                    }
+                                }
+                            //medical
+                                if (location = 5)
+                                {
+                                    global.fade = 3.5
+                                    if (!instance_exists(obj_fade))
+                                    {
+                                        instance_create(1,1,obj_fade)
+                                    }
+                                }
+                                if (location = 5.1)
+                                {
+                                    obj_main.l_instance = 5
+                                    global.fade = 3
+                                    if (!instance_exists(obj_fade))
+                                    {
+                                        instance_create(1,1,obj_fade)
+                                    }
+                                }
                         }
                     }
                 }
