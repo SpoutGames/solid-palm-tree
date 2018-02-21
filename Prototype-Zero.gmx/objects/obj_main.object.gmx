@@ -1069,6 +1069,7 @@
                 //level 1
                     if (o_position = 0)
                     {
+                        o_level_1 = 1
                         x = 16
                         y = 16
                         if (o_confirm_lock = 0)
@@ -1092,9 +1093,14 @@
                             }
                         }
                     }
+                    else
+                    {
+                        o_level_1 = 0
+                    }
                 //Hub
                     if (o_position = 1)
                     {
+                        o_hub = 1
                         x = 80
                         y = 16
                         if (o_confirm_lock = 0)
@@ -1117,6 +1123,10 @@
                                 o_confirm_lock = 1
                             }
                         }
+                    }
+                    else
+                    {
+                        o_hub = 0
                     }
                 //level 2
                     if (o_position = 2)
