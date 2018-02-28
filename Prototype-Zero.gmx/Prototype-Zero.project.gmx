@@ -160,6 +160,11 @@
     </backgrounds>
   </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <scripts name="Builders">
+      <script>scripts\scr_fade.gml</script>
+    </scripts>
+  </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_default</font>
     <font>fonts\fnt_utility</font>
