@@ -58,6 +58,7 @@
             speedInXDirection = 0
             speedInYDirection = 0
             ledgeToGrab = false
+            requestToPullUp = false
             onGround = 0
 
     //spawn determine
@@ -178,7 +179,10 @@
                         }
                     }
                     if (speedInYDirection &gt; 0) {
-                        speedInYDirection = 0
+                        speedInYDirection = 0;
+                    }
+                    if (speedInYDirection = 0) &amp;&amp; (keyUp) {
+                        requestToPullUp = true;
                     }
                 }
             }
