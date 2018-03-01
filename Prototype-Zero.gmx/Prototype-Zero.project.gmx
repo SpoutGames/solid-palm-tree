@@ -160,6 +160,11 @@
     </backgrounds>
   </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <scripts name="builders">
+      <script>scripts\scr_fade.gml</script>
+    </scripts>
+  </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_default</font>
     <font>fonts\fnt_utility</font>
@@ -172,8 +177,8 @@
         <object>objects\obj_player</object>
       </objects>
       <objects name="Create">
-        <object>objects\obj_help</object>
         <object>objects\obj_main</object>
+        <object>objects\obj_help</object>
         <object>objects\obj_fade</object>
         <object>objects\obj_exit</object>
         <object>objects\obj_help_text</object>

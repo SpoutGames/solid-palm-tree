@@ -63,7 +63,7 @@ location = 0
                     //level exit
                         if (path = 1)
                         {
-                            obj_main.path_1 = 1
+                            obj_main.overworldPathOne = 1
                             obj_main.hub = 1
                             obj_main.tutorial = 0
                             obj_main.instnace = 0
@@ -75,7 +75,7 @@ location = 0
                         }
                         if (path = 2)
                         {
-                            obj_main.path_2 = 1
+                            obj_main.overworldPathTwo = 1
                             obj_main.level_2 = 1
                             obj_main.instnace = 0
                             global.fade = -1
@@ -86,7 +86,7 @@ location = 0
                         }
                         if (path = 3)
                         {
-                            obj_main.path_3 = 1
+                            obj_main.overworldPathThree = 1
                             obj_main.level_3 = 1
                             obj_main.instnace = 0
                             global.fade = -1

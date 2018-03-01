@@ -54,7 +54,6 @@
     <instance objName="obj_wall" x="0" y="752" name="inst_C247FDD7" locked="0" code="" scaleX="6" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_player" x="24" y="720" name="inst_A5ABAE37" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="96" y="752" name="inst_D24E2A0F" locked="0" code="" scaleX="6" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="&lt;undefined&gt;" x="24" y="704" name="inst_A589C7EA" locked="0" code="location = 2" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_aria" x="160" y="721" name="inst_68E0FBA1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ilya" x="48" y="718" name="inst_D43EBA41" locked="0" code="if (obj_main.main_story != 3)&#xA;{&#xA;    instance_destroy()&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_hudgin" x="136" y="721" name="inst_AABFF02F" locked="0" code="if (obj_main.main_story != 3)&#xA;{&#xA;    instance_destroy()&#xA;}" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

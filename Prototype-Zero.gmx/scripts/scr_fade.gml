@@ -1,3 +1,4 @@
+#define scr_fade
 fadeNumber = argument0
 
 if (fadeNumber)
@@ -10,5 +11,8 @@ if (fadeNumber)
 }
 else
 {
-    return show_debug_message('fadeNumber not set')
+    return show_debug_message('FADE_NUMBER NOT SET')
 }
+
+#define scr_
+

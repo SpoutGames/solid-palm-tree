@@ -65,13 +65,13 @@
         m_menuselectx = 0
         
     //overworld
-        o_position = 0
-        o_move = 0
-        o_confirm_lock = 0
-        o_path_1 = 0
-        o_path_2 = 0
-        o_path_3 = 0
-        o_path_4 = 0
+        overworldPosition = 0
+        overworldMove = 0
+        overworldConfirmLock = 0
+        overworldPathOne = 0
+        overworldPathTwo = 0
+        overworldPathThree = 0
+        overworldPathFour = 0
         
         
     //spawn determine
@@ -1067,69 +1067,61 @@
             */
             //positions
                 //level 1
-                    if (o_position = 0)
+                    if (overworldPosition = 0)
                     {
                         x = 16
                         y = 16
-                        if (o_confirm_lock = 0)
+                        if (!overworldConfirmLock)
                         {
-                            if (o_path_1 = 1)
+                            if (overworldPathOne)
                             {
                                 if (key_right)
                                 {
-                                    o_move = 0
-                                    o_position = -1
+                                    overworldMove = 0
+                                    overworldPosition = -1
                                 }
                             }
                             if (key_confirm)
                             {  
-                                global.fade = 2
-                                if (!instance_exists(obj_fade))
-                                {
-                                    instance_create(0,0,obj_fade)
-                                }
-                                o_confirm_lock = 1
+                                script_execute(scr_fade, 2)
+                                overworldConfirmLock = true
                             }
                         }
                     }
                 //Hub
-                    if (o_position = 1)
+                    if (overworldPosition = 1)
                     {
                         x = 80
                         y = 16
-                        if (o_confirm_lock = 0)
+                        if (!overworldConfirmLock)
                         {
-                            if (o_path_1 = 1)
+                            if (overworldPathOne = 1)
                             {
                                 if (key_left)
                                 {
-                                    o_move = 1
-                                    o_position = -1
+                                    overworldMove = 1
+                                    overworldPosition = -1
                                 }
                             }
                             if (key_confirm)
                             {
-                                global.fade = 3
-                                if (!instance_exists(obj_fade))
-                                {
-                                    instance_create(0,0,obj_fade)
-                                }
-                                o_confirm_lock = 1
+                                script_execute(scr_fade, 3)
+                                overworldConfirmLock = true
                             }
                         }
                     }
                 //level 2
-                    if (o_position = 2)
+                    if (overworldPosition = 2)
                     {
                     
                     }
                 //level 3
-                    if (o_position = 3)
+                    if (overworldPosition = 3)
                     {
                     
                     }
                 //level 4
-                    if (o_position = 4)
+                    if (overworldPosition = 4)
                     {
                     
                     }
@@ -1143,9 +1135,9 @@
             */
             //movement
                 //1 to Hub
-                    if (o_move = 0)
+                    if (overworldMove = 0)
                     {
-                        if (o_position = -1)
+                        if (overworldPosition = -1)
                         {
                             if (x != 80)
                             {
@@ -1153,14 +1145,14 @@
                             }
                             else
                             {
-                                o_position = 1
+                                overworldPosition = 1
                             }
                         }
                     }
                 //Hub to 1
-                    if (o_move = 1)
+                    if (overworldMove = 1)
                     {
-                        if (o_position = -1)
+                        if (overworldPosition = -1)
                         {
                             if (x != 16 )
                             {
@@ -1168,47 +1160,47 @@
                             }
                             else
                             {
-                                o_position = 0
+                                overworldPosition = 0
                             }
                         }
                     }
                 //1 to 2
-                    if (o_move = 2)
+                    if (overworldMove = 2)
                     {
                     
                     }
                 //2 to 1
-                    if (o_move = 3)
+                    if (overworldMove = 3)
                     {
                     
                     }
                 //Hub to 3
-                    if (o_move = 4)
+                    if (overworldMove = 4)
                     {
                         
                     }
                 //3 to Hub
-                    if (o_move = 5)
+                    if (overworldMove = 5)
                     {
                     
                     }
                 //3 to 4
-                    if (o_move = 6)
+                    if (overworldMove = 6)
                     {
                     
                     }
                 //4 to 3
-                    if (o_move = 7)
+                    if (overworldMove = 7)
                     {
                         
                     }
                 
             //resets
-            if (o_confirm_lock = 1)
+            if (overworldConfirmLock)
             {
                 if (!instance_exists(obj_fade))
                 {
-                    o_confirm_lock = 0
+                    overworldConfirmLock = false
                 }
             }
         }
