@@ -160,11 +160,6 @@
     </backgrounds>
   </backgrounds>
   <paths name="paths"/>
-  <scripts name="scripts">
-    <scripts name="Builders">
-      <script>scripts\scr_fade.gml</script>
-    </scripts>
-  </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_default</font>
     <font>fonts\fnt_utility</font>
@@ -172,42 +167,60 @@
     <font>fonts\fnt_boss</font>
   </fonts>
   <objects name="objects">
-    <objects name="Builders">
-      <objects name="create">
-        <object>objects\obj_main</object>
-        <object>objects\obj_fade</object>
+    <object>objects\obj_player</object>
+    <object>objects\obj_player_old</object>
+    <objects name="Control">
+      <object>objects\obj_main</object>
+      <object>objects\obj_fade</object>
+      <objects name="game">
+        <object>objects\obj_wall</object>
+        <object>objects\obj_platform</object>
+        <object>objects\obj_moving_platform</object>
+        <object>objects\obj_climbable</object>
         <object>objects\obj_exit</object>
         <object>objects\obj_help</object>
         <object>objects\obj_help_text</object>
+        <objects name="hitboxes">
+          <object>objects\obj_laser</object>
+          <object>objects\obj_fist</object>
+          <objects name="sword">
+            <object>objects\obj_sword</object>
+            <object>objects\obj_hitboxSword1</object>
+            <object>objects\obj_hitboxSword2</object>
+            <object>objects\obj_hitboxSword3</object>
+          </objects>
+        </objects>
+        <objects name="items">
+          <object>objects\obj_rdm_chest</object>
+        </objects>
       </objects>
-      <objects name="effect">
-        <object>objects\obj_mushroom_house_2</object>
-        <object>objects\obj_mushroom_house_1</object>
-        <object>objects\obj_pinetree_fg</object>
-        <object>objects\obj_pinetree_bg</object>
+    </objects>
+    <objects name="game">
+      <objects name="cutscene">
         <object>objects\obj_bg_star</object>
         <object>objects\obj_shuttle</object>
         <object>objects\obj_shuttle_old</object>
       </objects>
-    </objects>
-    <objects name="collision">
-      <object>objects\obj_wall</object>
-      <object>objects\obj_platform</object>
-      <object>objects\obj_moving_platform</object>
-      <object>objects\obj_climbable</object>
-    </objects>
-    <objects name="player">
-      <object>objects\obj_player</object>
-      <objects name="hitboxes">
-        <object>objects\obj_laser</object>
-        <object>objects\obj_fist</object>
-        <object>objects\obj_sword</object>
-        <object>objects\obj_hitboxSword1</object>
-        <object>objects\obj_hitboxSword2</object>
-        <object>objects\obj_hitboxSword3</object>
+      <objects name="decoration">
+        <object>objects\obj_pinetree_fg</object>
+        <object>objects\obj_pinetree_bg</object>
+        <object>objects\obj_mushroom_house_1</object>
+        <object>objects\obj_mushroom_house_2</object>
+      </objects>
+      <objects name="NPC's">
+        <object>objects\obj_aria</object>
+        <object>objects\obj_aria_text</object>
+        <object>objects\obj_ilya</object>
+        <object>objects\obj_ilya_text</object>
+        <object>objects\obj_hudgin</object>
+        <object>objects\obj_hudgin_text</object>
+      </objects>
+      <objects name="enemies">
+        <object>objects\obj_slime</object>
+        <object>objects\obj_tEnemy</object>
+        <object>objects\obj_enemy_slime</object>
       </objects>
     </objects>
-<<<<<<< HEAD
     <objects name="Weapons">
       <objects name="MeleeWeapons">
         <object>objects\Melee_Weapons</object>
@@ -217,26 +230,12 @@
         <object>objects\Ranged_Weapons</object>
         <object>objects\Bow</object>
       </objects>
-=======
-    <objects name="npc's">
-      <object>objects\obj_aria</object>
-      <object>objects\obj_aria_text</object>
-      <object>objects\obj_ilya</object>
-      <object>objects\obj_ilya_text</object>
-      <object>objects\obj_hudgin</object>
-      <object>objects\obj_hudgin_text</object>
-    </objects>
-    <objects name="enemies">
-      <object>objects\obj_enemy_slime</object>
-      <object>objects\obj_tEnemy</object>
-      <object>objects\obj_slime</object>
->>>>>>> 33abc51be373608b7bce5496ab12c24b348ffcea
     </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_startup</room>
     <room>rooms\rm_titlescreen</room>
-    <room>rooms\rm_overworld</room>
+    <room>rooms\rm_intro</room>
     <rooms name="levels">
       <room>rooms\rm_observatory</room>
       <room>rooms\rm_lvl_1_1</room>
@@ -252,12 +251,8 @@
       <room>rooms\rm_lvl_3_1</room>
       <room>rooms\rm_lvl_4_1</room>
     </rooms>
-    <rooms name="scenes">
-      <room>rooms\rm_intro</room>
-    </rooms>
-    <rooms name="test">
-      <room>rooms\rm_test</room>
-    </rooms>
+    <room>rooms\rm_overworld</room>
+    <room>rooms\rm_test</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
