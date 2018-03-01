@@ -11,5 +11,4 @@ if (fadeNumber)
 else
 {
     return show_debug_message('fadeNumber not set')
-    game_end()
 }

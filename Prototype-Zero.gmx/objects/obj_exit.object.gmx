@@ -66,12 +66,20 @@ location = 0
                             obj_main.o_path_1 = 1
                             obj_main.tutorial = 0
                             obj_main.instanace = 0
-                            script_execute(scr_fade, -1)
+                            global.fade = -1
+                            if (!instance_exists(obj_fade))
+                            {
+                                instance_create(1,1,obj_fade)
+                            }
                         }
                         if (path = 2)
                         {
                             obj_main.o_path_2 = 1
-                            script_execute(scr_fade, -1)
+                            global.fade = -1
+                            if (!instance_exists(obj_fade))
+                            {
+                                instance_create(0,0,obj_fade)
+                            }
                         }
                         
                     //instance change
@@ -79,52 +87,92 @@ location = 0
                             //aria's house 
                                 if (location = 1)
                                 {
-                                    script_execute(scr_fade, 3.1)
+                                    global.fade = 3.1
+                                    if (!instance_exists(obj_fade))
+                                    {
+                                        instance_create(1,1,obj_fade)
+                                    }
                                 }
                                 if (location = 1.1)
                                 {
                                     obj_main.l_instance = 1
-                                    script_execute(scr_fade, 3)
+                                    global.fade = 3
+                                    if (!instance_exists(obj_fade))
+                                    {
+                                        instance_create(1,1,obj_fade)
+                                    }
                                 }
                             //hudgen house
                                 if (location = 2)
                                 {
-                                    script_execute(scr_fade, 3.3)
+                                    global.fade = 3.2
+                                    if (!instance_exists(obj_fade))
+                                    {
+                                        instance_create(1,1,obj_fade)
+                                    }
                                 }
                                 if (location = 2.1)
                                 {
                                     obj_main.l_instance = 2
-                                    script_execute(scr_fade, 3)
+                                    global.fade = 3
+                                    if (!instance_exists(obj_fade))
+                                    {
+                                        instance_create(1,1,obj_fade)
+                                    }
                                 }
                             //science
                                 if (location = 3)
                                 {
-                                    script_execute(scr_fade, 3.3)
+                                    global.fade = 3.3
+                                    if (!instance_exists(obj_fade))
+                                    {
+                                        instance_create(1,1,obj_fade)
+                                    }
                                 }
                                 if (location = 3.1)
                                 {
                                     obj_main.l_instance = 3
-                                    script_execute(scr_fade, 3)
+                                    global.fade = 3
+                                    if (!instance_exists(obj_fade))
+                                    {
+                                        instance_create(1,1,obj_fade)
+                                    }
                                 }
                             //shop
                                 if (location = 4)
                                 {
-                                    script_execute(scr_fade, 3.4)
+                                    global.fade = 3.4
+                                    if (!instance_exists(obj_fade))
+                                    {
+                                        instance_create(1,1,obj_fade)
+                                    }
                                 }
                                 if (location = 4.1)
                                 {
                                     obj_main.l_instance = 4
-                                    script_execute(scr_fade, 3)
+                                    global.fade = 3
+                                    if (!instance_exists(obj_fade))
+                                    {
+                                        instance_create(1,1,obj_fade)
+                                    }
                                 }
                             //medical
                                 if (location = 5)
                                 {
-                                    script_execute(scr_fade, 3.5)
+                                    global.fade = 3.5
+                                    if (!instance_exists(obj_fade))
+                                    {
+                                        instance_create(1,1,obj_fade)
+                                    }
                                 }
                                 if (location = 5.1)
                                 {
                                     obj_main.l_instance = 5
-                                    script_execute(scr_fade, 3)
+                                    global.fade = 3
+                                    if (!instance_exists(obj_fade))
+                                    {
+                                        instance_create(1,1,obj_fade)
+                                    }
                                 }
                         }
                     }
