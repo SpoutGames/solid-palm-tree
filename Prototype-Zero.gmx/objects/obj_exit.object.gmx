@@ -67,6 +67,7 @@ location = 0
                             obj_main.hub = 1
                             obj_main.tutorial = 0
 <<<<<<< HEAD
+<<<<<<< HEAD
                             obj_main.instanace = 0
 <<<<<<< HEAD
 =======
@@ -74,6 +75,9 @@ location = 0
 >>>>>>> parent of a7c4211... Merge branch 'master' of https://github.com/SpoutGames/solid-palm-tree
 =======
 >>>>>>> parent of 33abc51... obj_exit
+=======
+                            obj_main.instnace = 0
+>>>>>>> parent of a7c4211... Merge branch 'master' of https://github.com/SpoutGames/solid-palm-tree
                             global.fade = -1
                             if (!instance_exists(obj_fade))
                             {
@@ -83,6 +87,7 @@ location = 0
                         if (path = 2)
                         {
 <<<<<<< HEAD
+<<<<<<< HEAD
                             obj_main.o_path_2 = 1
                             global.fade = -1
                             if (!instance_exists(obj_fade))
@@ -90,6 +95,8 @@ location = 0
                                 instance_create(0,0,obj_fade)
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of a7c4211... Merge branch 'master' of https://github.com/SpoutGames/solid-palm-tree
                             obj_main.path_2 = 1
                             obj_main.level_2 = 1
                             obj_main.instnace = 0
@@ -108,14 +115,18 @@ location = 0
                             if (!instance_exists(obj_fade))
                             {
                                 instance_create(1,1,obj_fade)
+<<<<<<< HEAD
 >>>>>>> parent of a7c4211... Merge branch 'master' of https://github.com/SpoutGames/solid-palm-tree
 =======
 >>>>>>> parent of 33abc51... obj_exit
+=======
+>>>>>>> parent of a7c4211... Merge branch 'master' of https://github.com/SpoutGames/solid-palm-tree
                             }
                         }
                     //instance change
                         //engima hub
                             //aria's house 
+<<<<<<< HEAD
 <<<<<<< HEAD
                                 if (location = 1)
                                 {
@@ -207,6 +218,14 @@ location = 0
 >>>>>>> parent of a7c4211... Merge branch 'master' of https://github.com/SpoutGames/solid-palm-tree
 =======
 >>>>>>> parent of 33abc51... obj_exit
+=======
+                            if (location = 1)
+                            {
+                                global.fade = 3.1
+                                if (!instance_exists(obj_fade))
+                                {
+                                    instance_create(1,1,obj_fade)
+>>>>>>> parent of a7c4211... Merge branch 'master' of https://github.com/SpoutGames/solid-palm-tree
                                 }
                             }
                             if (location = 2)
@@ -215,6 +234,7 @@ location = 0
                                 obj_main.instance = 1
                                 if (!instance_exists(obj_fade))
                                 {
+<<<<<<< HEAD
 <<<<<<< HEAD
                                     obj_main.l_instance = 5
                                     global.fade = 3
@@ -228,6 +248,9 @@ location = 0
 >>>>>>> parent of a7c4211... Merge branch 'master' of https://github.com/SpoutGames/solid-palm-tree
 =======
 >>>>>>> parent of 33abc51... obj_exit
+=======
+                                    instance_create(1,1,obj_fade)
+>>>>>>> parent of a7c4211... Merge branch 'master' of https://github.com/SpoutGames/solid-palm-tree
                                 }
                             }
                         }
