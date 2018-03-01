@@ -218,7 +218,6 @@
       <objects name="enemies">
         <object>objects\obj_slime</object>
         <object>objects\obj_tEnemy</object>
-        <object>objects\obj_enemy_slime</object>
       </objects>
     </objects>
     <objects name="Weapons">

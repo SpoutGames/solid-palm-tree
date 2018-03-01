@@ -29,7 +29,7 @@
 {
     if(obj_player.on_ground)
     {
-        create_instance(obj
+       // create_instance(obj
     }
 }
 </string>

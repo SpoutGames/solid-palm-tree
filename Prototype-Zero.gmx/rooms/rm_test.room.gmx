@@ -75,7 +75,7 @@
     <instance objName="obj_hudgin" x="320" y="192" name="inst_BADCCE27" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ilya" x="368" y="192" name="inst_7EF9E3ED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_slime" x="464" y="224" name="inst_BF862918" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_exit" x="208" y="192" name="inst_FF3BF94B" locked="0" code="path = 1 &#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="&lt;undefined&gt;" x="208" y="192" name="inst_FF3BF94B" locked="0" code="path = 1 &#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="160" y="240" name="inst_CBA6BE06" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="144" y="240" name="inst_B20ADA2A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="128" y="240" name="inst_6E8E49BC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

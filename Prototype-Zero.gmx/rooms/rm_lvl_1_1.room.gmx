@@ -53,8 +53,8 @@
   <instances>
     <instance objName="obj_player" x="48" y="-32" name="inst_014CDF4B" locked="0" code="if (obj_main.tutorial = 0)&#xA;{&#xA;    instance_destroy()&#xA;}" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_player" x="848" y="560" name="inst_E31CFC4D" locked="0" code="if (obj_main.tutorial = 1)&#xA;{&#xA;    instance_destroy()&#xA;}&#xA;if (obj_main.hub = 0)&#xA;{&#xA;    instance_destroy()&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_exit" x="848" y="544" name="inst_96C1790E" locked="0" code="path = 1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_exit" x="-288" y="176" name="inst_6792770D" locked="0" code="path = 2" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="&lt;undefined&gt;" x="848" y="544" name="inst_96C1790E" locked="0" code="path = 1" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="&lt;undefined&gt;" x="-288" y="176" name="inst_6792770D" locked="0" code="path = 2" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_player" x="-288" y="192" name="inst_03576CA1" locked="0" code="if (obj_main.tutorial = 1)&#xA;{&#xA;    instance_destroy()&#xA;}&#xA;if (obj_main.level_2 = 0)&#xA;{&#xA;    instance_destroy()&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="0" y="0" name="inst_6225D451" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="16" y="0" name="inst_D2EEF86B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
