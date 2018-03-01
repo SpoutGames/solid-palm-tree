@@ -57,6 +57,7 @@
             ySpeedIncreaseBuffer = 0
             speedInXDirection = 0
             speedInYDirection = 0
+            ledgeToGrab = false
             onGround = 0
 
     //spawn determine
@@ -155,13 +156,29 @@
                 if (speedInYDirection &lt; 0) &amp;&amp; (!keyJumpHeld) {
                     speedInYDirection = max(speedInYDirection,-4);
                 }
-                if (speedInYDirection &lt; 12) {
-                    if (ySpeedIncreaseBuffer &lt; 2) {
-                        ySpeedIncreaseBuffer += 1
+                if (!ledgeToGrab) {
+                    if (speedInYDirection &lt; 12) {
+                        if (ySpeedIncreaseBuffer &lt; 2) {
+                            ySpeedIncreaseBuffer += 1
+                        }
+                        if (ySpeedIncreaseBuffer &gt;= 2) {
+                            speedInYDirection += 1;
+                            ySpeedIncreaseBuffer = 0;
+                        }
                     }
-                    if (ySpeedIncreaseBuffer &gt;= 2) {
-                        speedInYDirection += 1;
-                        ySpeedIncreaseBuffer = 0;
+                }
+                else {
+                    if (speedInYDirection &lt; 0) {
+                        if (ySpeedIncreaseBuffer &lt; 2) {
+                            ySpeedIncreaseBuffer += 1
+                        }
+                        if (ySpeedIncreaseBuffer &gt;= 2) {
+                            speedInYDirection += 1;
+                            ySpeedIncreaseBuffer = 0;
+                        }
+                    }
+                    if (speedInYDirection &gt; 0) {
+                        speedInYDirection = 0
                     }
                 }
             }
