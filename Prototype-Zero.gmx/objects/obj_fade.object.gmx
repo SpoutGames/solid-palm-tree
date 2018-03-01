@@ -69,7 +69,8 @@ if (a = 1)
     }
     if (global.fade = 0)
     {
-        room_goto(rm_test)
+        room_goto(rm_titlescreen
+        )
         fade = -1
     }
     if (global.fade = 1)

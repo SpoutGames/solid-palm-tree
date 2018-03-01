@@ -167,57 +167,55 @@
     <font>fonts\fnt_boss</font>
   </fonts>
   <objects name="objects">
-    <object>objects\obj_player</object>
-    <object>objects\obj_player_old</object>
-    <objects name="Control">
-      <object>objects\obj_main</object>
-      <object>objects\obj_fade</object>
-      <objects name="game">
-        <object>objects\obj_wall</object>
-        <object>objects\obj_platform</object>
-        <object>objects\obj_moving_platform</object>
-        <object>objects\obj_climbable</object>
-        <object>objects\obj_exit</object>
+    <objects name="Builders">
+      <objects name="Player">
+        <object>objects\obj_player</object>
+      </objects>
+      <objects name="Create">
         <object>objects\obj_help</object>
+        <object>objects\obj_main</object>
+        <object>objects\obj_fade</object>
+        <object>objects\obj_exit</object>
         <object>objects\obj_help_text</object>
-        <objects name="hitboxes">
-          <object>objects\obj_laser</object>
-          <object>objects\obj_fist</object>
-          <objects name="sword">
-            <object>objects\obj_sword</object>
-            <object>objects\obj_hitboxSword1</object>
-            <object>objects\obj_hitboxSword2</object>
-            <object>objects\obj_hitboxSword3</object>
-          </objects>
+      </objects>
+      <objects name="SFX">
+        <objects name="decoration">
+          <object>objects\obj_pinetree_fg</object>
+          <object>objects\obj_pinetree_bg</object>
+          <object>objects\obj_mushroom_house_1</object>
+          <object>objects\obj_mushroom_house_2</object>
         </objects>
-        <objects name="items">
-          <object>objects\obj_rdm_chest</object>
+        <objects name="cutscene">
+          <object>objects\obj_bg_star</object>
+          <object>objects\obj_shuttle</object>
+          <object>objects\obj_shuttle_old</object>
         </objects>
       </objects>
     </objects>
-    <objects name="game">
-      <objects name="cutscene">
-        <object>objects\obj_bg_star</object>
-        <object>objects\obj_shuttle</object>
-        <object>objects\obj_shuttle_old</object>
-      </objects>
-      <objects name="decoration">
-        <object>objects\obj_pinetree_fg</object>
-        <object>objects\obj_pinetree_bg</object>
-        <object>objects\obj_mushroom_house_1</object>
-        <object>objects\obj_mushroom_house_2</object>
-      </objects>
-      <objects name="NPC's">
+    <objects name="collision">
+      <object>objects\obj_wall</object>
+      <object>objects\obj_platform</object>
+      <object>objects\obj_moving_platform</object>
+      <object>objects\obj_climbable</object>
+    </objects>
+    <objects name="NPC's">
+      <objects name="Aria">
         <object>objects\obj_aria</object>
         <object>objects\obj_aria_text</object>
+      </objects>
+      <objects name="Ilya">
         <object>objects\obj_ilya</object>
         <object>objects\obj_ilya_text</object>
+      </objects>
+      <objects name="Hudgin">
         <object>objects\obj_hudgin</object>
         <object>objects\obj_hudgin_text</object>
       </objects>
-      <objects name="enemies">
-        <object>objects\obj_slime</object>
+    </objects>
+    <objects name="Enemies">
+      <objects name="Regular">
         <object>objects\obj_tEnemy</object>
+        <object>objects\obj_slime</object>
       </objects>
     </objects>
     <objects name="Weapons">
