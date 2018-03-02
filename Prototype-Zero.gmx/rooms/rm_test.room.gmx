@@ -199,6 +199,7 @@
     <instance objName="obj_wall" x="288" y="1472" name="inst_0A955AD3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="240" y="1456" name="inst_D9755418" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="240" y="1472" name="inst_4773E649" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_wall" x="192" y="176" name="inst_5D03C174" locked="0" code="playerExtraMovement = true&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

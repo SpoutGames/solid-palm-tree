@@ -59,7 +59,9 @@
             speedInYDirection = 0
             ledgeToGrab = false
             heightToMatch = 0
+            requestPullStart = false
             requestToPullUp = false
+            override = false
             onGround = 0
 
     //spawn determine
@@ -146,7 +148,6 @@
                 speedIncreaseBuffer = 0;
             }
             speedInXDirection = flatXSpeed * directionFacing;
-            
         //vetical movement
             if (onGround) {
                 if (keyJump){
@@ -159,12 +160,11 @@
                 if (speedInYDirection &lt; 0) &amp;&amp; (!keyJumpHeld) {
                     speedInYDirection = max(speedInYDirection,-4);
                 }
-                //not in contact with wall
                 if (place_meeting(x+1,y,obj_wall) || place_meeting(x-1,y,obj_wall)) {
                     if ((keyboard_check(global.key_right) || gamepad_button_check(0,global.ckey_right)) || (keyboard_check(global.key_left) || gamepad_button_check(0,global.ckey_left))) {
                         if (speedInYDirection &lt; 3) {
                             if (ySpeedIncreaseBuffer &lt; 2) {
-                                ySpeedIncreaseBuffer += 1
+                                ySpeedIncreaseBuffer += 1;
                             }
                             if (ySpeedIncreaseBuffer &gt;= 2) {
                                 speedInYDirection += 1;
@@ -172,19 +172,32 @@
                             }
                         }   
                         else if (speedInYDirection &gt; 3) {
-                            speedInYDirection -= 1
+                            speedInYDirection -= 1;
                         }
                     }
                     else {
                         if (speedInYDirection &lt; 16) {
                             if (ySpeedIncreaseBuffer &lt; 2) {
-                                ySpeedIncreaseBuffer += 1
+                                ySpeedIncreaseBuffer += 1;
                             }
                             if (ySpeedIncreaseBuffer &gt;= 2) {
                                 speedInYDirection += 1;
                                 ySpeedIncreaseBuffer = 0;
                             }
                         }
+                    }
+                    if (ledgeToGrab) {
+                        if (keyUp) {
+                            requestToPullUp = true;
+                        }
+                        if (requestToPullUp)
+                        {
+                            speedInYDirection = -2
+                        }
+                    }
+                    else {
+                        requestPullStart = false;
+                        requestToPullUp = false;
                     }
                 }
                 else {
@@ -238,14 +251,27 @@
                 y += speedInYDirection;
             }
             else {
-                if (y+speedInYDirection &lt; heightToMatch.y) {
-                    y += speedInYDirection;
+                if (!requestToPullUp) {
+                    if (y+speedInYDirection &lt; heightToMatch.y) {
+                        y += speedInYDirection;
+                    }
+                    else {
+                        while (y + sign(speedInYDirection) &lt; heightToMatch.y) {
+                            y += sign(speedInYDirection);
+                        }
+                        speedInYDirection = 0;
+                    }
                 }
                 else {
-                    while (y + sign(speedInYDirection) &lt; heightToMatch.y) {
-                        y += sign(speedInYDirection);
+                    if ((y+sprite_height)+speedInYDirection &gt; heightToMatch.y) {
+                        y += speedInYDirection;
                     }
-                    speedInYDirection = 0;
+                    else {
+                        while ((y+sprite_height)+sign(speedInYDirection) &gt; heightToMatch.y) {
+                            y += sign(speedInYDirection);
+                        }
+                        speedInYDirection = 0;
+                    }
                 }
             }
         }
@@ -255,6 +281,8 @@
             }
             speedInYDirection = 0;
         }
+
+
 </string>
           </argument>
         </arguments>
