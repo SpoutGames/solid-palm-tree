@@ -61,6 +61,8 @@
             heightToMatch = 0
             requestPullStart = false
             requestToPullUp = false
+            requestToPullIn = false
+            requestPullEnd = false
             override = false
             onGround = 0
 
@@ -247,6 +249,7 @@
             while (!place_meeting(x+sign(speedInXDirection),y,obj_wall)){
                 x += sign(speedInXDirection);
             }
+            flatXSpeed = 0;
         }
     //vertical collision
         if (!place_meeting(x,y+speedInYDirection,obj_wall)){
@@ -275,6 +278,8 @@
                             y += sign(speedInYDirection);
                         }
                         speedInYDirection = 0;
+                        requestPullStart = false;
+                        requestToPullUp = false;
                     }
                 }
             }

@@ -70,11 +70,18 @@ if (playerExtraMovement){
     }
 }
 if (active) {
-    if (place_meeting(id.x-1,id.y,obj_player)) || (place_meeting(id.x+1,id.y,obj_player)){
-        if (obj_player.y &lt; y)
-        {
-            obj_player.ledgeToGrab = true;
-            obj_player.heightToMatch = id;
+    if (!obj_player.requestToPullUp) {
+        if (place_meeting(id.x-1,id.y,obj_player)) || (place_meeting(id.x+1,id.y,obj_player)){
+            if (obj_player.y &lt; y) {
+                obj_player.ledgeToGrab = true;
+                obj_player.heightToMatch = id;
+            }
+            else {
+                obj_player.ledgeToGrab = false;
+                obj_player.requestPullStart = false;
+                obj_player.requestToPullUp = false;
+                id.active = false;
+            }
         }
         else {
             obj_player.ledgeToGrab = false;
@@ -84,10 +91,12 @@ if (active) {
         }
     }
     else {
-        obj_player.ledgeToGrab = false;
-        obj_player.requestPullStart = false;
-        obj_player.requestToPullUp = false;
-        id.active = false;
+        if (obj_player.y+obj_player.sprite_height+1 &lt; id.y) {
+            obj_player.ledgeToGrab = false;
+            obj_player.requestPullStart = false;
+            obj_player.requestToPullUp = false;
+            id.active = false;
+        }
     }
 }
 </string>
