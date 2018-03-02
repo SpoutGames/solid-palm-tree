@@ -71,8 +71,9 @@ if (playerExtraMovement){
 }
 if (active) {
     if (y &gt; (obj_player.y - obj_player.sprite_height/2)) {
-        if (place_meeting(x-4,y,obj_player)) || (place_meeting(x+4,y,obj_player)){
+        if (place_meeting(x-2,y,obj_player)) || (place_meeting(x+2,y,obj_player)){
             obj_player.ledgeToGrab = true
+            obj_player.heightToMatch = id
         }
         else {
             if (obj_player.requestToPullUp) {
@@ -92,7 +93,7 @@ if (active) {
     }
     if (obj_player.ledgeToGrab) &amp;&amp; (obj_player.speedInYDirection == 0) {
         if (obj_player.requestToPullUp) {
-            if (obj_player.y &lt; y) {
+            if (round(obj_player.y+obj_player.sprite_height) &gt; y) {
                 obj_player.y -= 1;
             }
             else {

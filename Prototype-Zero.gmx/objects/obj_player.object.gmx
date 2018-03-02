@@ -58,6 +58,7 @@
             speedInXDirection = 0
             speedInYDirection = 0
             ledgeToGrab = false
+            heightToMatch = 0
             requestToPullUp = false
             onGround = 0
 
@@ -99,8 +100,8 @@
         onGround = place_meeting(x,y+1,obj_wall)
         on_platform = place_meeting(x,y+1,obj_platform)
         on_moving_platform = place_meeting(x,y+2,obj_moving_platform)
-        wall_left = place_meeting(x-1,y,obj_wall)
-        wall_right = place_meeting(x+1,y,obj_wall)
+        wallLeft = place_meeting(x-1,y,obj_wall)
+        wallRight = place_meeting(x+1,y,obj_wall)
         jl_max = global.jl_max
         touchingNPC = (place_meeting(x,y,obj_aria) || place_meeting(x,y,obj_hudgin) || place_meeting(x,y,obj_ilya))
 
@@ -154,22 +155,40 @@
                 
             }
             else{
+                //varry jump height
                 if (speedInYDirection &lt; 0) &amp;&amp; (!keyJumpHeld) {
                     speedInYDirection = max(speedInYDirection,-4);
                 }
-                if (!ledgeToGrab) {
-                    if (speedInYDirection &lt; 12) {
-                        if (ySpeedIncreaseBuffer &lt; 2) {
-                            ySpeedIncreaseBuffer += 1
+                //not in contact with wall
+                if (place_meeting(x+1,y,obj_wall) || place_meeting(x-1,y,obj_wall)) {
+                    if ((keyboard_check(global.key_right) || gamepad_button_check(0,global.ckey_right)) || (keyboard_check(global.key_left) || gamepad_button_check(0,global.ckey_left))) {
+                        if (speedInYDirection &lt; 3) {
+                            if (ySpeedIncreaseBuffer &lt; 2) {
+                                ySpeedIncreaseBuffer += 1
+                            }
+                            if (ySpeedIncreaseBuffer &gt;= 2) {
+                                speedInYDirection += 1;
+                                ySpeedIncreaseBuffer = 0;
+                            }
+                        }   
+                        else if (speedInYDirection &gt; 3) {
+                            speedInYDirection -= 1
                         }
-                        if (ySpeedIncreaseBuffer &gt;= 2) {
-                            speedInYDirection += 1;
-                            ySpeedIncreaseBuffer = 0;
+                    }
+                    else {
+                        if (speedInYDirection &lt; 16) {
+                            if (ySpeedIncreaseBuffer &lt; 2) {
+                                ySpeedIncreaseBuffer += 1
+                            }
+                            if (ySpeedIncreaseBuffer &gt;= 2) {
+                                speedInYDirection += 1;
+                                ySpeedIncreaseBuffer = 0;
+                            }
                         }
                     }
                 }
                 else {
-                    if (speedInYDirection &lt; 0) {
+                    if (speedInYDirection &lt; 16) {
                         if (ySpeedIncreaseBuffer &lt; 2) {
                             ySpeedIncreaseBuffer += 1
                         }
@@ -177,12 +196,6 @@
                             speedInYDirection += 1;
                             ySpeedIncreaseBuffer = 0;
                         }
-                    }
-                    if (speedInYDirection &gt; 0) {
-                        speedInYDirection = 0;
-                    }
-                    if (speedInYDirection = 0) &amp;&amp; (keyUp) {
-                        requestToPullUp = true;
                     }
                 }
             }
@@ -215,17 +228,30 @@
             x += speedInXDirection;
         }
         else {
-            while (!place_meeting(x+speedInXDirection,y,obj_wall)){
-                x += ceil(speedInXDirection);
+            while (!place_meeting(x+sign(speedInXDirection),y,obj_wall)){
+                x += sign(speedInXDirection);
             }
         }
     //vertical collision
         if (!place_meeting(x,y+speedInYDirection,obj_wall)){
-            y += speedInYDirection;
+            if (!ledgeToGrab) {
+                y += speedInYDirection;
+            }
+            else {
+                if (y+speedInYDirection &lt; heightToMatch.y) {
+                    y += speedInYDirection;
+                }
+                else {
+                    while (y + sign(speedInYDirection) &lt; heightToMatch.y) {
+                        y += sign(speedInYDirection);
+                    }
+                    speedInYDirection = 0;
+                }
+            }
         }
         else {
-            while (!place_meeting(x,y+speedInYDirection,obj_wall)){
-                y += ceil(speedInYDirection);
+            while (!place_meeting(x,y+sign(speedInYDirection),obj_wall)){
+                y += sign(speedInYDirection);
             }
             speedInYDirection = 0;
         }
