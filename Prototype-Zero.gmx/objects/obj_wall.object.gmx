@@ -78,11 +78,15 @@ if (active) {
         }
         else {
             obj_player.ledgeToGrab = false;
+            obj_player.requestPullStart = false;
+            obj_player.requestToPullUp = false;
             id.active = false;
         }
     }
     else {
         obj_player.ledgeToGrab = false;
+        obj_player.requestPullStart = false;
+        obj_player.requestToPullUp = false;
         id.active = false;
     }
 }

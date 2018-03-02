@@ -187,12 +187,15 @@
                         }
                     }
                     if (ledgeToGrab) {
-                        if (keyUp) {
-                            requestToPullUp = true;
-                        }
-                        if (requestToPullUp)
+                        if (requestPullStart)
                         {
-                            speedInYDirection = -2
+                            if (keyUp) {
+                                requestToPullUp = true;
+                            }
+                            if (requestToPullUp)
+                            {
+                                speedInYDirection = -2
+                            }
                         }
                     }
                     else {
@@ -260,14 +263,15 @@
                             y += sign(speedInYDirection);
                         }
                         speedInYDirection = 0;
+                        requestPullStart = true;
                     }
                 }
                 else {
-                    if ((y+sprite_height)+speedInYDirection &gt; heightToMatch.y) {
+                    if ((y+sprite_height)+speedInYDirection &gt; heightToMatch.y-1) {
                         y += speedInYDirection;
                     }
                     else {
-                        while ((y+sprite_height)+sign(speedInYDirection) &gt; heightToMatch.y) {
+                        while ((y+sprite_height)+sign(speedInYDirection) &gt; heightToMatch.y-1) {
                             y += sign(speedInYDirection);
                         }
                         speedInYDirection = 0;
