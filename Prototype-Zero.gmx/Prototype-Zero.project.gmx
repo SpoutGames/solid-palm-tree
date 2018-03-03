@@ -127,6 +127,7 @@
           <sprite>sprites\spr_player_rolling</sprite>
           <sprite>sprites\spr_crawling_fill</sprite>
           <sprite>sprites\spr_playerPullUp</sprite>
+          <sprite>sprites\spr_tempPlayer</sprite>
         </sprites>
         <sprite>sprites\spr_playeridle</sprite>
         <sprite>sprites\spr_playerrun</sprite>

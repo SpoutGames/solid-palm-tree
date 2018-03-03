@@ -26,7 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>special = 0
-playerExtraMovement = false
 active = false
 checkSide = 0
 </string>
@@ -62,41 +61,36 @@ checkSide = 0
         y = 624
     }
 }
-if (playerExtraMovement){
-    if (instance_exists(obj_player)) {
-        if (place_meeting(id.x-1,id.y,obj_player)) || (place_meeting(id.x+1,id.y,obj_player)){
-            id.active = true;
-        }
+if ((!place_meeting(x+1,y,obj_wall)) || (!place_meeting(x-1,y,obj_wall))) {
+    if (!place_meeting(x,y-1,obj_wall)) {
+        id.active = true;
     }
 }
 if (active) {
-    if (!obj_player.requestToPullUp) {
+    if (instance_exists(obj_player)) {    
         if (place_meeting(id.x-1,id.y,obj_player)) || (place_meeting(id.x+1,id.y,obj_player)){
-            if (obj_player.y &lt; y) {
-                obj_player.ledgeToGrab = true;
-                obj_player.heightToMatch = id;
+            if (!obj_player.belowMinToGrab) {
+                obj_player.ledgeToGrab = true    
+                obj_player.heightToMatch = id
             }
             else {
-                obj_player.ledgeToGrab = false;
-                obj_player.requestPullStart = false;
-                obj_player.requestToPullUp = false;
-                id.active = false;
+                if (obj_player.heightToMatch = id) {
+                    obj_player.belowMinToGrab = true
+                    obj_player.ledgeToGrab = false
+                    obj_player.requestPullStart = false
+                    obj_player.requestToPullUp = false
+                }
             }
         }
         else {
-            obj_player.ledgeToGrab = false;
-            obj_player.requestPullStart = false;
-            obj_player.requestToPullUp = false;
-            id.active = false;
+            if (obj_player.heightToMatch = id) {
+                obj_player.belowMinToGrab = false
+                obj_player.ledgeToGrab = false
+                obj_player.requestPullStart = false
+                obj_player.requestToPullUp = false
+            }
         }
-    }
-    else {
-        if (obj_player.y+obj_player.sprite_height+1 &lt; id.y) {
-            obj_player.ledgeToGrab = false;
-            obj_player.requestPullStart = false;
-            obj_player.requestToPullUp = false;
-            id.active = false;
-        }
+        
     }
 }
 </string>
