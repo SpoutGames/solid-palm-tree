@@ -70,8 +70,10 @@ if (active) {
     if (instance_exists(obj_player)) {    
         if (place_meeting(id.x-1,id.y,obj_player)) || (place_meeting(id.x+1,id.y,obj_player)){
             if (!obj_player.belowMinToGrab) {
+                if (obj_player.speedInYDirection &gt; 0) {
                 obj_player.ledgeToGrab = true    
                 obj_player.heightToMatch = id
+                }
             }
             else {
                 if (obj_player.heightToMatch = id) {
