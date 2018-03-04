@@ -53,7 +53,7 @@
         m_scene_fade = -1
         m_scene_clock = 0
         m_scene_time = 0
-        m_confirm_lock = 0
+        m_confirm_lock = 1
         m_newgame = 0
         m_continue = 0
         m_option = 0
@@ -469,7 +469,12 @@
         //confirm reset
             if (m_confirm_lock = 1)
             {
-                m_confirm_lock = 0
+                if (!instance_exists(obj_fade)) {
+                    m_confirm_lock = 0
+                }
+                else {
+                    m_confirm_lock = 1
+                }
             }
         }
 </string>
