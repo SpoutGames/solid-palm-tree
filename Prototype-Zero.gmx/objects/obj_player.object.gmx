@@ -65,6 +65,8 @@
             requestPullEnd = false
             belowMinToGrab = false
             playerClimb = false
+            wallKickLeft = false
+            wallKickRight = false
             onGround = 0
 
     //spawn determine
@@ -135,24 +137,77 @@
         directionFacing = keyLeft + keyRight;
         if (global.pause == 0){
         //horizontal movement
-            if (directionFacing != 0){
-                if (flatXSpeed &lt; 4){
-                    if (speedIncreaseBuffer &lt; 2){
-                        speedIncreaseBuffer += 1;
+        if (place_meeting(x+1,y,obj_wall) || place_meeting(x-1,y,obj_wall)) { //check to see if touching a wall
+            if (place_meeting(x,y+1,obj_wall)) { // if on ground, regular movement
+                if (directionFacing != 0) {
+                    if (flatXSpeed &lt; 4) {
+                        if (speedIncreaseBuffer &lt; 2){
+                            speedIncreaseBuffer += 1;
+                        }
+                        if (speedIncreaseBuffer &gt;= 2){
+                            flatXSpeed += 1;
+                            speedIncreaseBuffer = 0;
+                        }
                     }
-                    if (speedIncreaseBuffer &gt;= 2){
-                        flatXSpeed += 1;
-                        speedIncreaseBuffer = 0;
+                }
+                else {
+                    flatXSpeed = 0;
+                    speedIncreaseBuffer = 0;
+                }
+                speedInXDirection = flatXSpeed * directionFacing;
+                }
+                else { // if !on ground
+                    if (place_meeting(x-1,y,obj_wall)) {
+                        if (keyRight) {
+                            wallKickRight = true
+                        }
+                    }
+                    if (place_meeting(x+1,y,obj_wall)) {
+                        if ((keyboard_check(global.key_left) || gamepad_button_check(0,global.ckey_left))) {
+                            wallKickLeft = true
+                        }
+                    }
+
+                    if (wallKickLeft) {
+                        speedInXDirection = -4 
+                        speedInYDirection = -4
+                        wallKickLeft = false;                
+                    }
+                    
+                    if (wallKickRight) {
+                        speedInXDirection = 4
+                        speedInYDirection = -4
+                        wallKickRight = false;
                     }
                 }
             }
-            else {
-                flatXSpeed = 0;
-                speedIncreaseBuffer = 0;
+            else { // not touching wall
+                if (place_meeting(x,y+1,obj_wall)) { // is on ground 
+                    if (directionFacing != 0){
+                    if (flatXSpeed &lt; 4){
+                        if (speedIncreaseBuffer &lt; 2){
+                            speedIncreaseBuffer += 1;
+                        }
+                        if (speedIncreaseBuffer &gt;= 2){
+                            flatXSpeed += 1;
+                            speedIncreaseBuffer = 0;
+                        }
+                    }
+                }
+                else {
+                    flatXSpeed = 0;
+                    speedIncreaseBuffer = 0;
+                }
+                speedInXDirection = flatXSpeed * directionFacing;
+                }
+                else { //is not on ground
+                
+                }
             }
-            speedInXDirection = flatXSpeed * directionFacing;
         //vetical movement
             if (onGround) {
+                wallKickRight = false;
+                wallKickLeft = false;
                 if (keyJump){
                     speedInYDirection = -6;
                 }
@@ -204,8 +259,7 @@
                     else if (!ledgeToGrab){
                         requestPullStart = false;
                         requestToPullUp = false;
-                    }
-                    
+                    }                    
                 }
                 else {
                     if (speedInYDirection &lt; 12) {
@@ -273,6 +327,7 @@
                     x += sign(speedInXDirection);
                 }
                 flatXSpeed = 0;
+                speedInXDirection = 0;
             }
         //vertical collision
             if (!place_meeting(x,y+speedInYDirection,obj_wall)){
