@@ -67,32 +67,32 @@ if ((!place_meeting(x+1,y,obj_wall)) || (!place_meeting(x-1,y,obj_wall))) {
     }
 }
 if (active) {
-    if (instance_exists(obj_player)) {    
-        if (place_meeting(id.x-1,id.y,obj_player)) || (place_meeting(id.x+1,id.y,obj_player)){
-            if (!obj_player.belowMinToGrab) {
-                if (obj_player.speedInYDirection &gt; 0) {
-                obj_player.ledgeToGrab = true    
-                obj_player.heightToMatch = id
-                }
-            }
-            else {
-                if (obj_player.heightToMatch = id) {
-                    obj_player.belowMinToGrab = true
-                    obj_player.ledgeToGrab = false
-                    obj_player.requestPullStart = false
-                    obj_player.requestToPullUp = false
+    if (instance_exists(obj_player)) {  //player exists  
+        if (place_meeting(id.x-1,id.y,obj_player)) || (place_meeting(id.x+1,id.y,obj_player)){ //meeting with player
+            if (!obj_player.requestToPullUp) {
+                if (!obj_player.belowMinToGrab) { //not below min y to grab
+                    if (obj_player.speedInYDirection &gt; 0) {
+                        if (place_meeting(id.x-1,id.y,obj_player)) {
+                            obj_player.requestPullRight = true
+                            obj_player.requestPullLeft = false
+                        }
+                        if (place_meeting(id.x+1,id.y,obj_player)) {
+                            obj_player.requestPullLeft = true
+                            obj_player.requestPullRight = false
+                        }
+                        obj_player.ledgeToGrab = true
+                        obj_player.wallWorkingWith = id
+                    }
                 }
             }
         }
-        else {
-            if (obj_player.heightToMatch = id) {
-                obj_player.belowMinToGrab = false
-                obj_player.ledgeToGrab = false
-                obj_player.requestPullStart = false
-                obj_player.requestToPullUp = false
-            }
+    }
+}
+else {
+    if (instance_exists(obj_player)){
+        if (id = obj_player.wallWorkingWith){
+            obj_player.wallWorkingWith = 0
         }
-        
     }
 }
 </string>
