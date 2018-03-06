@@ -59,12 +59,8 @@
             speedInYDirection = 0
             ledgeToGrab = false
             wallWorkingWith = 0
-            requestPullStart = false
+            ledgePullStart = false 
             requestToPullUp = false
-            requestToPullIn = false
-            requestToPullLeft = false
-            requestToPullRight = false
-            belowMinToGrab = false
             playerClimb = false
             wallKickLeft = false
             wallKickRight = false
@@ -137,178 +133,165 @@
     //set up
         directionFacing = keyLeft + keyRight;
         if (global.pause == 0){
-        //horizontal movement
-        if (place_meeting(x+1,y,obj_wall) || place_meeting(x-1,y,obj_wall)) { //check to see if touching a wall
-            if (place_meeting(x,y+1,obj_wall)) { // if on ground, regular movement
-                if (directionFacing != 0) {
-                    if (flatXSpeed &lt; 4) {
-                        if (speedIncreaseBuffer &lt; 2){
-                            speedIncreaseBuffer += 1;
+            //horizontal movement
+                if (place_meeting(x+1,y,obj_wall) || place_meeting(x-1,y,obj_wall)){ //check to see if touching a wall
+                    if (place_meeting(x,y+1,obj_wall)){ //is touching wall and on ground
+                        if (directionFacing != 0) {
+                            if (flatXSpeed &lt; 4) {
+                                if (speedIncreaseBuffer &lt; 2){
+                                    speedIncreaseBuffer += 1;
+                                }
+                                if (speedIncreaseBuffer &gt;= 2){
+                                    flatXSpeed += 1;
+                                    speedIncreaseBuffer = 0;
+                                }
+                            }
+                            speedInXDirection = flatXSpeed * directionFacing
+                        } else {
+                            speedInXDirection = 0
+                            flatXSpeed = 0
+                            speedIncreaseBuffer = 0
                         }
-                        if (speedIncreaseBuffer &gt;= 2){
-                            flatXSpeed += 1;
-                            speedIncreaseBuffer = 0;
+                    } else { //is touching a wall and not on ground
+                        //ledge Grabs
+                            if (wallWorkingWith != false) { //check to see if a wall that can be grabbed is found
+                                if (!ledgePullStart){
+                                    if (wallWorkingWith.y &lt; y+4){
+                                        if (wallWorkingWith.y &gt; y-4){
+                                            ledgeToGrab = true
+                                        } else {
+                                            ledgeToGrab = false
+                                            wallWorkingWith = false
+                                        }
+                                    } else {
+                                        ledgeToGrab = false
+                                        wallWorkingWith = false
+                                    }
+                                }
+                            }
+                        //wall kicks
+                            if (place_meeting(x-1,y,obj_wall)) {
+                                if (keyRight) {
+                                    wallKickRight = true
+                                    ledgeToGrab = false;
+                                }
+                            }
+                            if (place_meeting(x+1,y,obj_wall)) {
+                                if ((keyboard_check(global.key_left) || gamepad_button_check(0,global.ckey_left))) {
+                                    wallKickLeft = true
+                                    ledgeToGrab = false;
+                                }
+                            }
+                            if (wallKickLeft) {
+                                speedInXDirection = -4 
+                                speedInYDirection = -6
+                                wallKickLeft = false
+                            }
+                            if (wallKickRight) {
+                                speedInXDirection = 4
+                                speedInYDirection = -6
+                                wallKickRight = false
+                            }
+                    }
+                } else { //is not touching a wall
+                    if (place_meeting(x,y+1,obj_wall)) { // is not touching a wall and on ground
+                        if (directionFacing != 0) {
+                            if (flatXSpeed &lt; 4) {
+                                if (speedIncreaseBuffer &lt; 2){
+                                    speedIncreaseBuffer += 1;
+                                }
+                                if (speedIncreaseBuffer &gt;= 2){
+                                    flatXSpeed += 1;
+                                    speedIncreaseBuffer = 0;
+                                }
+                            }
+                            speedInXDirection = flatXSpeed * directionFacing
+                        } else {
+                            speedInXDirection = 0
+                            flatXSpeed = 0 
+                            speedIncreaseBuffer = 0
                         }
+                    } else { //is not touching a wall and not on ground
+                        ledgeToGrab = false
+                        ledgePullStart = false
+                        wallWorkingWith = false
+                        requestToPullUp = false;
                     }
                 }
-                else {
-                    flatXSpeed = 0;
-                    speedIncreaseBuffer = 0;
-                }
-                speedInXDirection = flatXSpeed * directionFacing;
-                }
-                else { // if !on ground
-                    if (!requestToPullUp) {
-                        if (place_meeting(x-1,y,obj_wall)) {
-                            if (keyRight) {
-                                wallKickRight = true
-                                ledgeToGrab = false
-                                requestPullStart = false;
+            //vertical movement
+                if (place_meeting(x,y+1,obj_wall)) { //is on the ground
+                    requestToPullUp = false;
+                    if (keyJump){
+                        speedInYDirection = -6;
+                    }
+                } else { //is not on the ground
+                    if (speedInYDirection &lt; 0) &amp;&amp; (!keyJumpHeld) {  //varry jump height
+                        speedInYDirection = max(speedInYDirection,-4);
+                    }
+                    if (place_meeting(x+1,y,obj_wall) || place_meeting(x-1,y,obj_wall)) { //touching a wall and not on ground
+                            if (speedInYDirection &lt; 6) {
+                                if (ySpeedIncreaseBuffer &lt; 2) {
+                                    ySpeedIncreaseBuffer += 1;
+                                }
+                                if (ySpeedIncreaseBuffer &gt;= 2) {
+                                    speedInYDirection += 1;
+                                    ySpeedIncreaseBuffer = 0;
+                                }
+                            }   
+                            else if (speedInYDirection &gt; 3) {
+                                speedInYDirection -= 1;
                             }
-                        }
-                        if (place_meeting(x+1,y,obj_wall)) {
-                            if ((keyboard_check(global.key_left) || gamepad_button_check(0,global.ckey_left))) {
-                                wallKickLeft = true
-                                ledgeToGrab = false
-                                requestPullStart = false;
+                            if (ledgeToGrab) { //touching a wall that can be grabbed
+                                if (ledgePullStart) //y is = to id.wall.y
+                                {
+                                    if (keyUp) {
+                                        requestToPullUp = true;
+                                    }
+                                    if (requestToPullUp) {
+                                        speedInYDirection = -2
+                                    }
+                                    if (keyDown){
+                                        ledgeToGrab = false
+                                        wallWorkingWith = 0
+                                        speedInYDirection = 0
+                                    }
+                                }
+                            } else {
+                                requestToPullUp = false;
                             }
-                        }
-                        if (wallKickLeft) {
-                            speedInXDirection = -4 
-                            speedInYDirection = -4
-                            wallKickLeft = false;                
+                        } else { //not touching a wall and not on ground
+                            if (speedInYDirection &lt; 12) {
+                                if (ySpeedIncreaseBuffer &lt; 2) {
+                                    ySpeedIncreaseBuffer += 1
+                                }
+                                if (ySpeedIncreaseBuffer &gt;= 2) {
+                                    speedInYDirection += 1;
+                                    ySpeedIncreaseBuffer = 0;
+                                }
+                            }
                         }
                         
-                        if (wallKickRight) {
-                            speedInXDirection = 4
-                            speedInYDirection = -4
-                            wallKickRight = false;
-                        }
-                    }
-                }
-            }
-            else { // not touching wall
-                if (place_meeting(x,y+1,obj_wall)) { // is on ground 
-                    if (directionFacing != 0){
-                    if (flatXSpeed &lt; 4){
-                        if (speedIncreaseBuffer &lt; 2){
-                            speedIncreaseBuffer += 1;
-                        }
-                        if (speedIncreaseBuffer &gt;= 2){
-                            flatXSpeed += 1;
-                            speedIncreaseBuffer = 0;
-                        }
-                    }
-                }
-                else {
-                    flatXSpeed = 0;
-                    speedIncreaseBuffer = 0;
-                }
-                speedInXDirection = flatXSpeed * directionFacing;
-                }
-                else { //is not on ground
-                    
-                }
-            }
-            if (requestToPullIn) { //pull in after grabbing ledge and pulling player up
-                if (requestToPullLeft) { //is right of wall
-                    speedInXDirection = -2
-                }
-                if (requestToPullRight) { // is left of wall
-                    speedInXDirection = 2
-                }
-            } 
-              
-        //vetical movement
-            if (onGround) {
-                wallKickRight = false;
-                wallKickLeft = false;
-                ledgeToGrab = false;
-                if (wallWorkingWith != 0) {
-                    wallWorkingWith.active = false
-                }
-                if (keyJump){
-                    speedInYDirection = -6;
-                }
-                
-            }
-            else{
-                //varry jump height
-                if (speedInYDirection &lt; 0) &amp;&amp; (!keyJumpHeld) {
-                    speedInYDirection = max(speedInYDirection,-4);
-                }
-                if (place_meeting(x+1,y,obj_wall) || place_meeting(x-1,y,obj_wall)) { //touching a wall and holding against it
-                    if ((keyboard_check(global.key_right) || gamepad_button_check(0,global.ckey_right)) || (keyboard_check(global.key_left) || gamepad_button_check(0,global.ckey_left))) {
-                        if (speedInYDirection &lt; 6) {
-                            if (ySpeedIncreaseBuffer &lt; 2) {
-                                ySpeedIncreaseBuffer += 1;
-                            }
-                            if (ySpeedIncreaseBuffer &gt;= 2) {
-                                speedInYDirection += 1;
-                                ySpeedIncreaseBuffer = 0;
-                            }
-                        }   
-                        else if (speedInYDirection &gt; 3) {
-                            speedInYDirection -= 1;
-                        }
-                    }
-                    else { //not holding against it
-                        if (speedInYDirection &lt; 12) {
-                            if (ySpeedIncreaseBuffer &lt; 2) {
-                                ySpeedIncreaseBuffer += 1;
-                            }
-                            if (ySpeedIncreaseBuffer &gt;= 2) {
-                                speedInYDirection += 1;
-                                ySpeedIncreaseBuffer = 0;
-                            }
-                        }
-                    }
-                    if (ledgeToGrab) { //touching a wall that can be grabbed
-                        if (requestPullStart) //y is = to id.wall.y
-                        {
+                        if (place_meeting(x,y,obj_climbable)) { //climbable objects
                             if (keyUp) {
-                                requestToPullUp = true;
+                                playerClimb = true
                             }
-                            if (requestToPullUp) {
+                        } else {
+                            playerClimb = false
+                        }
+                        if (playerClimb){
+                            if (!keyUp &amp;&amp; !keyDown) {
+                                speedInYDirection = 0
+                            }
+                            if (keyUp){
                                 speedInYDirection = -2
                             }
-                        }
-                    }                   
-                }
-                else { //not touching a wall
-                    if (speedInYDirection &lt; 12) {
-                        if (ySpeedIncreaseBuffer &lt; 2) {
-                            ySpeedIncreaseBuffer += 1
-                        }
-                        if (ySpeedIncreaseBuffer &gt;= 2) {
-                            speedInYDirection += 1;
-                            ySpeedIncreaseBuffer = 0;
-                        }
+                            if (keyDown) {
+                                speedInYDirection = 2
+                            }
+                            
+                        }               
                     }
                 }
-                if (place_meeting(x,y,obj_climbable)) { //climbable objects
-                    if (keyUp) {
-                        playerClimb = true
-                    }
-                }
-                else {
-                    playerClimb = false
-                }
-                if (playerClimb){
-                    if (!keyUp &amp;&amp; !keyDown) {
-                        speedInYDirection = 0
-                    }
-                    if (keyUp){
-                        speedInYDirection = -2
-                    }
-                    if (keyDown) {
-                        speedInYDirection = 2
-                    }
-                    
-                }
-            }
-        }
-
         
 </string>
           </argument>
@@ -342,75 +325,42 @@
                 }
                 flatXSpeed = 0;
                 speedInXDirection = 0;
+                wallKickLeft = false;
+                wallKickRight = false;
             }
         //vertical collision
-            if (!place_meeting(x,y+speedInYDirection,obj_wall)){
-                if (!playerClimb){
-                    if (!ledgeToGrab) {
-                        y += speedInYDirection;
-                    }
-                    else {
-                        if (!requestPullStart) {
-                            if (y+speedInYDirection &lt; wallWorkingWith.y) {
-                                y += speedInYDirection;
-                            }
-                            else {
-                                while (y + sign(speedInYDirection) &lt; wallWorkingWith.y) {
-                                    y += sign(speedInYDirection);
-                                }
-                                if (y &lt; wallWorkingWith.y+4) {
-                                    y = wallWorkingWith.y 
-                                }
-                                else {
-                                    belowMinToGrab = true;
-                                }
-                                speedInYDirection = 0;
-                                requestPullStart = true
-                            }
-                        }
-                        else {
-                            if (requestToPullUp)
-                            {
-                                if ((y+sprite_height)+speedInYDirection &gt; wallWorkingWith.y-1) {
-                                    y += speedInYDirection;
-                                }
-                                else {
-                                    while ((y+sprite_height)+sign(speedInYDirection) &gt; wallWorkingWith.y-1) {
-                                        y += sign(speedInYDirection);
-                                    }
-                                    speedInYDirection = 0;
-                                    if (requestPullLeft) {
-                                        speedInXDirection = -2
-                                    }
-                                    if (requestPullRight) {
-                                        speedInXDirection = 2
-                                    }
-                                    if (!place_meeting(x+speedInXDirection,y+1,obj_wall)) {
-                                        x += speedInXDirection
-                                    }
-                                    else {
-                                        while (!place_meeting(x+sign(speedInXDirection),y+1,obj_wall)) {
-                                            x += sign(speedInXDirection)
-                                        }
-                                        ledgeToGrab = false
-                                        requestPullStart = false;
-                                        requestToPullUp = false;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                else {
-                    y += speedInYDirection;
-                }
-            }
-            else {
-                if (!requestToPullUp) {
+            if (!ledgeToGrab){
+                if (!place_meeting(x,y+speedInYDirection,obj_wall)){
+                    y += speedInYDirection
+                } else {
                     while (!place_meeting(x,y+sign(speedInYDirection),obj_wall)){
-                        y += sign(speedInYDirection);
+                        y += sign(speedInYDirection)
                     }
                     speedInYDirection = 0;
+                }
+            } else {
+                if (!ledgePullStart) {
+                    if (y+speedInYDirection &lt; wallWorkingWith.y) {
+                        y += speedInYDirection
+                    } else {
+                        while (y != wallWorkingWith.y) {
+                            y = wallWorkingWith.y
+                        }
+                        speedInYDirection = 0
+                        ledgePullStart = true
+                    }
+                }
+                if (requestToPullUp) {
+                    speedInYDirection = -2
+                    if (y+sprite_height+speedInYDirection &gt; wallWorkingWith.y-1){
+                        y += speedInYDirection
+                    } else {
+                        while (y+sprite_height+sign(speedInYDirection) &gt; wallWorkingWith.y-1) {
+                            y = wallWorkingWith.y+sprite_height
+                            x += 1
+                        }
+                        
+                    }
                 }
             }
         }
@@ -479,7 +429,11 @@ if (!ledgeToGrab) {
             }
         }
         else {
-            sprite_index = spr_playerjump
+            if (!place_meeting(x+1,y,obj_wall) &amp;&amp; !place_meeting(x-1,y,obj_wall)){
+                sprite_index = spr_playerjump
+            } else {
+                sprite_index = spr_playeridle
+            }
         }
 </string>
           </argument>
