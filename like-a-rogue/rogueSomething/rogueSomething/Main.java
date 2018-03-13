@@ -1,9 +1,27 @@
 package rogueSomething;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
-import javax.swing.*;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
+class MyCanvas extends JComponent {
+
+	private static final long serialVersionUID = 1L;
+
+	public void paint(Graphics g) {
+		Graphics2D rectangle = (Graphics2D) g;
+		rectangle.setColor(Color.MAGENTA);
+		rectangle.drawRect(10, 10, 100, 100);
+		rectangle.fillRect(10, 10, 100, 100);
+	}
+}
 public class Main extends Canvas implements Runnable{
 
 	private static final long serialVersionUID = 1L;
@@ -17,15 +35,6 @@ public class Main extends Canvas implements Runnable{
 	
 	private JFrame frame;
 	private JLabel text;
-	private Graphics2D g;
-	
-	public paint() {
-		g = (Graphics2D) g;
-		g.drawRect (0, 0, 20, 20);
-		g.setColor(Color.MAGENTA);
-		g.fillRect(0, 0, 20, 20);
-	}
-	
 	
 	public Main() {
 		setMinimumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
@@ -41,9 +50,8 @@ public class Main extends Canvas implements Runnable{
 		frame.add(this, BorderLayout.CENTER);
 		text.setBounds(0,0,WIDTH,HEIGHT);
 		frame.add(text);
-		frame.add();
 		frame.pack();
-		
+		frame.getContentPane().add(new MyCanvas());
 		frame.setResizable(false);
 		frame.setSize(getPreferredSize());
 		frame.setLocationRelativeTo(null);
@@ -65,9 +73,10 @@ public class Main extends Canvas implements Runnable{
 			//System.out.println("Hello World!");			
 		//}
 	}
-	
-	 public static void main(String[] args) {
-		new Main().start();
+	public static void main(String[] args) {
+		new Main().start();		
 	}
+	
+	 
 }
 
