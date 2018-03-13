@@ -1,17 +1,19 @@
 package rogueSomething;
 
-import java.awt.*;
 import javax.swing.JFrame;
-@SuppressWarnings("unused")
-public class Window 
+
+public class Window
 {
-	public JFrame makeWindow(int l, int w, String t)
+	public JFrame makeWindow(int width, int height, String t)
 	{
-		
 		JFrame window = new JFrame(t);
 		
-		window.setBounds(500,500, l, w);
+		window.setSize(width, height);
+		window.setLocationRelativeTo(null);
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setResizable(false);
 		window.setVisible(true);
+		window.add(new Board());
 		return window;
 	}
 }
