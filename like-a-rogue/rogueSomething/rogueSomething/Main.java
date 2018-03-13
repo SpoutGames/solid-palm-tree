@@ -2,7 +2,7 @@ package rogueSomething;
 
 import java.awt.*;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 public class Main extends Canvas implements Runnable{
 
@@ -16,6 +16,16 @@ public class Main extends Canvas implements Runnable{
 	public boolean running = false;
 	
 	private JFrame frame;
+	private JLabel text;
+	private Graphics2D g;
+	
+	public paint() {
+		g = (Graphics2D) g;
+		g.drawRect (0, 0, 20, 20);
+		g.setColor(Color.MAGENTA);
+		g.fillRect(0, 0, 20, 20);
+	}
+	
 	
 	public Main() {
 		setMinimumSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
@@ -23,14 +33,19 @@ public class Main extends Canvas implements Runnable{
 		setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
 				
 		frame = new JFrame(NAME);
+		text = new JLabel(NAME);
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(new BorderLayout());
 		
 		frame.add(this, BorderLayout.CENTER);
+		text.setBounds(0,0,WIDTH,HEIGHT);
+		frame.add(text);
+		frame.add();
 		frame.pack();
 		
 		frame.setResizable(false);
+		frame.setSize(getPreferredSize());
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
@@ -46,9 +61,9 @@ public class Main extends Canvas implements Runnable{
 	}
 	
 	public void run(){
-		while (running){
-			System.out.println("Hello World!");			
-		}
+		//while (running){
+			//System.out.println("Hello World!");			
+		//}
 	}
 	
 	 public static void main(String[] args) {
