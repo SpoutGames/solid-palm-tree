@@ -24,4 +24,6 @@ public class KeyListener extends JPanel{
 			x++;
 		}		
 	}
+	Main otherMain = new Main();
+	otherMain.setX(x);
 }

@@ -24,6 +24,5 @@ public class Main{
 	public static void main(String[] a) {
 		Window window = new Window();
 		window.makeWindow(WIDTH * SCALE, HEIGHT * SCALE, NAME);
-		
 	}
 }
