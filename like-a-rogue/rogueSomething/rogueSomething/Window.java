@@ -13,7 +13,9 @@ public class Window
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(false);
 		window.setVisible(true);
-		window.add(new Board());
+		Board board = new Board();
+		window.add(board);
+		window.addKeyListener(board);
 		return window;
 	}
 }

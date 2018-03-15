@@ -17,11 +17,13 @@ public class Board extends JPanel implements KeyListener{
 	Main main = new Main();
 	int x = main.getX();
 	int y = main.getY();
-
+	
+	@SuppressWarnings("unused")
+	
 	
 	private Rectangle2D rect;
 	
-	public void int()
+	public int stop;
 	
     @Override
     public void paintComponent(Graphics g) {
@@ -29,17 +31,26 @@ public class Board extends JPanel implements KeyListener{
 
         drawRectangle(g);
     }
-    
+    public void main(String[] args)
+    {
+    	
+    	//main.setY(y);
+    }
     @Override
     public void keyPressed(KeyEvent e) 
 	{
 		if(e.getKeyCode() == KeyEvent.VK_A)
 		{
+			
 			x--;
+			super.setLocation(x, y);
+			main.setX(x);
 		}
 		if(e.getKeyCode() == KeyEvent.VK_D)
 		{
 			x++;
+			super.setLocation(x, y);
+			main.setX(x);
 		}
 	}
     
@@ -65,13 +76,13 @@ public class Board extends JPanel implements KeyListener{
 		// TODO Auto-generated method stub
 		
 	}
-
-	public void setX(int x) {
-		this.x = x;
+	
+	public void setX(int newX) {
+		x = newX;
 	}
 
-	public void setY(int y) {
-		this.y = y;
+	public void setY(int newY) {
+		y =  newY;
 	}
 
 	

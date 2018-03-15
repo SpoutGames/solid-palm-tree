@@ -12,14 +12,14 @@ public class Main{
 	public int getX() {
 		return this.x;
 	}
-	public void setX(int x) {
-		this.x = x;
+	public void setX(int thisX) {
+		x = thisX;
 	}
 	public int getY() {
 		return this.y;
 	}
-	public void setY(int y) {
-		this.y = y;
+	public void setY(int thisY) {
+		y = thisY;
 	}
 	public static void main(String[] a) {
 		Window window = new Window();
