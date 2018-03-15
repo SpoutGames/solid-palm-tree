@@ -22,8 +22,7 @@ public class KeyListener extends JPanel{
 		if(e.getKeyCode() == KeyEvent.VK_D)
 		{
 			x++;
-		}		
+		}
 	}
 	Main otherMain = new Main();
-	otherMain.setX(x);
 }

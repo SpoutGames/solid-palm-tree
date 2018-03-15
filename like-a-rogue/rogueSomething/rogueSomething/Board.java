@@ -7,7 +7,10 @@ import java.awt.geom.Rectangle2D;
 
 import javax.swing.JPanel;
 
-public class Board extends JPanel {
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+public class Board extends JPanel implements KeyListener{ 
 
 	private static final long serialVersionUID = 1L;
 	
@@ -15,6 +18,11 @@ public class Board extends JPanel {
 	int x = main.getX();
 	int y = main.getY();
 
+	
+	private Rectangle2D rect;
+	
+	public void int()
+	
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -22,7 +30,18 @@ public class Board extends JPanel {
         drawRectangle(g);
     }
     
-    
+    @Override
+    public void keyPressed(KeyEvent e) 
+	{
+		if(e.getKeyCode() == KeyEvent.VK_A)
+		{
+			x--;
+		}
+		if(e.getKeyCode() == KeyEvent.VK_D)
+		{
+			x++;
+		}
+	}
     
     private void drawRectangle(Graphics g) {
 
@@ -34,4 +53,28 @@ public class Board extends JPanel {
         g2d.draw(e);
 
     }
+
+	@Override
+	public void keyReleased(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
+	
+
+	
 }
