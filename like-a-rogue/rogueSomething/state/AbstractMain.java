@@ -2,53 +2,73 @@ package state;
 
 import framework.Window;
 
-public class AbstractMain{
+public class AbstractMain implements Runnable{
 	
-	//Variables initialize
+	//variable initialize
 		private final static int WIDTH = 320;
 		private final static int HEIGHT = WIDTH / 16 * 9;
 		private final static int SCALE = 3;
-		private final static String NAME = "Game title goes here";
+		private final static String NAME = "Title: Work in progress.";
 		private static boolean running = false;
-		private int x;
-		private int y;
+		public Thread thread;
 	
-	//setters and getters (these will probably be deleted in the future)
-		public int getX() {
-			return this.x;
+	
+	//start of thread
+		public void init() {
+			Window window = new Window();
+			window.makeWindow(WIDTH * SCALE, HEIGHT * SCALE, NAME);
 		}
-		public void setX(int thisX) {
-			x = thisX;
-		}
-		public int getY() {
-			return this.y;
-		}
-		public void setY(int thisY) {
-			y = thisY;
-		}
-		
-		
+	
 	//ticks and frame
+		//tick
+			public void tick() {
+				
+			}
 		
-		
+		//frame
+			public void frame() {
+				
+			}
 		
 		
 		
 	//Main loop
-		//Game is running
-		public void start() {
+		@Override
+		public void run() {
+			
+			init();
+			
+			while (running) {
+				tick();
+				frame();
+			}
+			
+			stop();
 			
 		}
+		//Start thread
+			public synchronized void start() {
+				if (running) {
+					return;
+				}
+				running = true;
+				thread = new Thread(this); 
+				thread.start();
+				
+			}
 		
-		//Game is not running
-		public void stop() {
-			
-		}
+		//Stop thread
+			public synchronized void stop() {
+				if (!running) {
+					return;
+				}
+				running = false;
+				try {
+					thread.join();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
 		
-		
-	//Main run command
-		public static void main(String[] a) {
-			Window window = new Window();
-			window.makeWindow(WIDTH * SCALE, HEIGHT * SCALE, NAME);
-		}
+
 }
