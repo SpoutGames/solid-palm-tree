@@ -16,78 +16,89 @@ public class Display extends JPanel implements KeyListener{
 
 	private static final long serialVersionUID = 1L;
 	
-	AbstractMain main = new AbstractMain();
-	int x = main.getX();
-	int y = main.getY();
+	//variables initialize
 	
-	@SuppressWarnings("unused")
+		AbstractMain main = new AbstractMain();
+		int x = main.getX();
+		int y = main.getY();
+		
+		public int stop;
 	
 	
-	private Rectangle2D rect;
+		
+	//does the drawing of the cube
 	
-	public int stop;
+	    @Override
+	    public void paintComponent(Graphics g) {
+	        super.paintComponent(g);
 	
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        drawRectangle(g);
-    }
-    public void main(String[] args)
-    {
-    	
-    	//main.setY(y);
-    }
-    @Override
-    public void keyPressed(KeyEvent e) 
-	{
-		if(e.getKeyCode() == KeyEvent.VK_A)
-		{
-			
-			x--;
-			super.setLocation(x, y);
-			main.setX(x);
-		}
-		if(e.getKeyCode() == KeyEvent.VK_D)
-		{
-			x++;
-			super.setLocation(x, y);
-			main.setX(x);
-		}
-	}
+	        drawRectangle(g);
+	    }
     
-    private void drawRectangle(Graphics g) {
-
-        Graphics2D g2d = (Graphics2D) g;
-        
-        Rectangle2D e = new Rectangle2D.Double(x, y, 20, 20);
-        g2d.setColor(Color.MAGENTA);
-        g2d.fillRect(x, y, 20, 20);
-        g2d.draw(e);
-
-    }
-
-	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+    
+    //Moves cube when key is pressed (Will probably be deleted in future)
+    
+	    @Override
+	    public void keyPressed(KeyEvent e) 
+		{
+			if(e.getKeyCode() == KeyEvent.VK_A)
+			{
+				
+				x--;
+				super.setLocation(x, y);
+				main.setX(x);
+			}
+			if(e.getKeyCode() == KeyEvent.VK_D)
+			{
+				x++;
+				super.setLocation(x, y);
+				main.setX(x);
+			}
+		}
+    
+	    
+	//defines properties of rectangle
+	    
+	    private void drawRectangle(Graphics g) {
 	
-	public void setX(int newX) {
-		x = newX;
-	}
+	        Graphics2D g2d = (Graphics2D) g;
+	        
+	        Rectangle2D e = new Rectangle2D.Double(x, y, 20, 20);
+	        g2d.setColor(Color.MAGENTA);
+	        g2d.fillRect(x, y, 20, 20);
+	        g2d.draw(e);
+	
+	    }
+	    
+	    
+	//sets Mains x and y to this.x,y
+	    
+		public void setX(int newX) {
+			x = newX;
+		}
+	
+		public void setY(int newY) {
+			y =  newY;
+		}
 
-	public void setY(int newY) {
-		y =  newY;
-	}
+		
+		
+		
+	//for keylistener for it to shut up
+		
+		@Override
+		public void keyReleased(KeyEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+
+		@Override
+		public void keyTyped(KeyEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
 
 	
-
 	
 }
