@@ -1,5 +1,8 @@
 package state;
 
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
+
 import framework.Window;
 
 public class AbstractMain implements Runnable{
@@ -9,25 +12,37 @@ public class AbstractMain implements Runnable{
 		private final static int HEIGHT = WIDTH / 16 * 9;
 		private final static int SCALE = 3;
 		private final static String NAME = "Title: Work in progress.";
+		private BufferStrategy bs;
+		private Graphics g;
 		private static boolean running = false;
 		public Thread thread;
 	
+		Window window = new Window();
 	
 	//start of thread
 		public void init() {
-			Window window = new Window();
 			window.makeWindow(WIDTH * SCALE, HEIGHT * SCALE, NAME);
 		}
 	
-	//ticks and frame
+	//ticks and render
 		//tick
 			public void tick() {
 				
 			}
 		
-		//frame
-			public void frame() {
+		//render
+			public void render() {
+				bs = window.getCanvas().getBufferStrategy();
+				if (bs == null) {
+					window.getCanvas().createBufferStrategy(2);
+					return;
+				}
+				g = bs.getDrawGraphics();
 				
+				
+				
+				bs.show();
+				g.dispose();
 			}
 		
 		
@@ -38,9 +53,24 @@ public class AbstractMain implements Runnable{
 			
 			init();
 			
+			int fps = 60;
+			double timePerTick = 1000000000 / fps;
+			double delta = 0;
+			long now;
+			long lastTime = System.nanoTime();
+			
+			
 			while (running) {
-				tick();
-				frame();
+				now = System.nanoTime();
+				delta += (now - lastTime) / timePerTick;
+				lastTime = now;
+				
+				if (delta >= 1) 
+				{
+					tick();
+					render();
+					delta--;
+				}
 			}
 			
 			stop();
