@@ -22,7 +22,7 @@ public class Launcher{
 	
 	//Main run command
 			public static void main(String[] a) {
-				AbstractMain game = new AbstractMain();
+				Main game = new Main();
 				game.start();
 			}	
 		

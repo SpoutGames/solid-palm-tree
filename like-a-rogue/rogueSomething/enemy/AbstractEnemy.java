@@ -1,5 +1,5 @@
 package enemy;
 
-public class AbstractEnemy {
+public abstract class AbstractEnemy {
 
 }

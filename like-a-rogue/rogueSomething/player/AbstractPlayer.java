@@ -1,5 +1,5 @@
 package player;
 
-public class AbstractPlayer {
+public abstract class AbstractPlayer {
 
 }

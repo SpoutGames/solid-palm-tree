@@ -5,7 +5,7 @@ import java.awt.image.BufferStrategy;
 
 import framework.Window;
 
-public class AbstractMain implements Runnable{
+public class Main implements Runnable{
 	
 	//variable initialize
 		private final static int WIDTH = 320;

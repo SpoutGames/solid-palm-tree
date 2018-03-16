@@ -1,5 +1,5 @@
 package map;
 
-public class AbstractMap {
+public abstract class AbstractMap {
 
 }
