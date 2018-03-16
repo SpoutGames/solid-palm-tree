@@ -2,7 +2,7 @@ package state;
 
 import framework.Window;
 
-public class Main{
+public class AbstractMain{
 	
 	//Variables initialize
 		private final static int WIDTH = 320;

@@ -7,7 +7,7 @@ import java.awt.geom.Rectangle2D;
 
 import javax.swing.JPanel;
 
-import state.Main;
+import state.AbstractMain;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -16,7 +16,7 @@ public class Display extends JPanel implements KeyListener{
 
 	private static final long serialVersionUID = 1L;
 	
-	Main main = new Main();
+	AbstractMain main = new AbstractMain();
 	int x = main.getX();
 	int y = main.getY();
 	
