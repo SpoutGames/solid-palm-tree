@@ -1,4 +1,4 @@
-package rogueSomething;
+package framework;
 
 import javax.swing.JFrame;
 
@@ -13,7 +13,7 @@ public class Window
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(false);
 		window.setVisible(true);
-		Board board = new Board();
+		Display board = new Display();
 		window.add(board);
 		window.addKeyListener(board);
 		return window;

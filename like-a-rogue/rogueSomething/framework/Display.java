@@ -1,4 +1,4 @@
-package rogueSomething;
+package framework;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -7,10 +7,12 @@ import java.awt.geom.Rectangle2D;
 
 import javax.swing.JPanel;
 
+import state.Main;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Board extends JPanel implements KeyListener{ 
+public class Display extends JPanel implements KeyListener{ 
 
 	private static final long serialVersionUID = 1L;
 	

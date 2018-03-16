@@ -1,4 +1,4 @@
-package rogueSomething;
+package state;
 
 import javax.swing.JFrame;
 

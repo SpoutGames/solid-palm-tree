@@ -1,4 +1,4 @@
-package rogueSomething;
+package state;
 
 import java.awt.event.KeyEvent;
 
