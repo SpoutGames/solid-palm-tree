@@ -19,7 +19,8 @@ public class Main implements Runnable{
 		private static boolean running = false;
 		public Thread thread;
 		
-		private State gameState;
+		private State menuState;
+		private State testState;
 		Window window = new Window();
 	
 	//start of thread
@@ -27,7 +28,9 @@ public class Main implements Runnable{
 			window.makeWindow(WIDTH * SCALE, HEIGHT * SCALE, NAME);
 			Assets.init();
 			
-			gameState = new TestingRoom();
+			testState = new TestingRoom(this);
+			menuState = new MainMenu(this);
+			State.setState(testState);
 		}
 	
 	//ticks and render
@@ -36,7 +39,6 @@ public class Main implements Runnable{
 				if (State.getState() != null) {
 					State.getState().tick();
 				}
-				State.setState(gameState);
 			}
 		
 		//render

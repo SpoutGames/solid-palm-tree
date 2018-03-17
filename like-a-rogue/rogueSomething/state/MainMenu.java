@@ -6,6 +6,11 @@ import Gfx.Assets;
 
 public class MainMenu extends State{
 
+	public MainMenu(Main game) {
+		super(game);
+		
+	}
+
 	@Override
 	public void tick() {
 		

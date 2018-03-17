@@ -6,6 +6,12 @@ public abstract class State {
 	
 	public static State currentState = null;
 	
+	protected Main game;
+	
+	public State(Main game) {
+		this.game = game;
+	}
+	
 	public static void setState(State state) {
 		currentState = state;
 	}
