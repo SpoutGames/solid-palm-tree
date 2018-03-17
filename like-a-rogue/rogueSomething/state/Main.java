@@ -6,6 +6,7 @@ import java.awt.image.BufferStrategy;
 import Gfx.Assets;
 import framework.Window;
 import map.TestingRoom;
+import player.Input;
 
 public class Main implements Runnable{
 	
@@ -19,13 +20,16 @@ public class Main implements Runnable{
 		private static boolean running = false;
 		public Thread thread;
 		
+		
 		private State menuState;
 		private State testState;
 		Window window = new Window();
+		Input newInput = new Input();
 	
 	//start of thread
 		public void init() {
 			window.makeWindow(WIDTH * SCALE, HEIGHT * SCALE, NAME);
+			window.getJFrame().addKeyListener(newInput);
 			Assets.init();
 			
 			testState = new TestingRoom(this);
@@ -36,6 +40,8 @@ public class Main implements Runnable{
 	//ticks and render
 		//tick
 			public void tick() {
+				newInput.tick();
+				
 				if (State.getState() != null) {
 					State.getState().tick();
 				}
@@ -90,6 +96,11 @@ public class Main implements Runnable{
 			stop();
 			
 		}
+		
+		public Input getInput() {
+			return newInput;
+		}
+		
 		//Start thread
 			public synchronized void start() {
 				if (running) {

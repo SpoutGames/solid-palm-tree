@@ -12,7 +12,7 @@ public class TestingRoom extends State{
 	
 	public TestingRoom(Main game) {
 		super(game);
-		player = new Player(0,0);
+		player = new Player(game, 0, 0);
 	}
 
 	@Override

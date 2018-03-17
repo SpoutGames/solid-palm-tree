@@ -6,91 +6,73 @@ import java.awt.event.*;
 public class Input implements KeyListener, MouseListener
 {
 	
-	private int x, y;
-	private static final int MOVEMENT_SPEED = 10;
-	private static final int JUMP_SPEED = 10;
-	private final int MAX_JUMP_HEIGHT = 40;
-	public Input(int newX, int newY)
-	{
-		x = newX;
-		y = newY;
-	}
+	//lists off variables
+		private boolean[] keys;
+		public boolean left, right;
 	
-	public int getX()
-	{
-		return x;
-	}
-	public int getY()
-	{
-		return y;
-	}
-	@Override
-	public void keyPressed(KeyEvent e) 
-	{
-		if(e.getKeyCode() == KeyEvent.VK_A)
-		{
-			x = x - MOVEMENT_SPEED;
+	
+	//constructor
+		public Input() {
+			keys = new boolean[256];
+		}
+	
+	
+	//will run each tick
+		public void tick() {
+			left = keys[KeyEvent.VK_A];
+			right = keys[KeyEvent.VK_D];
+		}
+	
+	
+	
+	
+	
+	//what to do when player gives input
+		@Override
+		public void keyPressed(KeyEvent e) {
+			keys[e.getKeyCode()] = true;
+		}
+	
+		@Override
+		public void keyReleased(KeyEvent e) {
+			keys[e.getKeyCode()] = false;
+		}
+	
+		@Override
+		public void keyTyped(KeyEvent arg0) {
+			// TODO Auto-generated method stub
 			
 		}
-		if(e.getKeyCode() == KeyEvent.VK_D)
-		{
-			x = x + MOVEMENT_SPEED;
-		}
-		if(e.getKeyCode() == KeyEvent.VK_SPACE)
-		{
+	
+		@Override
+		public void mouseClicked(MouseEvent arg0) {
+			// TODO Auto-generated method stub
 			
-			if(y == MAX_JUMP_HEIGHT)
-			{
-				
-			}else
-			{
-				y = y + JUMP_SPEED;
-			}
 		}
-		
-	}
+	
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+	
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+	
+		@Override
+		public void mousePressed(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+	
+		@Override
+		public void mouseReleased(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
 
-	@Override
-	public void keyReleased(KeyEvent arg0) 
-	{
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent arg0) 
-	{
-		
-		
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }
