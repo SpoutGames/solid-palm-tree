@@ -1,20 +1,20 @@
-package state;
+package map;
 
 import java.awt.Graphics;
 
 import Gfx.Assets;
+import state.State;
 
-public class MainMenu extends State{
+public class TestingRoom extends State{
 
 	@Override
 	public void tick() {
-		
 		
 	}
 
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(Assets.dirt, 0, 0, null);
+		g.drawImage(Assets.stone, 0, 0, null);
 		
 	}
 

@@ -2,7 +2,7 @@ package player;
 
 
 import java.awt.event.*;
-@SuppressWarnings("unused")
+
 public class Input implements KeyListener, MouseListener
 {
 	

@@ -3,7 +3,9 @@ package state;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
+import Gfx.Assets;
 import framework.Window;
+import map.TestingRoom;
 
 public class Main implements Runnable{
 	
@@ -16,18 +18,25 @@ public class Main implements Runnable{
 		private Graphics g;
 		private static boolean running = false;
 		public Thread thread;
-	
+		
+		private State gameState;
 		Window window = new Window();
 	
 	//start of thread
 		public void init() {
 			window.makeWindow(WIDTH * SCALE, HEIGHT * SCALE, NAME);
+			Assets.init();
+			
+			gameState = new TestingRoom();
 		}
 	
 	//ticks and render
 		//tick
 			public void tick() {
-				
+				if (State.getState() != null) {
+					State.getState().tick();
+				}
+				State.setState(gameState);
 			}
 		
 		//render
@@ -38,15 +47,18 @@ public class Main implements Runnable{
 					return;
 				}
 				g = bs.getDrawGraphics();
-				
-				
+				//clear screen
+					g.clearRect(0, 0, WIDTH, HEIGHT);
+				//draw to screen
+					
+					if (State.getState() != null) {
+						State.getState().render(g);
+					}
 				
 				bs.show();
 				g.dispose();
 			}
-		
-		
-		
+
 	//Main loop
 		@Override
 		public void run() {
@@ -99,6 +111,7 @@ public class Main implements Runnable{
 					e.printStackTrace();
 				}
 			}
+			
 		
 
 }
