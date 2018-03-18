@@ -2,6 +2,8 @@ package framework;
 
 import java.awt.Graphics;
 
+import map.World;
+
 public abstract class Entity {
 	
 	public abstract void tick();
@@ -19,13 +21,13 @@ public abstract class Entity {
 		y = newY;
 	}
 	
-	public boolean isColliding()
+	//public boolean isColliding()
 	{
-		if()
+		
 	}
 	public void Gravity()
 	{
-		if(isColliding())
+		//if(isColliding())
 		{
 			
 		}

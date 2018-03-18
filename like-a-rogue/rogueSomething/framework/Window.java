@@ -24,8 +24,8 @@ public class Window extends JPanel
 			
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.setResizable(false);
-			frame.setLocationRelativeTo(null);
 			frame.setSize(width, height);
+			frame.setLocationRelativeTo(null);
 			
 			
 			cnvs = new Canvas();

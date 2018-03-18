@@ -23,6 +23,7 @@ public class TestingRoom extends State{
 	@Override
 	public void render(Graphics g) {
 		player.render(g);
+		
 	}
 
 }
