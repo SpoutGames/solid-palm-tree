@@ -1,6 +1,8 @@
 package framework;
 
 import java.awt.Graphics;
+import map.*;
+import state.Main;
 
 public abstract class Entity {
 	
@@ -11,24 +13,26 @@ public abstract class Entity {
 	protected double x, y;
 	private double gravityConstant;
 	private World world;
-	public Entity(int newX, int newY) 
+	public Entity(int newX, int newY)
 	{
-		world = new World();
+		//world = new World(game);
 		gravityConstant = 1;
 		x = newX;
 		y = newY;
 	}
 	
+	/*
 	public boolean isColliding()
 	{
-		if()
+		//if(world.getTiles)
 	}
+	*/
 	public void Gravity()
 	{
-		if(isColliding())
-		{
-			
-		}
+		//if(isColliding())
+		//{
+		//	
+		//}
 	}
 	//getters and setters
 	public void setX(float x) 
