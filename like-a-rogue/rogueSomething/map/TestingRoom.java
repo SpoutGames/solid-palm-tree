@@ -19,7 +19,7 @@ public class TestingRoom extends State{
 	public void tick() {
 		player.tick();
 	}
-
+	
 	@Override
 	public void render(Graphics g) {
 		player.render(g);

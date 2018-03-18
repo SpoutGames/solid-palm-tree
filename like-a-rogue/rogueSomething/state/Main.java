@@ -34,7 +34,7 @@ public class Main implements Runnable{
 			
 			testingRoom = new TestingRoom(this);
 			menuState = new MainMenu(this);
-			State.setState(menuState);
+			State.setState(testingRoom);
 		}
 	
 	//ticks and render
@@ -51,12 +51,13 @@ public class Main implements Runnable{
 			public void render() {
 				bs = window.getCanvas().getBufferStrategy();
 				if (bs == null) {
-					window.getCanvas().createBufferStrategy(2);
+					window.getCanvas().createBufferStrategy(3);
 					return;
 				}
+				
 				g = bs.getDrawGraphics();
 				//clear screen
-					g.clearRect(0, 0, WIDTH, HEIGHT);
+					g.clearRect(0, 0, WIDTH*SCALE, HEIGHT*SCALE);
 				//draw to screen
 					
 					if (State.getState() != null) {

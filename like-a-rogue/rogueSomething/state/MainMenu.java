@@ -2,8 +2,6 @@ package state;
 
 import java.awt.Graphics;
 
-import Gfx.Assets;
-
 public class MainMenu extends State{
 	
 	Main game = new Main();
