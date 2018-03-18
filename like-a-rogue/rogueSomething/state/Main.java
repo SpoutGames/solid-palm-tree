@@ -22,7 +22,7 @@ public class Main implements Runnable{
 		
 		
 		private State menuState;
-		private State testState;
+		private State testingRoom;
 		Window window = new Window();
 		Input newInput = new Input();
 	
@@ -32,9 +32,9 @@ public class Main implements Runnable{
 			window.getJFrame().addKeyListener(newInput);
 			Assets.init();
 			
-			testState = new TestingRoom(this);
+			testingRoom = new TestingRoom(this);
 			menuState = new MainMenu(this);
-			State.setState(testState);
+			State.setState(menuState);
 		}
 	
 	//ticks and render
@@ -100,6 +100,8 @@ public class Main implements Runnable{
 		public Input getInput() {
 			return newInput;
 		}
+		
+		
 		
 		//Start thread
 			public synchronized void start() {

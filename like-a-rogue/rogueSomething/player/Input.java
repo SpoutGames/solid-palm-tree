@@ -9,6 +9,7 @@ public class Input implements KeyListener, MouseListener
 	//lists off variables
 		private boolean[] keys;
 		public boolean left, right;
+		public boolean mUp, mDown;
 	
 	
 	//constructor
@@ -21,6 +22,9 @@ public class Input implements KeyListener, MouseListener
 		public void tick() {
 			left = keys[KeyEvent.VK_A];
 			right = keys[KeyEvent.VK_D];
+			
+			mUp = keys[KeyEvent.VK_W];
+			mDown = keys[KeyEvent.VK_S];
 		}
 	
 	
