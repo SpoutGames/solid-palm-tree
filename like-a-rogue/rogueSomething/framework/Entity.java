@@ -10,7 +10,8 @@ public abstract class Entity {
 	
 	protected float x, y;
 	
-	public Entity(int x, int y) {
+	public Entity(int x, int y) 
+	{
 		this.x = x;
 		this.y = y;
 	}
@@ -18,18 +19,22 @@ public abstract class Entity {
 	
 	
 	//getters and setters
-		public void setX(float x) {
+		public void setX(float x) 
+		{
 			this.x = x;
 		}
 	
-		public float getX() {
+		public float getX() 
+		{
 			return x;
 		}
 		
-		public void setY(float y) {
+		public void setY(float y) 
+		{
 			this.y = y;
 		}
-		public float getY() {
+		public float getY() 
+		{
 			return y;
 		}
 	
