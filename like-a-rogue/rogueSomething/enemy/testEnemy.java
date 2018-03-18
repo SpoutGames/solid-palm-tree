@@ -29,7 +29,7 @@ public class testEnemy extends enemyAi{
 	}
 
 	public void render(Graphics g) {
-		g.drawImage(Assets.stone,(int) x+move, 20, null);		
+		g.drawImage(Assets.stone,(int) x + move, 20, null);		
 	}
 
 }
