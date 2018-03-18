@@ -25,7 +25,7 @@ public class testEnemy extends enemyAi{
 		if (x != playerx) {
 			move += Math.signum((playerx - x));
 		}
-		
+		//test to see branches
 	}
 
 	public void render(Graphics g) {
