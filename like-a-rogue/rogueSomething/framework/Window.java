@@ -32,7 +32,6 @@ public class Window extends JPanel
 			cnvs.setPreferredSize(new Dimension(width, height));
 			cnvs.setMaximumSize(new Dimension(width, height));
 			cnvs.setMinimumSize(new Dimension(width, height));
-			
 			cnvs.setFocusable(false);
 			cnvs.setSize(getPreferredSize());
 					

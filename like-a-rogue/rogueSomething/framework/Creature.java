@@ -1,5 +1,9 @@
 package framework;
 
+import java.awt.Graphics;
+
+import state.Main;
+
 public abstract class Creature extends Entity{
 	
 	//defaults
@@ -12,7 +16,7 @@ public abstract class Creature extends Entity{
 	
 	public float xMove, yMove;
 	
-	public Creature(int x, int y) {
+	public Creature(Main game, int x, int y) {
 		super(x, y);
 		health = DEFAULT_HEALTH;
 		horizontalSpeed = DEFAULT_HORIZONTAL_SPEED;
@@ -38,6 +42,16 @@ public abstract class Creature extends Entity{
 
 	public void setyMove(float yMove) {
 		this.yMove = yMove;
+	}
+
+	public void render(Graphics g) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void tick() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

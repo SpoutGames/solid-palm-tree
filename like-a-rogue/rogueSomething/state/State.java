@@ -12,7 +12,7 @@ public abstract class State {
 		this.game = game;
 	}
 	
-	public static void setState(State state) {
+	public static  void setState(State state) {
 		currentState = state;
 	}
 	public static State getState() {

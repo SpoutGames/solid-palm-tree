@@ -7,6 +7,7 @@ import Gfx.Assets;
 import framework.Window;
 import map.TestingRoom;
 import player.Input;
+import player.Player;
 
 public class Main implements Runnable{
 	
@@ -23,6 +24,7 @@ public class Main implements Runnable{
 		
 		private State menuState;
 		private State testingRoom;
+		
 		Window window = new Window();
 		Input newInput = new Input();
 	

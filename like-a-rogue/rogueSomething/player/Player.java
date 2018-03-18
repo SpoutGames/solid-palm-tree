@@ -11,7 +11,7 @@ public class Player extends Creature{
 	private Main game;
 	
 	public Player(Main game, int x, int y) {
-		super(x, y);
+		super(game, x, y);
 		this.game = game;
 	}
 
@@ -32,6 +32,10 @@ public class Player extends Creature{
 		}
 	}
 
+	public double getX() {
+		return x;
+	}
+	
 	@Override
 	public void render(Graphics g) {
 		g.drawImage(Assets.temPlayer, (int) x, (int) y, null);
