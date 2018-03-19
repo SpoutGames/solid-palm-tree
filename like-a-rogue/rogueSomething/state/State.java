@@ -4,23 +4,32 @@ import java.awt.Graphics;
 
 public abstract class State {
 	
-	public static State currentState = null;
+	//constants
 	
-	protected Main game;
+	//public
+		public static State currentState = null;
+		public static State state;
+		//abstract
+			public abstract void tick();
+			public abstract void render(Graphics g);
 	
-	public State(Main game) {
-		this.game = game;
-	}
+	//objects
+			protected Main game;
 	
-	public static  void setState(State state) {
-		currentState = state;
-	}
-	public static State getState() {
-		return currentState;
-	}
+	//constructor
+		public State(Main game) {
+			this.game = game;
+		}
+	
+	//getters and setters
+		public static void setState(State state) {
+			currentState = state;
+		}
+		public static State getState() {
+			return currentState;
+		}
 	
 	
 	
-	public abstract void tick();
-	public abstract void render(Graphics g);
+	
 }

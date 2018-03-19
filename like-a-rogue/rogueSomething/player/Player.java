@@ -18,23 +18,22 @@ public class Player extends Creature{
 	@Override
 	public void tick() {
 		input();
+		move();
 	}
 	
 	public void input() {
-		xMove = 0;
-		yMove = 0;
-
 		if (game.getInput().left) {
-			x += -horizontalSpeed;
+			xMove = -horizontalSpeed;
 		}
 		if (game.getInput().right) {
-			x += horizontalSpeed;
+			xMove = horizontalSpeed;
+		}
+		if (!game.getInput().left && !game.getInput().right) {
+			xMove = 0;
+			velX = 0;
 		}
 	}
 
-	public double getX() {
-		return x;
-	}
 	
 	@Override
 	public void render(Graphics g) {

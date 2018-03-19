@@ -12,24 +12,18 @@ public abstract class enemyAi extends Creature {
 		protected static final int DEFAULT_BEHAVIOUR = 0;
 		
 		
-	//variables
+	//public
 		public int damage, behaviour;
-	
-	
-	private Main game;
+		//abstract
+			public abstract void tick();
+			public abstract void render(Graphics g);
 
-	public enemyAi(Main game, int x, int y) {
-		super(game, x, y);
-		this.game = game;
-		damage = DEFAULT_DAMAGE;
-		behaviour = DEFAULT_BEHAVIOUR;
 		
-	}
-
-
-
-
-
-	public abstract void tick();
-	public abstract void render(Graphics g);
+	//constructor
+		public enemyAi(Main game, int x, int y) {
+			super(game, x, y);
+			damage = DEFAULT_DAMAGE;
+			behaviour = DEFAULT_BEHAVIOUR;
+			
+		}
 }

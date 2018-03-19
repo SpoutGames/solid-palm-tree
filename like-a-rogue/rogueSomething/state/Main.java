@@ -7,27 +7,32 @@ import Gfx.Assets;
 import framework.Window;
 import map.TestingRoom;
 import player.Input;
-import player.Player;
 
 public class Main implements Runnable{
 	
-	//variable initialize
+	//constants
 		private final static int WIDTH = 320;
 		private final static int HEIGHT = WIDTH / 16 * 9;
 		private final static int SCALE = 3;
 		private final static String NAME = "Title: Work in progress.";
-		private BufferStrategy bs;
-		private Graphics g;
-		private static boolean running = false;
-		public Thread thread;
 		
+	//variables
+		//privates
+			private BufferStrategy bs;
+			private Graphics g;
+			private static boolean running = false;
+			private State menuState;
+			private State testingRoom;
+			
+		//public
+			public Thread thread;
 		
-		private State menuState;
-		private State testingRoom;
-		
-		Window window = new Window();
-		Input newInput = new Input();
+		//objects
+			Window window = new Window();
+			Input newInput = new Input();
 	
+			
+			
 	//start of thread
 		public void init() {
 			window.makeWindow(WIDTH * SCALE, HEIGHT * SCALE, NAME);
@@ -38,6 +43,8 @@ public class Main implements Runnable{
 			menuState = new MainMenu(this);
 			State.setState(testingRoom);
 		}
+		
+		
 	
 	//ticks and render
 		//tick
@@ -98,13 +105,11 @@ public class Main implements Runnable{
 			
 			stop();
 			
-		}
+		}	
 		
 		public Input getInput() {
 			return newInput;
 		}
-		
-		
 		
 		//Start thread
 			public synchronized void start() {
