@@ -11,6 +11,10 @@ public abstract class State {
 	public State(Main game) {
 		this.game = game;
 	}
+	public State()
+	{
+		
+	}
 	
 	public static  void setState(State state) {
 		currentState = state;

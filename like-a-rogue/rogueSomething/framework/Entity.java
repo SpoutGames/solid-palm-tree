@@ -3,6 +3,7 @@ package framework;
 import java.awt.Graphics;
 
 import map.World;
+import state.Main;
 
 public abstract class Entity {
 	
@@ -13,9 +14,9 @@ public abstract class Entity {
 	protected double x, y;
 	private double gravityConstant;
 	private World world;
-	public Entity(int newX, int newY) 
+	public Entity(int newX, int newY, Main game) 
 	{
-		world = new World();
+		world = new World(game);
 		gravityConstant = 1;
 		x = newX;
 		y = newY;
