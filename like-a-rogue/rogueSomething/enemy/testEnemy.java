@@ -21,9 +21,9 @@ public class testEnemy extends enemyAi{
 
 	public void tick() {
 		
-		double playerx = player.getX();
-		if (x != playerx) {
-			move += Math.signum((playerx - x));
+		double move = player.getX();
+		if (x+move != playerx) {
+			move += Math.signum((playerx - x+move));
 		}
 		
 	}
