@@ -2,8 +2,8 @@ package enemy;
 
 import java.awt.Graphics;
 
-import framework.Creature;
-import state.Main;
+import entity.Creature;
+import framework.Main;
 
 public abstract class enemyAi extends Creature {
 

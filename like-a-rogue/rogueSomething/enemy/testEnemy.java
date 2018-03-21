@@ -3,7 +3,7 @@ package enemy;
 import java.awt.Graphics;
 
 import Gfx.Assets;
-import state.Main;
+import framework.Main;
 
 public class testEnemy extends enemyAi{
 

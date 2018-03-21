@@ -2,6 +2,8 @@ package state;
 
 import java.awt.Graphics;
 
+import framework.Handler;
+
 public abstract class State {
 	
 	//constants
@@ -14,11 +16,11 @@ public abstract class State {
 			public abstract void render(Graphics g);
 	
 	//objects
-			protected Main game;
+		protected Handler handler;
 	
 	//constructor
-		public State(Main game) {
-			this.game = game;
+		public State(Handler handler) {
+			this.handler = handler;
 		}
 	
 	//getters and setters

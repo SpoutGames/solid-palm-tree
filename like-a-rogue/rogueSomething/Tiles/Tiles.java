@@ -5,30 +5,42 @@ import java.awt.image.BufferedImage;
 
 public class Tiles {
 	
-	protected BufferedImage texture;
-	private final int id;
+	
+	//static
+		public static Tiles[] tiles = new Tiles[200];
+		public static Tiles topGrassTile = new TopGrassTile(0);
+	
+	//protected
+		protected BufferedImage texture;
+		protected int id;
 	
 	
-	private static Tiles[] tile;
+	//constructor
+		public Tiles(BufferedImage texture, int id) {
+			this.texture = texture;
+			this.id = id;
+			
+			tiles[id] = this;
+		}
 	
-	public Tiles(BufferedImage newTexture, int newId){
-		this.texture = newTexture;
-		this.id = newId;
 		
-	}
-	
-	
-	
-	public void tick() {
+	//methods
 		
-	}
-	
-	public void render(Graphics g, int x, int y) {
-		g.drawImage(texture, x, y, null);
-	}
-	
-	
-	public int getId() {
-		return id;
-	}
+		public void tick() {
+			
+		}
+		
+		public void render(Graphics g, int x, int y) {
+			g.drawImage(texture, x, y, null);
+		}
+		
+				
+	//getters and setters
+		public boolean isSolid() {
+			return true;
+		}
+		
+		public int getId() {
+			return id;
+		}
 }

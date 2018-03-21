@@ -7,8 +7,6 @@ import java.awt.geom.Rectangle2D;
 
 import javax.swing.JPanel;
 
-import state.Launcher;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 

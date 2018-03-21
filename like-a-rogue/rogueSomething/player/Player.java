@@ -3,16 +3,16 @@ package player;
 import java.awt.Graphics;
 
 import Gfx.Assets;
-import framework.Creature;
-import state.Main;
+import entity.Creature;
+import framework.Handler;
 
 public class Player extends Creature{
 	
-	private Main game;
+	private Handler handler;
 	
-	public Player(Main game, int x, int y) {
-		super(game, x, y);
-		this.game = game;
+	public Player(Handler handler, int x, int y) {
+		super(handler, x, y);
+		this.handler = handler;
 	}
 
 	@Override
@@ -22,13 +22,13 @@ public class Player extends Creature{
 	}
 	
 	public void input() {
-		if (game.getInput().left) {
+		if (handler.getInput().left) {
 			xMove = -horizontalSpeed;
 		}
-		if (game.getInput().right) {
+		if (handler.getInput().right) {
 			xMove = horizontalSpeed;
 		}
-		if (!game.getInput().left && !game.getInput().right) {
+		if (!handler.getInput().left && !handler.getInput().right) {
 			xMove = 0;
 			velX = 0;
 		}
