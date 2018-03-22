@@ -4,14 +4,19 @@ import java.awt.Graphics;
 import Tiles.Tiles;
 public class World
 {
-	private int width, height;
-	private int[][] tiles;
+	//privates
+		private int width, height;
+		private int[][] tiles;
+		
+	//objects
+		private Handler handler;
 
 	
 	
 	//constructor
-		public World(String path) {
+		public World(Handler handler, String path) {
 			loadWorld(path);
+			this.handler = handler;
 		}
 
 	
@@ -45,7 +50,7 @@ public class World
 		public void render(Graphics g) {
 			for (int y = 0; y < height; y++) {
 				for (int x = 0; x < width; x++) {
-					getTile(x, y).render(g, x * 16, y * 16);;
+					getTile(x, y).render(g, (int) ((x * 16) - handler.getxOffset()), (int) ((y * 16) - handler.getyOffset()));
 				}
 			}
 		}

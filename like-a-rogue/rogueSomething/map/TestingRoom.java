@@ -2,8 +2,6 @@ package map;
 
 import java.awt.Graphics;
 
-import Tiles.Tiles;
-import enemy.testEnemy;
 import framework.Handler;
 import framework.World;
 import player.Player;
@@ -12,12 +10,13 @@ import state.State;
 public class TestingRoom extends State{
 	
 	private static Player player;
-	private testEnemy enemy;
 	private World test;
 	
 	public TestingRoom(Handler handler) {
 		super(handler);
 		player = new Player(handler, 0, 0);
+		
+		handler.getCamera().move(0, 0);
 	}
 
 	public static Player getPlayer() {
@@ -27,7 +26,7 @@ public class TestingRoom extends State{
 
 	@Override
 	public void tick() {
-		test = new World("");
+		test = new World(handler, "");
 		player.tick();
 	}
 	

@@ -6,6 +6,7 @@ import Gfx.Assets;
 import entity.Creature;
 import framework.Handler;
 
+
 public class Player extends Creature{
 	
 	private Handler handler;
@@ -19,6 +20,8 @@ public class Player extends Creature{
 	public void tick() {
 		input();
 		move();
+		
+		handler.getCamera().centerCameraOnEntity(this);
 	}
 	
 	public void input() {
@@ -33,11 +36,13 @@ public class Player extends Creature{
 			velX = 0;
 		}
 	}
-
+	
+	
+	
 	
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(Assets.temPlayer, (int) x, (int) y, null);
+		g.drawImage(Assets.temPlayer, (int) (x - handler.getxOffset()), (int) (y - handler.getyOffset()), null);
 	}
 
 }

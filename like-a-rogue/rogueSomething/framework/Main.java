@@ -11,8 +11,8 @@ import state.State;
 public class Main implements Runnable{
 	
 	//constants
-		private final static int WIDTH = 320;
-		private final static int HEIGHT = WIDTH / 16 * 9;
+		private final int WIDTH = 320;
+		private final int HEIGHT = WIDTH / 16 * 9;
 		private final static int SCALE = 3;
 		private final static String NAME = "Title: Work in progress.";
 		
@@ -29,6 +29,7 @@ public class Main implements Runnable{
 			Window window = new Window();
 			Input newInput = new Input();
 			Handler handler;
+			Camera camera;
 			private TestingRoom test;
 			
 	//start of thread
@@ -38,6 +39,9 @@ public class Main implements Runnable{
 			Assets.init();
 			
 			handler = new Handler(this);
+			camera = new Camera(handler, 0, 0);
+			
+			
 			test = new TestingRoom(handler);
 			State.setState(test);
 		}
@@ -111,6 +115,11 @@ public class Main implements Runnable{
 			return newInput;
 		}
 		
+		
+		public Camera getCamera() {
+			return camera;
+		}
+		
 		//Start thread
 			public synchronized void start() {
 				if (running) {
@@ -133,8 +142,15 @@ public class Main implements Runnable{
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-			}
+			}		
 			
-		
+			
+		//getters and setters
+			public double getWidth() {
+				return this.WIDTH * this.SCALE;
+			}
+			public double getHeight() {
+				return this.HEIGHT * this.SCALE;
+			}
 
 }
