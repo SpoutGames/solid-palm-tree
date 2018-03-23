@@ -15,6 +15,10 @@ public class Tiles {
 	//protected
 		protected BufferedImage texture;
 		protected int id;
+		
+	//private
+		private static final int tileWidth = 48;
+		private static final int tileHeight = 48;
 	
 	
 	//constructor
@@ -33,16 +37,34 @@ public class Tiles {
 		}
 		
 		public void render(Graphics g, int x, int y) {
-			g.drawImage(texture, x, y, null);
+			g.drawImage(texture, x, y, tileWidth, tileHeight, null);
 		}
 		
 				
 	//getters and setters
 		public boolean isSolid() {
-			return true;
+			return false;
 		}
 		
 		public int getId() {
 			return id;
 		}
+
+
+		public static int getTileWidth() {
+			return tileWidth;
+		}
+
+
+		public static int getTileHeight() {
+			return tileHeight;
+		}
+
+
+		public static Tiles dirt() {
+			return dirt;
+		}
+
+		
+		
 }

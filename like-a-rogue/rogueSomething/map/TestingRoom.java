@@ -14,7 +14,7 @@ public class TestingRoom extends State{
 	
 	public TestingRoom(Handler handler) {
 		super(handler);
-		player = new Player(handler, 0, 0);
+		player = new Player(handler, -64, 0);
 		
 		handler.getCamera().move(0, 0);
 	}
@@ -32,8 +32,11 @@ public class TestingRoom extends State{
 	
 	@Override
 	public void render(Graphics g) {
+		
 		test.render(g);
+		
 		player.render(g);
+		
 	}
 	
 	

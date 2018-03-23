@@ -147,10 +147,10 @@ public class Main implements Runnable{
 			
 		//getters and setters
 			public double getWidth() {
-				return this.WIDTH * this.SCALE;
+				return this.WIDTH * Main.SCALE;
 			}
 			public double getHeight() {
-				return this.HEIGHT * this.SCALE;
+				return this.HEIGHT * Main.SCALE;
 			}
 
 }
