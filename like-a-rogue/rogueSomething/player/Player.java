@@ -34,6 +34,9 @@ public class Player extends Creature{
 		if (handler.getInput().right) {
 			xMove = horizontalSpeed;
 		}
+		if (handler.getInput().up) {
+			velocityY = -5;
+		}
 		if (!handler.getInput().left && !handler.getInput().right) {
 			xMove = 0;
 		}

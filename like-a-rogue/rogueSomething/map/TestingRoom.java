@@ -14,7 +14,7 @@ public class TestingRoom extends State{
 	
 	public TestingRoom(Handler handler) {
 		super(handler);
-		player = new Player(handler, -64, 0);
+		player = new Player(handler, 0, -64);
 		
 		handler.getCamera().move(0, 0);
 	}

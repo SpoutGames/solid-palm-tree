@@ -9,7 +9,7 @@ public abstract class Creature extends Entity{
 	
 	//constants
 		public static final int DEFAULT_HEALTH = 30;
-		public static final double DEFAULT_HORIZONTAL_SPEED = 1;
+		public static final double DEFAULT_HORIZONTAL_SPEED = 5;
 		public static final double DEFAULT_JUMP_SPEED = 2;
 		
 	//protected
@@ -47,18 +47,35 @@ public abstract class Creature extends Entity{
 		}
 		
 		public void moveX() {
-			if (xMove != 0) {
-				if (!collidingWithTile((int)(x + bounds.width + xMove),(int) y)){
+			if (xMove > 0) {
+				if (!collidingWithTile((int)((x + bounds.width + xMove)/48),(int) y) && !collidingWithTile((int)((x + bounds.width + xMove)/48),(int) (y+bounds.height))){
 					x += xMove;
 				} else {
-					while (!collidingWithTile((int)Math.signum(x + bounds.width + xMove),(int) y)) {
+					while (!collidingWithTile((int)((x + bounds.width + 1)/48),(int) y) && !collidingWithTile((int)((x + bounds.width + 1)/48),(int) (y+bounds.height))) {
 						x += 1;
 					}
 				}
 			}
+			if (xMove < 0) {
+				if (!collidingWithTile((int)(x + xMove),(int) y)){
+					x += xMove;
+				}
+			}
 		}
 		public void moveY() {
-			
+			y += velocityY;
+			if (!collidingWithTile((int)x,(int)((y+bounds.height+velocityY+1)/48))) {
+				if (velocityY < 3) {
+					velocityY += .5;
+				}
+			} else {
+				while (!collidingWithTile((int)x,(int)((y + bounds.height + 1)/48))) {
+					y += Math.signum(velocityY);
+				}
+			}
+			if (collidingWithTile((int)x,(int)((y+bounds.height+1)/48))) {
+				velocityY = 0;
+			}
 		}
 		
 		

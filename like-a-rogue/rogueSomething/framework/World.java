@@ -6,7 +6,7 @@ import Tiles.Tiles;
 public class World
 {
 	//privates
-		private int width, height;
+		private int width = 10, height = 1;
 		private int[][] tilesPos;		
 	//objects
 		private Handler handler;	
@@ -22,8 +22,6 @@ public class World
 	
 	//functions 
 		private void loadWorld(String path) {
-			width = 10;
-			height = 1;
 			tilesPos = new int[width][height];
 			
 			for (int x = 0; x < width; x++) {
@@ -35,19 +33,21 @@ public class World
 		
 		public Tiles getTile(int x, int y) {
 			if (x < 0 || y < 0) {
-				return Tiles.dirt();
+				return Tiles.tiles[1];
 			}
 			try {
 				Tiles t = Tiles.tiles[tilesPos[x][y]];
+				if (t == null) {
+					return Tiles.tiles[1];
+				}
 				return t;
 			}
 			catch (ArrayIndexOutOfBoundsException e){
-				return Tiles.tiles[0];
+				return Tiles.tiles[1];
 			}
 		}
 		
 		public void tick() {
-			
 			
 		}
 	

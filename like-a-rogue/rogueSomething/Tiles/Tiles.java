@@ -59,12 +59,6 @@ public class Tiles {
 		public static int getTileHeight() {
 			return tileHeight;
 		}
-
-
-		public static Tiles dirt() {
-			return dirt;
-		}
-
 		
 		
 }
