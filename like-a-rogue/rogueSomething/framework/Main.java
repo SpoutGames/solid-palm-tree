@@ -6,6 +6,7 @@ import java.awt.image.BufferStrategy;
 import Gfx.Assets;
 import map.TestingRoom;
 import player.Input;
+import state.MainMenu;
 import state.State;
 
 public class Main implements Runnable{
@@ -30,7 +31,8 @@ public class Main implements Runnable{
 			Input newInput = new Input();
 			Handler handler;
 			Camera camera;
-			private TestingRoom test;
+			public TestingRoom test;
+			public MainMenu mainMenu;
 			
 	//start of thread
 		public void init() {
@@ -41,9 +43,9 @@ public class Main implements Runnable{
 			handler = new Handler(this);
 			camera = new Camera(handler, 0, 0);
 			
-			
+			mainMenu = new MainMenu(handler);
 			test = new TestingRoom(handler);
-			State.setState(test);
+			State.setState(mainMenu);
 		}
 		
 		

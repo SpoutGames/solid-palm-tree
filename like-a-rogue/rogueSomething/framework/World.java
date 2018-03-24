@@ -32,9 +32,7 @@ public class World
 		}
 		
 		public Tiles getTile(int x, int y) {
-			if (x < 0 || y < 0) {
-				return Tiles.tiles[1];
-			}
+
 			try {
 				Tiles t = Tiles.tiles[tilesPos[x][y]];
 				if (t == null) {

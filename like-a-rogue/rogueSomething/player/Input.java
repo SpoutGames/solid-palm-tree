@@ -13,6 +13,7 @@ public class Input implements KeyListener, MouseListener
 		private boolean[] keys;
 		public boolean left, right;
 		public boolean up;
+		public boolean backSpace;
 	
 	
 	//constructor
@@ -26,6 +27,7 @@ public class Input implements KeyListener, MouseListener
 			left = keys[KeyEvent.VK_A];
 			right = keys[KeyEvent.VK_D];
 			up = keys[KeyEvent.VK_W];
+			backSpace = keys[KeyEvent.VK_BACK_SPACE];
 		}
 	
 	

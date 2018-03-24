@@ -46,5 +46,8 @@ public class Handler{
 	public int getTileHeight() {
 		return Tiles.getTileHeight();
 	}
+	public Main getMain() {
+		return main;
+	}
 	
 }
