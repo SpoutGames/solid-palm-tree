@@ -1,2 +1,8 @@
 
-like-a-rogue/rogueSomething/map/TestingRoom.java
+*.fdx
+*.frq
+*.fdt
+like-a-rogue/.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_8.nrm
+like-a-rogue/.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_8.prx
+like-a-rogue/.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/_8.tis
+like-a-rogue/.recommenders/index/http___download_eclipse_org_recommenders_models_oxygen_/write.lock
