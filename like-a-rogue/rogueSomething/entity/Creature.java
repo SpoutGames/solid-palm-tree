@@ -45,13 +45,15 @@ public abstract class Creature extends Entity{
 		}
 		
 		public void moveX() {
-
+			x += 1;
 		}
 		public void moveY() {
-
+			
 		}
 		
-		
+		private boolean placeMeeting(int x, int y) {
+			return handler.getWorld().getTile(x,y).isSolid();
+		}
 		
 		
 	

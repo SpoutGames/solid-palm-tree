@@ -6,7 +6,7 @@ import Tiles.Tiles;
 public class World
 {
 	//privates
-		private int width = 10, height = 1;
+		private int width = 4, height = 1;
 		private int[][] tilesPos;		
 	//objects
 		private Handler handler;	
@@ -52,7 +52,7 @@ public class World
 		public void render(Graphics g) {
 			for (int x = 0; x < width; x++) {
 				for (int y = 0; y < height; y++) {
-					getTile(x, y).render(g, (int) ((x * 48) - handler.getxOffset()), (int) ((y * 48) - handler.getyOffset()));
+					getTile(x, y).render(g, (int) ((x * handler.getTileWidth()) - handler.getxOffset()), (int) ((y * 48) - handler.getyOffset()));
 				}
 			}
 		}

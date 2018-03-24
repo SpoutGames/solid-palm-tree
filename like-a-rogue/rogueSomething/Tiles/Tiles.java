@@ -17,8 +17,8 @@ public class Tiles {
 		protected int id;
 		
 	//private
-		private static final int tileWidth = 48;
-		private static final int tileHeight = 48;
+		private static final int tileWidth = 32;
+		private static final int tileHeight = 32;
 	
 	
 	//constructor
