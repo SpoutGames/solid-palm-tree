@@ -12,6 +12,7 @@ public class Player extends Creature{
 	
 	//privates
 		private boolean toggleDebug = false;
+		private boolean toggleDebugLock = false;
 	
 	private Handler handler;
 	
@@ -35,9 +36,18 @@ public class Player extends Creature{
 	}
 	
 	public void input() {
-		if (handler.getInput().fKey1) {
-			toggleDebug = !toggleDebug;
-		}
+		
+		
+		
+		//debug info
+			if (handler.getInput().fKey1) {
+				if (toggleDebugLock == false) {
+					toggleDebug = !toggleDebug;
+				}
+				toggleDebugLock = true;
+			} else {
+				toggleDebugLock = false;
+			}
 	}
 	
 	
@@ -62,7 +72,7 @@ public class Player extends Creature{
 			g.drawString("Player X: " + (int) x, 10, 10);
 			g.drawString("Player X as Tile chordinates: " + (int) x/48, 10, 25);
 			g.drawString("Player Y: " + (int) y, 10, 40);
-			g.drawString("Player X as Tile chordinates: " + (int) y/48, 10, 55);
+			g.drawString("Player Y as Tile chordinates: " + (int) y/48, 10, 55);
 			g.drawString("Checking vaule 1:  " + (int) ((x-bounds.x-48/2)/48), 10, 70);
 			g.drawString("Checking vaule 2:  " + (int) (((x-bounds.x+bounds.width)/48)), 10, 85);
 		}
