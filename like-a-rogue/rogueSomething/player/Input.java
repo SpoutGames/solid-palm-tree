@@ -11,7 +11,7 @@ public class Input implements KeyListener, MouseListener
 	
 	//lists off variables
 		private boolean[] keys;
-		public boolean left, right;
+		public boolean up, down, left, right, backSpace, space, shift, control, tab, keyE, keyQ, fKey1;
 	
 	
 	//constructor
@@ -24,6 +24,16 @@ public class Input implements KeyListener, MouseListener
 		public void tick() {
 			left = keys[KeyEvent.VK_A];
 			right = keys[KeyEvent.VK_D];
+			up = keys[KeyEvent.VK_W];
+			down = keys[KeyEvent.VK_S];
+			backSpace = keys[KeyEvent.VK_BACK_SPACE];
+			space = keys[KeyEvent.VK_SPACE];
+			shift = keys[KeyEvent.VK_SHIFT];
+			control = keys[KeyEvent.VK_CONTROL];
+			tab = keys[KeyEvent.VK_TAB];
+			keyE = keys[KeyEvent.VK_E];
+			keyQ = keys[KeyEvent.VK_Q];
+			fKey1 = keys[KeyEvent.VK_F1];
 		}
 	
 	
@@ -34,6 +44,7 @@ public class Input implements KeyListener, MouseListener
 		@Override
 		public void keyPressed(KeyEvent e) {
 			keys[e.getKeyCode()] = true;
+			
 		}
 	
 		@Override

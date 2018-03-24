@@ -12,4 +12,12 @@
 /Creature.class
 /Tiles.class
 /Item.class
+<<<<<<< HEAD
 /GameState.class
+=======
+/Main.class
+/Launcher.class
+/Handler.class
+/World.class
+/Camera.class
+>>>>>>> 59bfefeb6e64674f714b977001d4bb78831b0d57

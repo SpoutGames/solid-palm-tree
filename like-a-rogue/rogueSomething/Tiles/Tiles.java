@@ -5,30 +5,60 @@ import java.awt.image.BufferedImage;
 
 public class Tiles {
 	
-	protected BufferedImage texture;
-	private final int id;
 	
+	//static
+		public static Tiles[] tiles = new Tiles[200];
+		public static Tiles topGrassTile = new TopGrassTile(0);
+		public static Tiles stone = new StoneTile(1);
+		public static Tiles dirt = new DirtTile(2);
 	
-	private static Tiles[] tile;
-	
-	public Tiles(BufferedImage newTexture, int newId){
-		this.texture = newTexture;
-		this.id = newId;
+	//protected
+		protected BufferedImage texture;
+		protected int id;
 		
-	}
+	//private
+		private static final int tileWidth = 32;
+		private static final int tileHeight = 32;
 	
 	
+	//constructor
+		public Tiles(BufferedImage texture, int id) {
+			this.texture = texture;
+			this.id = id;
+			
+			tiles[id] = this;
+		}
 	
-	public void tick() {
 		
-	}
-	
-	public void render(Graphics g, int x, int y) {
-		g.drawImage(texture, x, y, null);
-	}
-	
-	
-	public int getId() {
-		return id;
-	}
+	//methods
+		
+		public void tick() {
+			
+		}
+		
+		public void render(Graphics g, int x, int y) {
+			g.drawImage(texture, x, y, tileWidth, tileHeight, null);
+		}
+		
+				
+	//getters and setters
+		public boolean isSolid() {
+			return false;
+		}
+		
+		public int getId() {
+			return id;
+		}
+
+
+		public static int getTileWidth() {
+			return tileWidth;
+		}
+
+
+		public static int getTileHeight() {
+			return tileHeight;
+		}
+		
+		
 }
