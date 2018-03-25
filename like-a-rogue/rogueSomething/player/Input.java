@@ -11,7 +11,7 @@ public class Input implements KeyListener, MouseListener
 	
 	//lists off variables
 		private boolean[] keys;
-		public boolean up, down, left, right, backSpace, space, shift, control, tab, keyE, keyQ, fKey1;
+		public boolean up, down, left, right, backSpace, space, shift, control, tab, keyE, keyQ, fKey1, enter;
 	
 	
 	//constructor
@@ -34,6 +34,7 @@ public class Input implements KeyListener, MouseListener
 			keyE = keys[KeyEvent.VK_E];
 			keyQ = keys[KeyEvent.VK_Q];
 			fKey1 = keys[KeyEvent.VK_F1];
+			enter = keys[KeyEvent.VK_ENTER];
 		}
 	
 	
