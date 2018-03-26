@@ -1,10 +1,12 @@
 package state;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 import javax.swing.JLabel;
 
+import Gfx.Assets;
 import framework.Handler;
 import framework.Main;
 
@@ -14,7 +16,7 @@ public class MainMenu extends State{
 	
 	//privates
 		private boolean rowToggleLock = false;
-		private int row = 0, selection = 0;
+		private int row = 0, selection = 0, cursorFix = 0;
 	
 	//publics
 	
@@ -32,17 +34,18 @@ public class MainMenu extends State{
 	//functions
 		public void menuSelection() {
 			if (row == 0) { //singlePlayer
-				
+				cursorFix = 50;
 			} else if (row == 1) { //multiplayer
-				
+				cursorFix = 50;
 			} else if (row == 2) { //options
-		
+				cursorFix = 30;
 			} else if (row == 3) { //exit
+				cursorFix = 10;
 				if (handler.getInput().enter) {
 					System.exit(0);
 				}
 			}
-			if (handler.getInput().up) {
+			if (handler.getInput().up || handler.getInput().left) {
 				if (!rowToggleLock) {
 					if (row - 1 >= 0) {
 						row -= 1;
@@ -50,7 +53,7 @@ public class MainMenu extends State{
 				}
 				rowToggleLock = true;
 			}
-			if (handler.getInput().down) {
+			if (handler.getInput().down || handler.getInput().right) {
 				if (!rowToggleLock) {
 					if (row + 1 <= 3) {
 						row += 1;
@@ -58,7 +61,7 @@ public class MainMenu extends State{
 				}
 				rowToggleLock = true;
 			}
-			if (!handler.getInput().down && !handler.getInput().up) {
+			if (!handler.getInput().down && !handler.getInput().up && !handler.getInput().left && !handler.getInput().right) {
 				rowToggleLock = false;
 			}
 		}
@@ -79,13 +82,15 @@ public class MainMenu extends State{
 		public void render(Graphics g) {
 			g.setColor(Color.BLACK);
 			g.fillRect(0, 0, (int)handler.getWidth(), (int)handler.getHeight());
-			g.setColor(Color.GRAY);
-			g.drawRect((int)handler.getWidth()/3,(int)handler.getHeight()/2,(int)handler.getWidth()/3,(int)handler.getHeight()/4);
 			
 			if (selection == 0) {
 				g.setColor(Color.WHITE);
-				g.drawString("SinglePlayer", (int)handler.getWidth()/4+80, (int)handler.getHeight()/4*2);
-				g.drawString("Multiplayer", (int)handler.getWidth()/4+80, (int)handler.getHeight()/4*2+20);
+				g.setFont(new Font("serif", Font.PLAIN, 20));
+				g.drawImage(Assets.mainMenuCursor, 0+cursorFix+150*row, (int) (handler.getHeight()-50), null);
+				g.drawString("SinglePlayer", (int)(0+10), (int)handler.getHeight()-20);
+				g.drawString("Multiplayer", (int)(0+10+150), (int)handler.getHeight()-20);
+				g.drawString("Options", (int)(0+10+150*2), (int)handler.getHeight()-20);
+				g.drawString("Exit", (int)(0+10+150*3), (int)handler.getHeight()-20);
 			}
 			
 		}
