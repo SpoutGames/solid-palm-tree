@@ -45,11 +45,17 @@ public abstract class Creature extends Entity{
 		}
 		
 		public void moveX() {
-			x += xMove;
+			if (!placeMeeting((int)(x+xMove)/handler.getTileWidth(),(int)(y-bounds.y)/handler.getTileHeight()) || !placeMeeting((int)((x - bounds.width + xMove)/handler.getTileWidth()), (int)((y-bounds.y)/handler.getTileHeight()))) {
+				x += xMove;
+			}
+			
 		}
 		public void moveY() {
 			if (!placeMeeting((int)((x - bounds.width)/handler.getTileWidth()), (int)(y/handler.getTileHeight())) || !placeMeeting((int)((x)/handler.getTileWidth()), (int)(y/handler.getTileHeight())) ) {
 				y += 1;
+				if (handler.getInput().up) {
+					y-= 2;
+				}
 			}
 		}
 		
