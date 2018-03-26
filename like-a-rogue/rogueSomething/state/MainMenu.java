@@ -2,6 +2,7 @@ package state;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 
 import javax.swing.JLabel;
@@ -17,6 +18,7 @@ public class MainMenu extends State{
 	//privates
 		private boolean rowToggleLock = false, displayDevelopment = false;
 		private int row = 0, selection = 0, cursorFix = 0;
+		private Font defaultFont = new Font("serif", Font.BOLD, 40);
 	
 	//publics
 	
@@ -120,8 +122,9 @@ public class MainMenu extends State{
 			g.fillRect(0, 0, (int)handler.getWidth(), (int)handler.getHeight());
 			
 			g.setColor(Color.WHITE);
-			g.setFont(new Font("serif", Font.BOLD, 40));
-			g.drawString("BlackROGUE", (int) (handler.getWidth()/2-150), 50);
+			FontMetrics metrics = g.getFontMetrics(defaultFont);
+			g.setFont(defaultFont);
+			g.drawString("BlackROGUE", (int) (handler.getWidth() - metrics.stringWidth("BlackROGUE"))/2, 50);
 			
 			
 			//selections
