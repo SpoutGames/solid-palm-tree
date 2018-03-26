@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
 import Gfx.Assets;
+import fonts.Fonts;
 import map.TestingRoom;
 import player.Input;
 import state.MainMenu;
@@ -27,10 +28,11 @@ public class Main implements Runnable{
 			public Thread thread;
 		
 		//objects
-			Window window = new Window();
+			Window window = new Window(this);
 			Input newInput = new Input();
 			Handler handler;
 			Camera camera;
+			Fonts fonts;
 			public TestingRoom test;
 			public MainMenu mainMenu;
 			
@@ -42,6 +44,7 @@ public class Main implements Runnable{
 			
 			handler = new Handler(this);
 			camera = new Camera(handler, 0, 0);
+			fonts = new Fonts(handler);
 			
 			mainMenu = new MainMenu(handler);
 			test = new TestingRoom(handler);
@@ -58,7 +61,7 @@ public class Main implements Runnable{
 				if (State.getState() != null) {
 					State.getState().tick();
 				}
-				
+				window.tick();
 			}
 		
 		//render
@@ -117,10 +120,15 @@ public class Main implements Runnable{
 			return newInput;
 		}
 		
-		
 		public Camera getCamera() {
 			return camera;
 		}
+		
+		public Fonts getFonts() {
+			return fonts;
+		}
+		
+		
 		
 		//Start thread
 			public synchronized void start() {

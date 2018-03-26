@@ -36,7 +36,16 @@ public class Player extends Creature{
 	}
 	
 	public void input() {
-		
+		//xMove
+			if (handler.getInput().left){
+				xMove = -hspd;
+			}
+			if (handler.getInput().right) {
+				xMove = hspd;
+			}
+			if (!handler.getInput().left && !handler.getInput().right) {
+				xMove = 0;
+			}
 		
 		
 		//debug info
@@ -56,16 +65,12 @@ public class Player extends Creature{
 	
 	
 	@Override
-	public void render(Graphics g) {
-		
+	public void render(Graphics g) {		
 		
 		g.drawImage(Assets.temPlayer, (int) (x - handler.getxOffset()), (int) (y - handler.getyOffset()), handler.getTileWidth()/2, handler.getTileHeight(), null);
 		
-		g.setColor(Color.red);
-		g.fillRect((int) ((x - bounds.width) + (bounds.x - handler.getxOffset())), (int) (y - bounds.height + bounds.y - handler.getyOffset()), bounds.width, bounds.height);
-		
-		g.setColor(Color.BLUE);
-		g.fillRect((int)((100+x/48-bounds.x)), (int)120, (int)((100+x/48-bounds.x+bounds.width)), (int)(100));
+		//g.setColor(Color.red);
+		//g.fillRect((int) ((x - bounds.width) + (bounds.x - handler.getxOffset())), (int) (y - bounds.height + bounds.y - handler.getyOffset()), bounds.width, bounds.height);
 		
 		if (toggleDebug) {
 			g.setColor(Color.BLACK);

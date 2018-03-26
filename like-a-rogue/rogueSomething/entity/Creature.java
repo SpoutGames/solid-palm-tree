@@ -9,11 +9,11 @@ public abstract class Creature extends Entity{
 	
 	//constants
 		public static final int DEFAULT_HEALTH = 30;
-		public static final double DEFAULT_HORIZONTAL_SPEED = 5;
+		public static final double DEFAULT_HORIZONTAL_SPEED = 3;
 		public static final double DEFAULT_JUMP_SPEED = 2;
 		
 	//protected
-		protected double horizontalSpeed, verticalSpeed, jumpSpeed;
+		protected double hspd, vspd, jspd;
 		protected int width, height;
 		protected Rectangle bounds;
 		protected double velocityX, velocityY;
@@ -32,8 +32,8 @@ public abstract class Creature extends Entity{
 		public Creature(Handler handler, int x, int y) {
 			super(handler, x, y);
 			this.handler = handler;
-			horizontalSpeed = DEFAULT_HORIZONTAL_SPEED;
-			jumpSpeed = DEFAULT_JUMP_SPEED;
+			hspd = DEFAULT_HORIZONTAL_SPEED;
+			jspd = DEFAULT_JUMP_SPEED;
 			
 			bounds = new Rectangle(0,0,handler.getTileWidth(),handler.getTileHeight());
 		}
@@ -45,10 +45,12 @@ public abstract class Creature extends Entity{
 		}
 		
 		public void moveX() {
-			x += 1;
+			x += xMove;
 		}
 		public void moveY() {
-			
+			if (!placeMeeting((int)((x - bounds.width)/handler.getTileWidth()), (int)(y/handler.getTileHeight())) || !placeMeeting((int)((x)/handler.getTileWidth()), (int)(y/handler.getTileHeight())) ) {
+				y += 1;
+			}
 		}
 		
 		private boolean placeMeeting(int x, int y) {

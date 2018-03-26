@@ -3,6 +3,8 @@ package state;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import javax.swing.JLabel;
+
 import framework.Handler;
 import framework.Main;
 
@@ -17,17 +19,18 @@ public class MainMenu extends State{
 	//publics
 	
 	//objects
-	
+		JLabel label;
 		
 		
 		
 	//constructor
 		public MainMenu(Handler handler) {
 			super(handler);
+			label = new JLabel();
 		}
 	
 	//functions
-		public void menu() {
+		public void menuSelection() {
 			if (row == 0) { //singlePlayer
 				
 			} else if (row == 1) { //multiplayer
@@ -59,10 +62,13 @@ public class MainMenu extends State{
 				rowToggleLock = false;
 			}
 		}
+		public void menuText() {
+			
+		}
 
 		public void tick() {
 			//main Main menu code
-				menu();		
+				menuSelection();		
 			
 			//hard code to switch to testing area
 				if (handler.getInput().backSpace) {
